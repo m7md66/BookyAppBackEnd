@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Oif2LUPthSJo2Wv4Ul6U5/KgZoTGurybGbQKuZLKfb7bdfOa2ftKIWTUUoIEHxSdzgR95NxzdvmqnM7nItS93A==",
+  "dgSpecHash": "Z2ouTWeAQqbgjVjZtOqIN70Db+xj1gvaH3Nn75Kr1CqsMiLH7nqyvVg9cfP8i5W7TTfNgFselZ2hcr+q9PWhzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\BookyApp\\BookyApp.csproj",
+  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\BookyApp\\BookyApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

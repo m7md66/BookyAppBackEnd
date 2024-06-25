@@ -5499,11 +5499,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\BookyApp\\BookyApp.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\BookyApp\\BookyApp.csproj",
       "projectName": "BookyApp",
-      "projectPath": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\BookyApp\\BookyApp.csproj",
+      "projectPath": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\BookyApp\\BookyApp.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\BookyApp\\obj\\",
+      "outputPath": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\BookyApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5524,8 +5524,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eJvcZ6Qt6QCO6qzk3zA818GOTTyvgRorqSCnutkcLlwJRT/h6FbtALxeBXTL3sdvRgPzj25GggyuBUwnvEoGFg==",
+  "dgSpecHash": "epVGAXKH4KwWA5zoYkUnHDzzCoKJ4jwwUP+Kp+pMKJ3NmrG2PVr9VZ35NbAkkA7GffCTsJpykraxbr/n+4qFNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Desktop\\new Book\\BookyApp\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
