@@ -22,3 +22,16 @@ C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\Domain\obj\Debug\net8.0\Domain.
 C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\bin\Debug\net8.0\Domain.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Work\.net projects\BookyAppBack\BookyApp\Domain\obj\Debug\net8.0\ref\Domain.dll

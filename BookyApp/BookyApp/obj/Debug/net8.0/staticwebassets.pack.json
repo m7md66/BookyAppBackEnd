@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
+      "PackagePath": "staticwebassets\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookyApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BookyApp.props",
+      "PackagePath": "build\\BookyApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BookyApp.props",
+      "PackagePath": "buildMultiTargeting\\BookyApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BookyApp.props",
+      "PackagePath": "buildTransitive\\BookyApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -22,15 +22,17 @@ namespace Domain.Entities
             public DateTime CreatedDate { get; set; } = DateTime.Now;
             public string CreatedBy { get; set; }
            
-        public virtual ICollection<Book> Books { get; set; }
+       
         public virtual ICollection<Quotation> Quotations { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<ReQuote> ReQuotes { get; set; }
         public virtual ICollection<QuotationLike> QuotationLikes { get; set; }
         public virtual ICollection<QuotationShare> QuotationShares { get; set; }
+        public virtual ICollection<FavoriteUserBooks> favoriteUserBooks { get; set; }
+        public virtual ICollection<UserInterests> UserInterests { get; set; }
 
-       
-        }
+
+    }
 
 
 

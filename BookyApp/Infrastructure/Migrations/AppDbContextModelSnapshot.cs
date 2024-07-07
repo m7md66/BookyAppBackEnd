@@ -147,15 +147,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("Domain.Entities.Comment", b =>
@@ -193,7 +187,68 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Domain.Entities.FavoriteUserBooks", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("favoriteUserBooks");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Interests", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Interests");
                 });
 
             modelBuilder.Entity("Domain.Entities.Quotation", b =>
@@ -231,7 +286,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Quotations", (string)null);
+                    b.ToTable("Quotations");
                 });
 
             modelBuilder.Entity("Domain.Entities.QuotationLike", b =>
@@ -265,7 +320,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("QuotationLikes", (string)null);
+                    b.ToTable("QuotationLikes");
                 });
 
             modelBuilder.Entity("Domain.Entities.QuotationShare", b =>
@@ -299,7 +354,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("QuotationShares", (string)null);
+                    b.ToTable("QuotationShares");
                 });
 
             modelBuilder.Entity("Domain.Entities.ReQuote", b =>
@@ -333,7 +388,41 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ReQuotes", (string)null);
+                    b.ToTable("ReQuotes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.UserInterests", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("InterestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InterestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserInterests");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -469,34 +558,42 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.Book", b =>
-                {
-                    b.HasOne("Domain.Entities.ApplicationUser", "User")
-                        .WithMany("Books")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Domain.Entities.Comment", b =>
                 {
                     b.HasOne("Domain.Entities.Quotation", "quotation")
                         .WithMany("Comments")
                         .HasForeignKey("QuotationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.ApplicationUser", "user")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("quotation");
 
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Domain.Entities.FavoriteUserBooks", b =>
+                {
+                    b.HasOne("Domain.Entities.Book", "Book")
+                        .WithMany("FavoriteBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApplicationUser", "User")
+                        .WithMany("favoriteUserBooks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Entities.Quotation", b =>
@@ -523,7 +620,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.Quotation", "Quotation")
                         .WithMany("QuotationLikes")
                         .HasForeignKey("QuotationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.ApplicationUser", "User")
@@ -542,7 +639,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.Quotation", "Quotation")
                         .WithMany("QuotationShares")
                         .HasForeignKey("QuotationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.ApplicationUser", "User")
@@ -561,7 +658,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.Quotation", "Quotation")
                         .WithMany("ReQuotes")
                         .HasForeignKey("QuotationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.ApplicationUser", "User")
@@ -571,6 +668,25 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Quotation");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.UserInterests", b =>
+                {
+                    b.HasOne("Domain.Entities.Interests", "Interest")
+                        .WithMany("UserInterests")
+                        .HasForeignKey("InterestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ApplicationUser", "User")
+                        .WithMany("UserInterests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Interest");
 
                     b.Navigation("User");
                 });
@@ -628,8 +744,6 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.ApplicationUser", b =>
                 {
-                    b.Navigation("Books");
-
                     b.Navigation("Comments");
 
                     b.Navigation("QuotationLikes");
@@ -639,11 +753,22 @@ namespace Infrastructure.Migrations
                     b.Navigation("Quotations");
 
                     b.Navigation("ReQuotes");
+
+                    b.Navigation("UserInterests");
+
+                    b.Navigation("favoriteUserBooks");
                 });
 
             modelBuilder.Entity("Domain.Entities.Book", b =>
                 {
+                    b.Navigation("FavoriteBooks");
+
                     b.Navigation("Quotations");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Interests", b =>
+                {
+                    b.Navigation("UserInterests");
                 });
 
             modelBuilder.Entity("Domain.Entities.Quotation", b =>

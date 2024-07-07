@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "W5zXXSZ6I+02jLWwnnKIpj/kDGD4PXfC9QeyNt80U1c=",
+  "Hash": "QhsMRh3F4+f/8vUxBURvBmUku+2N8ZLjrS1zcmKzfsU=",
   "Source": "BookyApp",
   "BasePath": "_content/BookyApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookyApp\\wwwroot",
+      "Source": "BookyApp",
+      "ContentRoot": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
+      "BasePath": "_content/BookyApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
+      "SourceId": "BookyApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
+      "BasePath": "_content/BookyApp",
+      "RelativePath": "f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf"
+    }
+  ]
 }

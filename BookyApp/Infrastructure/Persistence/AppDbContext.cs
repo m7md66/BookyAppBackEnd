@@ -26,12 +26,15 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<Book>? Books { get; set; }
+        public DbSet<FavoriteUserBooks>? favoriteUserBooks { get; set; }
         //public DbSet<FavoriteBook>? FavoriteBooks { get; set; }
         public DbSet<Quotation>? Quotations { get; set; }
         public DbSet<QuotationLike>? QuotationLikes { get; set; }
         public DbSet<QuotationShare>? QuotationShares { get; set; }
         public DbSet<ReQuote>? ReQuotes { get; set; }
         public DbSet<Comment>? Comments { get; set; }
+        public DbSet<Interests>? Interests { get; set; }
+        public DbSet<UserInterests>? UserInterests { get; set; }
 
 
 

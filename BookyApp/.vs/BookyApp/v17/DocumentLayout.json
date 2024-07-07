@@ -1,0 +1,616 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706183624_add-interests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706183624_add-interests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\userinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\userinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\requote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\requote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\interests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\interests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\quotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\quotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\quotationshare.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\quotationshare.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180858_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706180858_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\configuration\\requoteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configuration\\requoteconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180253_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706180253_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\configuration\\quotationshareconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configuration\\quotationshareconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\configuration\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configuration\\commentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706175851_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706175851_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\configuration\\quotationlikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\configuration\\quotationlikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\quotationlike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\quotationlike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706154957_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706154957_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706153238_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706153238_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\favoriteuserbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\favoriteuserbooks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706152213_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706152213_iniit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151700_fav-books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706151700_fav-books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151447_fav-books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infrastructure\\Migrations\\20240706151447_fav-books.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\services\\managefiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\managefiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120147_addComments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120036_addComments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240706183624_add-interests.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706183624_add-interests.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706183624_add-interests.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706183624_add-interests.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706183624_add-interests.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:36:24.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Quotation.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Quotation.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Quotation.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Quotation.cs",
+              "RelativeToolTip": "Domain\\Entities\\Quotation.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wBUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:33:23.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Interests.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Interests.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Interests.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Interests.cs",
+              "RelativeToolTip": "Domain\\Entities\\Interests.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:27:02.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserInterests.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\UserInterests.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\UserInterests.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\UserInterests.cs",
+              "RelativeToolTip": "Domain\\Entities\\UserInterests.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAjwA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T13:20:25.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\ApplicationUser.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "Domain\\Entities\\ApplicationUser.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwB8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:27:01.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAA3wCQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:27.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReQuote.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\ReQuote.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\ReQuote.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\ReQuote.cs",
+              "RelativeToolTip": "Domain\\Entities\\ReQuote.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:03:15.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "QuotationShare.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\QuotationShare.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\QuotationShare.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\QuotationShare.cs",
+              "RelativeToolTip": "Domain\\Entities\\QuotationShare.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:33:21.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20240706180858_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180858_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706180858_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180858_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706180858_iniit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:08:58.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReQuoteConfiguration.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\ReQuoteConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configuration\\ReQuoteConfiguration.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\ReQuoteConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configuration\\ReQuoteConfiguration.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:04:56.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20240706180652_fix-requoaterelation.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706180652_fix-requoaterelation.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:06:52.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20240706180253_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180253_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706180253_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706180253_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706180253_iniit.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T18:02:53.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "QuotationShareConfiguration.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\QuotationShareConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configuration\\QuotationShareConfiguration.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\QuotationShareConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configuration\\QuotationShareConfiguration.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T17:59:45.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20240706175851_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706175851_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706175851_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706175851_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706175851_iniit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T17:58:51.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "QuotationLikeConfiguration.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T17:55:38.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CommentConfiguration.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\CommentConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configuration\\CommentConfiguration.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Configuration\\CommentConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Configuration\\CommentConfiguration.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:35:14.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240706154957_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706154957_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706154957_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706154957_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706154957_iniit.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:49:57.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Comment.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Comment.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Comment.cs",
+              "RelativeToolTip": "Domain\\Entities\\Comment.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:33:38.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20240706153238_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706153238_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706153238_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706153238_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706153238_iniit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:32:38.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "QuotationLike.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\QuotationLike.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\QuotationLike.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\QuotationLike.cs",
+              "RelativeToolTip": "Domain\\Entities\\QuotationLike.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T13:24:43.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20240706152213_iniit.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706152213_iniit.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706152213_iniit.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706152213_iniit.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706152213_iniit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:22:13.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.json",
+              "RelativeDocumentMoniker": "BookyApp\\appsettings.json",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.json",
+              "RelativeToolTip": "BookyApp\\appsettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-06T15:21:10.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "FavoriteUserBooks.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\FavoriteUserBooks.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\FavoriteUserBooks.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\FavoriteUserBooks.cs",
+              "RelativeToolTip": "Domain\\Entities\\FavoriteUserBooks.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T13:26:28.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Book.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Book.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\Book.cs",
+              "RelativeToolTip": "Domain\\Entities\\Book.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBUAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:27.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BookyApp\\appsettings.Development.json",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.Development.json",
+              "RelativeToolTip": "BookyApp\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-06T15:21:21.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "20240706151700_fav-books.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151700_fav-books.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706151700_fav-books.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151700_fav-books.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706151700_fav-books.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:17:00.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20240706151447_fav-books.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151447_fav-books.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20240706151447_fav-books.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Migrations\\20240706151447_fav-books.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20240706151447_fav-books.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T15:14:47.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Program.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Program.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Program.cs",
+              "RelativeToolTip": "BookyApp\\Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:27.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ManageFiles.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\ManageFiles.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\ManageFiles.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\ManageFiles.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\ManageFiles.cs",
+              "ViewState": "AQIAAEUAAABgZmZmZmYswFYAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:27.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj",
+              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-29T16:06:27.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "BookyApp\\WeatherForecast.cs",
+              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\WeatherForecast.cs",
+              "RelativeToolTip": "BookyApp\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:27.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20240621120147_addComments.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120147_addComments.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120147_addComments.cs",
+              "ToolTip": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120147_addComments.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120147_addComments.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T12:01:47.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20240621120036_addComments.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120036_addComments.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120036_addComments.cs",
+              "ToolTip": "C:\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120036_addComments.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\USER\\OneDrive\\Desktop\\BookyApp\\Infrastructure\\Migrations\\20240621120036_addComments.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T12:00:36.235Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
