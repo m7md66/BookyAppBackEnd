@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,45 +50,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "BookyApp\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\AccountController.cs*",
-              "RelativeToolTip": "BookyApp\\Controllers\\AccountController.cs*",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAABoAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T09:15:01.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\AccountService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Services\\AccountService.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\AccountService.cs",
-              "RelativeToolTip": "Infrastructure\\Services\\AccountService.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAQwOYAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T08:35:44.549Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BookService.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\BookService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Services\\BookService.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\BookService.cs",
-              "RelativeToolTip": "Infrastructure\\Services\\BookService.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAuwEYAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T08:35:39.049Z",
-              "EditorCaption": ""
             }
           ]
         }

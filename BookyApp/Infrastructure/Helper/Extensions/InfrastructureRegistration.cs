@@ -103,6 +103,7 @@ namespace Infrastructure.Helper.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IBookService, BookService>();
 
 
 

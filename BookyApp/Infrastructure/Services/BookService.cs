@@ -4,6 +4,7 @@ using Application.DTOs;
 using Application.DTOs.BookDto;
 using Domain.Entities;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,10 +65,11 @@ namespace Infrastructure.Services
             response.Status = true;
             return response;
         }
-        public ApiResponse<Book> getFavoriteBooks(int UserId) {
+
+        public ApiResponse<Book> getFavoriteBooks(string UserId) {
             var response = new ApiResponse<Book>();
 
-            var Fboks = _favoriteUserBooksRepository;
+            var Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => new { x.Book}).ToList();
             try
             {
                 
@@ -81,6 +83,7 @@ namespace Infrastructure.Services
                 return response;
 
             }
+            response.DataResult=Fboks;
             response.Status = true;
             return response;
         }

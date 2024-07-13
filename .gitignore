@@ -359,5 +359,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-/BookyApp/Application/obj/Debug/net8.0/ref/Application.dll
-/BookyApp/.vs/BookyApp/v17/.suo
+*.dll
+*.suo

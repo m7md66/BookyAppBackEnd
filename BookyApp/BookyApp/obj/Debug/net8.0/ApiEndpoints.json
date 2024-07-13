@@ -67,6 +67,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BookyApp.Controllers.BooksController",
+    "Method": "getFavoriteBooks",
+    "RelativePath": "api/Books",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Book, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BookyApp.Controllers.FilesController",
     "Method": "Upload",
     "RelativePath": "api/Files/upload",
