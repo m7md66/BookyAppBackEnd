@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookyApp.Controllers
@@ -8,7 +9,7 @@ namespace BookyApp.Controllers
     public class FilesController : ControllerBase
     {
 
-
+        [Authorize]
         [HttpPost("upload")]
         public IActionResult Upload(IFormFile file)
         {

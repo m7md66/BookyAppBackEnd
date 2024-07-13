@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Contracts.Repository
+namespace Application.Contracts.Services
 {
-    public class IRepository<T>
+    public interface IBookService
     {
-       
+
     }
 }

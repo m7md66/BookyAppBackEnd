@@ -20,7 +20,7 @@ namespace Domain.Entities
             public string ImageName { get; set; }
             public string ImageExtention { get; set; }
             public DateTime CreatedDate { get; set; } = DateTime.Now;
-            public string CreatedBy { get; set; }
+            public string? CreatedBy { get; set; }
            
        
         public virtual ICollection<Quotation> Quotations { get; set; }

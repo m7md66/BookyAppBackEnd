@@ -326,6 +326,7 @@ C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\BookyApp\obj\Debug\net8.0\Booky
 C:\Users\USER\OneDrive\Desktop\new Book\BookyApp\BookyApp\obj\Debug\net8.0\ref\BookyApp.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\appsettings.json
+C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\BookyApp.staticwebassets.runtime.json
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\BookyApp.exe
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\BookyApp.deps.json
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\BookyApp.runtimeconfig.json
@@ -336,6 +337,8 @@ C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Azure.Iden
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Azure.Security.KeyVault.Certificates.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Azure.Security.KeyVault.Secrets.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Humanizer.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Mapster.dll
+C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Mapster.Core.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -488,4 +491,3 @@ C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\refint\Boo
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\BookyApp.pdb
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\BookyApp.genruntimeconfig.cache
 C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\ref\BookyApp.dll
-C:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\BookyApp.staticwebassets.runtime.json
