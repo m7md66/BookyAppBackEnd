@@ -25,6 +25,11 @@ namespace Infrastructure.Persistence.Repository
         {
             _dbSet.Add(entity);
         }
+        public async Task AddRangeAsync(T[] entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+            await _context.SaveChangesAsync();
+        }
 
         public void Delete(T entity) {
 

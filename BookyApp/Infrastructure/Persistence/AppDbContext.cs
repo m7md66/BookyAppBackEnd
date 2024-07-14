@@ -33,7 +33,7 @@ namespace Infrastructure.Persistence
         public DbSet<QuotationShare>? QuotationShares { get; set; }
         public DbSet<ReQuote>? ReQuotes { get; set; }
         public DbSet<Comment>? Comments { get; set; }
-        public DbSet<Interests>? Interests { get; set; }
+        public DbSet<Interest>? Interests { get; set; }
         public DbSet<UserInterests>? UserInterests { get; set; }
 
 
