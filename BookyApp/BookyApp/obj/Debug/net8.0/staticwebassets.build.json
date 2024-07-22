@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QhsMRh3F4+f/8vUxBURvBmUku+2N8ZLjrS1zcmKzfsU=",
+  "Hash": "UCVnaAyd8IfnnCBUKdaBF9fUf0QYYKFmsh+c9EItakk=",
   "Source": "BookyApp",
   "BasePath": "_content/BookyApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "BookyApp\\wwwroot",
       "Source": "BookyApp",
-      "ContentRoot": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
+      "ContentRoot": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
       "BasePath": "_content/BookyApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
+      "Identity": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
       "SourceId": "BookyApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
+      "ContentRoot": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\wwwroot\\",
       "BasePath": "_content/BookyApp",
       "RelativePath": "f1b3b57d-c728-40fe-bb83-0ba58ff55100.pdf",
       "AssetKind": "All",

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
-using Infrastructure.Helper.Extensions;
+using Infra.Helper.Extensions;
 using Application;
 using BookyApp.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -21,7 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 //        options => builder.Configuration.Bind("sz8eI7OdHBrjrIasdfadsfasdfdfo8j9nTW/asdfasdfarQyO1OvY0pAQ2wDKQZw/0=", options))
 //    ;
 
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddMapster();
 
 

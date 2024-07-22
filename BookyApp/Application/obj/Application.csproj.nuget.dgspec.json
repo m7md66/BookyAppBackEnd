@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj": {}
+    "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj": {
+    "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj",
+        "projectPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\moess\\.nuget\\packages\\",
-        "outputPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\obj\\",
+        "outputPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moess\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj"
+              "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj": {
+    "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\moess\\.nuget\\packages\\",
-        "outputPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\obj\\",
+        "outputPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\moess\\AppData\\Roaming\\NuGet\\NuGet.Config",

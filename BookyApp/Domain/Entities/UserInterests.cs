@@ -17,6 +17,6 @@ namespace Domain.Entities
         public virtual ApplicationUser User { get; set; }
 
         [ForeignKey(nameof(InterestId))]
-        public virtual Interest Interest { get; set; }
+        public virtual Genres Interest { get; set; }
     }
 }

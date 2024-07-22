@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "McYgWQnayJA=",
+  "dgSpecHash": "97dBkRlKRkQ=",
   "success": true,
-  "projectFilePath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
+  "projectFilePath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moess\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\moess\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

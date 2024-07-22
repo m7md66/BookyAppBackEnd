@@ -1,34 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
+  "WorkspaceRootPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\persistence\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\infrastructure\\services\\userinterestsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\userinterestsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\domain\\entities\\userinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\userinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\application\\dtos\\interests\\interestsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\dtos\\interests\\interestsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\application\\dtos\\bookdto\\createbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\dtos\\bookdto\\createbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\application\\dtos\\userdto\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\dtos\\userdto\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\services\\userinterestsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\services\\userinterestsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|c:\\work\\.net projects\\bookyappback\\bookyapp\\application\\dtos\\userdto\\adduserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\dtos\\userdto\\adduserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\persistence\\configuration\\quotationlikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\persistence\\configuration\\quotationlikeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\infra.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\infra.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\bookyapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\bookyapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\helper\\extensions\\infrastructureregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\helper\\extensions\\infrastructureregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\application\\contracts\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\contracts\\services\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,86 +66,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BaseRepository.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T22:38:41.462Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreateBook.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\BookDto\\CreateBook.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\BookDto\\CreateBook.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\BookDto\\CreateBook.cs",
-              "RelativeToolTip": "Application\\DTOs\\BookDto\\CreateBook.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T22:22:54.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthResponse.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\UserDto\\AuthResponse.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\UserDto\\AuthResponse.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\UserDto\\AuthResponse.cs",
-              "RelativeToolTip": "Application\\DTOs\\UserDto\\AuthResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T22:22:46.75Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AddUserRequest.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\UserDto\\AddUserRequest.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\UserDto\\AddUserRequest.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\UserDto\\AddUserRequest.cs",
-              "RelativeToolTip": "Application\\DTOs\\UserDto\\AddUserRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T22:22:44.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InterestsResponse.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\interests\\InterestsResponse.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\interests\\InterestsResponse.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\DTOs\\interests\\InterestsResponse.cs",
-              "RelativeToolTip": "Application\\DTOs\\interests\\InterestsResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T22:20:25.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserInterests.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\UserInterests.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\UserInterests.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Entities\\UserInterests.cs",
-              "RelativeToolTip": "Domain\\Entities\\UserInterests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T21:41:41.188Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -160,15 +110,184 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserInterestsService.cs",
-              "DocumentMoniker": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\UserInterestsService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Services\\UserInterestsService.cs",
-              "ToolTip": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Services\\UserInterestsService.cs",
-              "RelativeToolTip": "Infrastructure\\Services\\UserInterestsService.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAuwDMAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Controllers\\BaseController.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "BookyApp\\Controllers\\BaseController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAArwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T21:42:12.834Z",
+              "WhenOpened": "2024-07-22T17:34:50.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuotationController.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\QuotationController.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Controllers\\QuotationController.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\QuotationController.cs",
+              "RelativeToolTip": "BookyApp\\Controllers\\QuotationController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAuwCgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:34:41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenresController.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\GenresController.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Controllers\\GenresController.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\GenresController.cs",
+              "RelativeToolTip": "BookyApp\\Controllers\\GenresController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:33:16.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserInterestsService.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\UserInterestsService.cs",
+              "RelativeDocumentMoniker": "Infra\\Services\\UserInterestsService.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\UserInterestsService.cs",
+              "RelativeToolTip": "Infra\\Services\\UserInterestsService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwEQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:23:01.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Infra",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Infra.csproj",
+              "RelativeDocumentMoniker": "Infra\\Infra.csproj",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Infra.csproj",
+              "RelativeToolTip": "Infra\\Infra.csproj",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvxcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-22T17:21:37.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "QuotationLikeConfiguration.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "RelativeDocumentMoniker": "Infra\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "RelativeToolTip": "Infra\\Persistence\\Configuration\\QuotationLikeConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:19:16.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookyApp",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
+              "RelativeDocumentMoniker": "BookyApp\\BookyApp.csproj",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
+              "RelativeToolTip": "BookyApp\\BookyApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-22T17:19:02.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Controllers\\BooksController.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "BookyApp\\Controllers\\BooksController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:17:30.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuotationService.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\QuotationService.cs",
+              "RelativeDocumentMoniker": "Infra\\Services\\QuotationService.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\QuotationService.cs",
+              "RelativeToolTip": "Infra\\Services\\QuotationService.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAAAHcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:24:32.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infra\\Persistence\\AppDbContext.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "Infra\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:17:13.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InfrastructureRegistration.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Helper\\Extensions\\InfrastructureRegistration.cs",
+              "RelativeDocumentMoniker": "Infra\\Helper\\Extensions\\InfrastructureRegistration.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Helper\\Extensions\\InfrastructureRegistration.cs",
+              "RelativeToolTip": "Infra\\Helper\\Extensions\\InfrastructureRegistration.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:16:41.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "BookyApp\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "BookyApp\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:15:15.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Contracts\\Services\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Application\\Contracts\\Services\\IAccountService.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Contracts\\Services\\IAccountService.cs",
+              "RelativeToolTip": "Application\\Contracts\\Services\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:14:48.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Class1.cs",
+              "RelativeDocumentMoniker": "Infra\\Class1.cs",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Class1.cs",
+              "RelativeToolTip": "Infra\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T17:09:56.223Z",
               "EditorCaption": ""
             }
           ]

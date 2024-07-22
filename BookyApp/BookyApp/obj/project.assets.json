@@ -2140,7 +2140,7 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
-      "Infrastructure/1.0.0": {
+      "Infra/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2154,10 +2154,10 @@
           "System.IdentityModel.Tokens.Jwt": "7.6.3"
         },
         "compile": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/Infra.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/Infra.dll": {}
         }
       }
     }
@@ -5532,15 +5532,15 @@
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
-    "Infrastructure/1.0.0": {
+    "Infra/1.0.0": {
       "type": "project",
-      "path": "../Infrastructure/Infrastructure.csproj",
-      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+      "path": "../Infra/Infra.csproj",
+      "msbuildProject": "../Infra/Infra.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Infrastructure >= 1.0.0",
+      "Infra >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.7",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.6",
@@ -5555,11 +5555,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
+      "projectUniqueName": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
       "projectName": "BookyApp",
-      "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
+      "projectPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\BookyApp.csproj",
       "packagesPath": "C:\\Users\\moess\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\obj\\",
+      "outputPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\moess\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5577,8 +5577,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj"
+            "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Infra.csproj": {
+              "projectPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Infra.csproj"
             }
           }
         }

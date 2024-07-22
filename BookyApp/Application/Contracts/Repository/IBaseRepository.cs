@@ -10,7 +10,7 @@ namespace Application.Contracts.Repository
     public interface IBaseRepository<T>
     {
         void Add(T entity);
-
+        void Delete(T entity);
         Task<List<T>> GetAllAsync();
         Task<T> GetAsync(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetMany(Expression<Func<T, bool>> predicate);

@@ -15,11 +15,13 @@ namespace BookyApp.Controllers
     {
         private readonly IAccountService _accountService;
         private readonly UserManager<ApplicationUser> _userManager;
+        protected string _userId;
 
         public AccountController(IAccountService accountService, UserManager<ApplicationUser> userManager)
         {
             _accountService = accountService;
             _userManager = userManager;
+            _userId= User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
 
         }
 

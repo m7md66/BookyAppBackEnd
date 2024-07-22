@@ -22,6 +22,7 @@ namespace Domain.Entities
 
         public virtual ICollection<FavoriteUserBooks> FavoriteBooks { get; set; }
         public virtual ICollection<Quotation> Quotations { get; set; }
+        public virtual ICollection<BookGenres> BookGenres { get; set; }
 
 
     }
