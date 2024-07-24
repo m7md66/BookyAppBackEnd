@@ -362,3 +362,5 @@ MigrationBackup/
 *.dll
 *.suo
 *.cache
+/BookyApp/BookyApp/obj/Debug/net8.0/BookyApp.AssemblyInfoInputs.cache
+/BookyApp/BookyApp/obj/Debug/net8.0/BookyApp.dll
