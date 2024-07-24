@@ -14,5 +14,6 @@ namespace Application.Contracts.Services
         Task<ApiResponse<Genres>> GetAllInterests();
         ApiResponse<Genres> GetUserInterests(string UserId);
         Task<ApiResponse<bool>> MakeInterest(Guid GenreId);
+        Task<ApiResponse<bool>> MakeInterests(List<Guid> userInterestsIds);
     }
 }

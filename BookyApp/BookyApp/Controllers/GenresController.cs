@@ -13,6 +13,7 @@ namespace BookyApp.Controllers
     [ApiController]
     public class GenresController : BaseController
     {
+        //git rm --cached*.dll
         private readonly IUserInterestsService _userInterestsService;
 
         public GenresController(IUserInterestsService userInterestsService)
@@ -43,11 +44,18 @@ namespace BookyApp.Controllers
             return _userInterestsService.GetUserInterests(userId);
         }
 
-
+        [HttpPost("MakeInterest")]
         public Task<ApiResponse<bool>> MakeInterest(Guid GenreId) { 
       return  _userInterestsService.MakeInterest(GenreId);
 
         }
+        [HttpPost("MakeInterests")]
+        public Task<ApiResponse<bool>> MakeInterests(List<Guid> GenreIds)
+        {
+            return _userInterestsService.MakeInterests(GenreIds);
+
+        }
+
 
 
     }

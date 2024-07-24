@@ -176,26 +176,6 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.GenresController",
-    "Method": "GetAllInterests",
-    "RelativePath": "api/Genres",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Genres, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "BookyApp.Controllers.GenresController",
     "Method": "addInterest",
     "RelativePath": "api/Genres/addInterest",
     "HttpMethod": "POST",
@@ -222,6 +202,26 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.GenresController",
+    "Method": "GetAllInterests",
+    "RelativePath": "api/Genres/GetAllInterests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Genres, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.GenresController",
     "Method": "GetUserInterests",
     "RelativePath": "api/Genres/GetUserInterests",
     "HttpMethod": "POST",
@@ -231,6 +231,58 @@
     "ReturnTypes": [
       {
         "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Genres, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.GenresController",
+    "Method": "MakeInterest",
+    "RelativePath": "api/Genres/MakeInterest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GenreId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.GenresController",
+    "Method": "MakeInterests",
+    "RelativePath": "api/Genres/MakeInterests",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GenreIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

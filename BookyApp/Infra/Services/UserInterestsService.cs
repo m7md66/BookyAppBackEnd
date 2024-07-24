@@ -17,10 +17,14 @@ namespace Infra.Services
         private readonly IBaseRepository<Genres> _interestsRepository;
         private readonly IBaseRepository<ApplicationUser> _applicationUserRepository;
         private readonly Session _session;
-        public UserInterestsService(IBaseRepository<UserInterest> userInterestsRepository , IBaseRepository<Genres> interestsRepository,Session session) {
+        public UserInterestsService(IBaseRepository<UserInterest> userInterestsRepository
+            , IBaseRepository<Genres> interestsRepository
+            ,Session session
+            , IBaseRepository<ApplicationUser> applicationUserRepository) {
           _userInterestsRepository = userInterestsRepository;
             _interestsRepository = interestsRepository;
             _session = session;
+            _applicationUserRepository = applicationUserRepository;
         }
 
         public ApiResponse<Genres> GetUserInterests(string UserId)
@@ -107,16 +111,23 @@ namespace Infra.Services
             return response;
         }
 
+            
 
-        public async Task<ApiResponse<bool>> MakeInterests(Guid GenreId)
+        public async Task<ApiResponse<bool>> MakeInterests(List<Guid> userInterestsIds)
         {
-
             var response = new ApiResponse<bool>();
             try
             {
-               var theUser=await _applicationUserRepository.FindById(_session.UserId);
-                if (theUser is ApplicationUser user) { 
-                
+                if (!userInterestsIds.Any()) throw new Exception("User interests IDs cannot be empty.");
+               
+                var theUser=await _applicationUserRepository.FindById(_session.UserId);
+                if (theUser is ApplicationUser user) {
+                    theUser.UserInterests.Clear();
+                    await _applicationUserRepository.SaveChangesAsync();
+                }
+                foreach (var userInterest in userInterestsIds)
+                {
+                    theUser.UserInterests.Add(new UserInterest { UserId=_session.UserId,InterestId= userInterest });
                 }
             }
             catch (Exception ex)
