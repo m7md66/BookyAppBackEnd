@@ -366,3 +366,20 @@ MigrationBackup/
 /BookyApp/BookyApp/obj/Debug/net8.0/BookyApp.dll
 
 *.bin
+/BookyApp/Application/bin/Debug/net8.0/Domain.pdb
+
+# Ignore all DLL files
+*.dll
+
+# Ignore Visual Studio temporary files
+.vs/
+*.suo
+*.user
+*.userosscache
+
+# Ignore build outputs
+bin/
+obj/
+/BookyApp/BookyApp/bin/Debug/net8.0/
+*.dll
+/BookyApp/BookyApp/obj/Debug/net8.0/ref/BookyApp.dll
