@@ -14,6 +14,7 @@ using System.Text;
 using Application.Contracts.Services;
 using Infra.Services;
 using Infra.Persistence.Repository;
+using Infra.Helper.Filters;
 
 
 namespace Infra.Helper.Extensions
@@ -106,7 +107,11 @@ namespace Infra.Helper.Extensions
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserInterestsService, UserInterestsService>();
 
-
+            services.AddScoped<Session>();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(SessionFilter));
+            });
 
 
 

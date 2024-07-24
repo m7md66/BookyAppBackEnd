@@ -25,13 +25,14 @@ namespace Infra.Services
             _favoriteUserBooksRepository = favoriteUserBooksRepository;
         }
 
-        public ApiResponse<Book> AddBook(CreateBook createBook)
+        public ApiResponse<bool> AddBook(CreateBook createBook)
         {
-            var response = new ApiResponse<Book>();
+            var response = new ApiResponse<bool>();
             var book = createBook.Adapt<Book>();
             try
             {
                 _bookRepository.Add(book);
+                _bookRepository.SaveChangesAsync();
             }
             catch (Exception ex) { 
 
@@ -45,13 +46,14 @@ namespace Infra.Services
             return response;
         }
 
-        public ApiResponse<Book> getBooks(CreateBook createBook)
+        public async Task<ApiResponse<List<BookResponse>>> getBooks()
         {
-            var response = new ApiResponse<Book>();
-            var book = createBook.Adapt<Book>();
+            var response = new ApiResponse<List<BookResponse>>();
+            var Fboks =await _bookRepository.GetAllAsync();
+            var bookss = Fboks.Adapt<List<BookResponse>>();
             try
             {
-                _bookRepository.Add(book);
+               
             }
             catch (Exception ex)
             {
@@ -62,14 +64,15 @@ namespace Infra.Services
                 return response;
 
             }
+            response.Data = bookss;
             response.Status = true;
             return response;
         }
 
-        public ApiResponse<Book> getFavoriteBooks(string UserId) {
-            var response = new ApiResponse<Book>();
-
+        public ApiResponse<List<BookResponse>> getFavoriteBooks(string UserId) {
+            var response = new ApiResponse<List<BookResponse>>();
             var Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => new { x.Book}).ToList();
+            var bookss = Fboks.Adapt<List<BookResponse>>();
             try
             {
                 
@@ -83,7 +86,7 @@ namespace Infra.Services
                 return response;
 
             }
-            response.DataResult=Fboks;
+            response.DataResult=bookss;
             response.Status = true;
             return response;
         }

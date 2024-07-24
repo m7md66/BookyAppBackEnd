@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Entities;
+using Infra.Helper.Filters;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,14 +17,14 @@ namespace Infra.Persistence
 {
     public class AppDbContext: IdentityDbContext<ApplicationUser>
     {
-
+        private readonly Session _session;
         public AppDbContext() 
         {
 
         }
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options, Session session) : base(options)
         {
-            
+            _session = session;
         }
 
         public DbSet<Book>? Books { get; set; }
@@ -107,7 +108,7 @@ namespace Infra.Persistence
                     case EntityState.Added:
                         entry.Entity.Id = Guid.NewGuid();
                         entry.Entity.CreatedDate = DateTime.UtcNow;
-                        //entry.Entity.CreatedBy = _session.UserId;
+                        entry.Entity.CreatedBy =_session.UserId;
                         break;
                     case EntityState.Modified:
                         entry.Entity.UpdatedDate = DateTime.UtcNow;

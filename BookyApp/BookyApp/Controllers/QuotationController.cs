@@ -4,9 +4,11 @@ using Application.Contracts.Services;
 using Application.DTOs;
 using Domain.Entities;
 using Application.DTOs.QuotationDto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookyApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class QuotationController : BaseController

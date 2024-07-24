@@ -22,5 +22,6 @@ namespace Application.Contracts.Repository
 
 
          int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

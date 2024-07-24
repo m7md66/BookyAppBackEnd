@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.DTOs.BookDto;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,9 @@ namespace Application.Contracts.Services
 {
     public interface IBookService
     {
-        ApiResponse<Book> getFavoriteBooks(string UserId);
+        ApiResponse<List<BookResponse>> getFavoriteBooks(string UserId);
+        Task<ApiResponse<List<BookResponse>>> getBooks();
+        ApiResponse<bool> AddBook(CreateBook createBook);
 
     }
 }

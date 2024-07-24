@@ -21,7 +21,7 @@ namespace BookyApp.Controllers
         {
             _accountService = accountService;
             _userManager = userManager;
-            _userId= User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
+          
 
         }
 
@@ -31,7 +31,8 @@ namespace BookyApp.Controllers
         //{
         //    return Ok(await _accountService.GetAllRoles());
         //}
-        [Authorize]
+        //[Authorize]
+        [AllowAnonymous]
        
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser([FromForm] AddUserRequest request)
@@ -42,6 +43,11 @@ namespace BookyApp.Controllers
 
             return Ok(response);
         }
+
+
+        //  so@gmail.com
+        //    123qweASD
+
 
         [AllowAnonymous]
         [HttpPost("Login")]

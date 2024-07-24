@@ -68,15 +68,61 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.BooksController",
-    "Method": "getFavoriteBooks",
-    "RelativePath": "api/Books",
+    "Method": "AddBook",
+    "RelativePath": "api/Books/AddBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBook",
+        "Type": "Application.DTOs.BookDto.CreateBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.BooksController",
+    "Method": "GetAllBooks",
+    "RelativePath": "api/Books/getAllBooks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Book, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.BookDto.BookResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.BooksController",
+    "Method": "GetFavoriteBooks",
+    "RelativePath": "api/Books/GetFavoriteBooks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.BookDto.BookResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookyApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+264396b7141101218c9be4c0afea7b4bf7f30397")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec66444011347a113e67d53c733e655181368e32")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookyApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookyApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

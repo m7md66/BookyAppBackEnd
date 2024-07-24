@@ -1,10 +1,13 @@
 ﻿using Application.Contracts.Services;
 using Application.DTOs;
+using Application.DTOs.BookDto;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookyApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : BaseController
@@ -14,11 +17,23 @@ namespace BookyApp.Controllers
 
 
 
-        [HttpGet]
-        public ApiResponse<Book> getFavoriteBooks() {
-            //var ss = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
-            var ss = "4e5a47d7-dafd-49fd-b423-16defbb56726";
-            var result = _bookService.getFavoriteBooks(ss);
+        [HttpGet("GetFavoriteBooks")]
+        public ApiResponse<List<BookResponse>> GetFavoriteBooks() {
+           
+            var result = _bookService.getFavoriteBooks(currentUserId);
+            return result;
+        }
+
+        [HttpGet("getAllBooks")]
+        public Task<ApiResponse<List<BookResponse>>> GetAllBooks()
+        {
+            var result = _bookService.getBooks();
+            return result;
+        }
+        [HttpPost("AddBook")]
+        public ApiResponse<bool> AddBook(CreateBook createBook)
+        {
+            var result = _bookService.AddBook(createBook);
             return result;
         }
 
