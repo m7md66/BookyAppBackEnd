@@ -49,6 +49,10 @@ namespace Infra.Persistence.Repository
         {
             return await _dbSet.Where(predicate).FirstOrDefaultAsync();
         }
+        public async Task<T> FindById(object id)
+        {
+            return await  _dbSet.FindAsync(id);
+        }
 
         public IQueryable<T> GetMany(Expression<Func<T, bool>> predicate)
         {

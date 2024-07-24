@@ -18,10 +18,10 @@ namespace Infra.Persistence
     public class AppDbContext: IdentityDbContext<ApplicationUser>
     {
         private readonly Session _session;
-        public AppDbContext() 
-        {
+        //public AppDbContext() 
+        //{
 
-        }
+        //}
         public AppDbContext(DbContextOptions<AppDbContext> options, Session session) : base(options)
         {
             _session = session;
@@ -36,9 +36,14 @@ namespace Infra.Persistence
         public DbSet<ReQuote>? ReQuotes { get; set; }
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Genres>? Genres { get; set; }
-        public DbSet<UserInterests>? UserInterests { get; set; }
+        public DbSet<UserInterest>? UserInterests { get; set; }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableDetailedErrors();
+            optionsBuilder.EnableSensitiveDataLogging();
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

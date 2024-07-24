@@ -10,8 +10,9 @@ namespace Application.Contracts.Services
 {
     public interface IUserInterestsService
     {
-        ApiResponse<Genres> addInterest(string name);
+        Task<ApiResponse<Genres>> addInterest(string name);
         Task<ApiResponse<Genres>> GetAllInterests();
         ApiResponse<Genres> GetUserInterests(string UserId);
+        Task<ApiResponse<bool>> MakeInterest(Guid GenreId);
     }
 }

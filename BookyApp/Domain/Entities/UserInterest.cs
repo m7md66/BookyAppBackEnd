@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class UserInterests:EntityBase
+    public class UserInterest:EntityBase
     {
         public Guid InterestId { get; set; }
         public string UserId { get; set; }

@@ -16,6 +16,7 @@ namespace Application.Contracts.Repository
         IQueryable<T> GetMany(Expression<Func<T, bool>> predicate);
         Task<IEnumerable<T>> GetManyAsync(Expression<Func<T, bool>> predicate);
         Task UpdateAsync(T entity);
+        Task<T> FindById(object id);
 
 
 

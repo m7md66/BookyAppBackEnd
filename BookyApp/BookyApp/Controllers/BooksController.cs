@@ -2,6 +2,7 @@
 using Application.DTOs;
 using Application.DTOs.BookDto;
 using Domain.Entities;
+using Infra.Helper.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,14 +14,15 @@ namespace BookyApp.Controllers
     public class BooksController : BaseController
     {
         private readonly IBookService _bookService;
-        public BooksController(IBookService bookService) { _bookService = bookService; }
+        private readonly Session _session;
+        public BooksController(IBookService bookService,Session session) { _bookService = bookService; _session = session; }
 
 
 
         [HttpGet("GetFavoriteBooks")]
         public ApiResponse<List<BookResponse>> GetFavoriteBooks() {
            
-            var result = _bookService.getFavoriteBooks(currentUserId);
+            var result = _bookService.getFavoriteBooks(_session.UserId);
             return result;
         }
 
@@ -36,6 +38,14 @@ namespace BookyApp.Controllers
             var result = _bookService.AddBook(createBook);
             return result;
         }
+
+        [HttpPost("FavorBook")]
+        public async Task<ApiResponse<bool>> FavBook(Guid bookId)
+        {
+            var result =await _bookService.FavorBook(bookId);
+            return result;
+        }
+
 
     }
 }

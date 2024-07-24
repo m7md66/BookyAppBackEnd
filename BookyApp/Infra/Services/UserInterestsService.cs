@@ -7,17 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Contracts.Services;
 using Application.DTOs;
+using Infra.Helper.Filters;
 
 namespace Infra.Services
 {
     class UserInterestsService: IUserInterestsService
     {
-        private readonly IBaseRepository<UserInterests> _userInterestsRepository;
+        private readonly IBaseRepository<UserInterest> _userInterestsRepository;
         private readonly IBaseRepository<Genres> _interestsRepository;
-
-        public UserInterestsService(IBaseRepository<UserInterests> userInterestsRepository , IBaseRepository<Genres> interestsRepository) {
+        private readonly IBaseRepository<ApplicationUser> _applicationUserRepository;
+        private readonly Session _session;
+        public UserInterestsService(IBaseRepository<UserInterest> userInterestsRepository , IBaseRepository<Genres> interestsRepository,Session session) {
           _userInterestsRepository = userInterestsRepository;
             _interestsRepository = interestsRepository;
+            _session = session;
         }
 
         public ApiResponse<Genres> GetUserInterests(string UserId)
@@ -64,7 +67,7 @@ namespace Infra.Services
             response.Status = true;
             return response;
         }
-        public ApiResponse<Genres> addInterest(string name)
+        public async Task<ApiResponse<Genres>> addInterest(string name)
         {
             var response = new ApiResponse<Genres>();
 
@@ -80,7 +83,50 @@ namespace Infra.Services
                 response.Status = false;
                 return response;
             }
+            await _interestsRepository.SaveChangesAsync();
+            response.Status = true;
+            return response;
+        }
 
+        public async Task<ApiResponse<bool>> MakeInterest(Guid GenreId) {
+
+            var response = new ApiResponse<bool>();
+            try
+            {
+                _userInterestsRepository.Add(new UserInterest { InterestId=GenreId,UserId=_session.UserId });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            await _userInterestsRepository.SaveChangesAsync();
+            response.Status = true;
+            return response;
+        }
+
+
+        public async Task<ApiResponse<bool>> MakeInterests(Guid GenreId)
+        {
+
+            var response = new ApiResponse<bool>();
+            try
+            {
+               var theUser=await _applicationUserRepository.FindById(_session.UserId);
+                if (theUser is ApplicationUser user) { 
+                
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            await _userInterestsRepository.SaveChangesAsync();
             response.Status = true;
             return response;
         }

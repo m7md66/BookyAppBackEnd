@@ -10,7 +10,7 @@ namespace Domain.Entities
     public class Genres:EntityBase
     {
         public string Name { get; set; }
-        public virtual ICollection<UserInterests> UserInterests { get; set; }
+        public virtual ICollection<UserInterest> UserInterests { get; set; }
         public virtual ICollection<BookGenres> BookGenres { get; set; }
     }
 }

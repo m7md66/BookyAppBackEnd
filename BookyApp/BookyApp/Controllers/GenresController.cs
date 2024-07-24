@@ -21,7 +21,7 @@ namespace BookyApp.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("GetAllInterests")]
         public Task<ApiResponse<Genres>> GetAllInterests()
         {
             return _userInterestsService.GetAllInterests();
@@ -29,7 +29,7 @@ namespace BookyApp.Controllers
 
 
         [HttpPost("addInterest")]
-        public ApiResponse<Genres> addInterest(string name)
+        public Task<ApiResponse<Genres>> addInterest(string name)
         {
             return _userInterestsService.addInterest(name);
         }
@@ -42,5 +42,13 @@ namespace BookyApp.Controllers
 
             return _userInterestsService.GetUserInterests(userId);
         }
+
+
+        public Task<ApiResponse<bool>> MakeInterest(Guid GenreId) { 
+      return  _userInterestsService.MakeInterest(GenreId);
+
+        }
+
+
     }
 }

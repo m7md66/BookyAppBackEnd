@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities
-{
-  
-        public class FavoriteUserBooks : EntityBase
+{   
+    public class FavoriteUserBooks : EntityBase
         {
             public Guid BookId { get; set; }
             public string UserId { get; set; }
@@ -20,6 +19,4 @@ namespace Domain.Entities
             [ForeignKey(nameof(UserId))]
             public virtual ApplicationUser User { get; set; }
         }
-
-    
 }

@@ -3,6 +3,7 @@ using Application.Contracts.Services;
 using Application.DTOs;
 using Application.DTOs.BookDto;
 using Domain.Entities;
+using Infra.Helper.Filters;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,12 +18,16 @@ namespace Infra.Services
     {
         private readonly IBaseRepository<Book> _bookRepository;
         private readonly IBaseRepository<FavoriteUserBooks> _favoriteUserBooksRepository;
+        private readonly Session _session;
         public BookService(IBaseRepository<Book> bookRepository,
-            IBaseRepository<FavoriteUserBooks> favoriteUserBooksRepository
+            IBaseRepository<FavoriteUserBooks> favoriteUserBooksRepository,
+            Session session
             )
         {
             _bookRepository = bookRepository;
             _favoriteUserBooksRepository = favoriteUserBooksRepository;
+            _session = session;
+
         }
 
         public ApiResponse<bool> AddBook(CreateBook createBook)
@@ -71,7 +76,7 @@ namespace Infra.Services
 
         public ApiResponse<List<BookResponse>> getFavoriteBooks(string UserId) {
             var response = new ApiResponse<List<BookResponse>>();
-            var Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => new { x.Book}).ToList();
+            List<Book> Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => new Book { Title =x.Book.Title,Auther=x.Book.Auther, Description =x.Book.Description, URL =x.Book.URL, PublicationDate =x.Book.PublicationDate}).ToList();
             var bookss = Fboks.Adapt<List<BookResponse>>();
             try
             {
@@ -87,6 +92,32 @@ namespace Infra.Services
 
             }
             response.DataResult=bookss;
+            response.Status = true;
+            return response;
+        }
+
+        public async Task<ApiResponse<bool>> FavorBook(Guid bookId) {
+
+            var response = new ApiResponse<bool>();
+          
+            try
+            {
+               var bookEntity=await _bookRepository.FindById(bookId);
+                if (bookEntity is Book book) {
+                    _favoriteUserBooksRepository.Add(new FavoriteUserBooks { UserId = _session.UserId, BookId = bookId });
+                }
+              
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+
+            }
+           await _bookRepository.SaveChangesAsync();
             response.Status = true;
             return response;
         }
