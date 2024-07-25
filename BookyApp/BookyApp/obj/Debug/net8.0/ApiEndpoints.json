@@ -302,7 +302,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "Application.DTOs.QuotationDto.CommentQuotationDto",
+        "Type": "Application.DTOs.QuotationDto.CommentQuotationRequest",
         "IsRequired": true
       }
     ],
@@ -346,6 +346,58 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.QuotationController",
+    "Method": "GetComments",
+    "RelativePath": "api/Quotation/GetComments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.QuotationDto.GetQuotationCommentsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.QuotationDto.GetCommentsResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.QuotationController",
+    "Method": "GetLikes",
+    "RelativePath": "api/Quotation/GetLikes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.QuotationDto.GetQuotationCommentsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.UserDto.UserResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.QuotationController",
     "Method": "GetMyQuotation",
     "RelativePath": "api/Quotation/GetMyQuotation",
     "HttpMethod": "GET",
@@ -355,6 +407,32 @@
     "ReturnTypes": [
       {
         "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.QuotationDto.QuotationResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.QuotationController",
+    "Method": "GetReQuotes",
+    "RelativePath": "api/Quotation/GetReQuotes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.QuotationDto.GetQuotationCommentsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.UserDto.UserResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -394,6 +472,32 @@
     "ContainingType": "BookyApp.Controllers.QuotationController",
     "Method": "RequoteQuotation",
     "RelativePath": "api/Quotation/RequoteQuotation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "QuotationId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.QuotationController",
+    "Method": "ShareQuotation",
+    "RelativePath": "api/Quotation/ShareQuotation",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

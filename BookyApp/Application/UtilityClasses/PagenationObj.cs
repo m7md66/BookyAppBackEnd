@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application.UtilityClasses
 {
-    internal class Class2
+    public  class PagenationObj
     {
+        public int pageNumber { get; set; }
+        public int pageSize { get; set; }
     }
 }

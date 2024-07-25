@@ -58,6 +58,8 @@ namespace Infra.Persistence.Repository
             return await  _dbSet.FindAsync(id);
         }
 
+       
+
         public IQueryable<T> GetMany(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).AsNoTracking().AsQueryable();

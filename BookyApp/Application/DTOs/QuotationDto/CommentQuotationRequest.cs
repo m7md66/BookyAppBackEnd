@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs.QuotationDto
 {
-    public record CommentQuotationDto(string comment, Guid QuotationId)
+    public record CommentQuotationRequest(string comment, Guid QuotationId)
     {
     }
 }

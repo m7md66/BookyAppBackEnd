@@ -23,6 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddMapster();
+builder.Services.AddApplicationRegitrations();
 
 
 builder.Services.AddControllers();
@@ -30,6 +31,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerDocumentation();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -43,6 +55,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthentication();
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();

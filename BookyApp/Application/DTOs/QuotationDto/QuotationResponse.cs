@@ -18,9 +18,10 @@ namespace Application.DTOs.QuotationDto
         public string BookTitle { get; set; }
         public string BookAuther { get; set; }
 
-        public int CommentsNumber { get; set; }
+        public int CommentsNumber { get; set; } = 0;
         public int LikesNumber { get; set; } = 0;
-        public int RequeteNumber { get; set; } = 0;
+        public int ReQueteNumber { get; set; } = 0;
+        public int SharesNumber { get; set; } = 0;
 
 
 
