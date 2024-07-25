@@ -13,7 +13,7 @@ namespace Application.DTOs
         public T Data { get; set; }
         //public List<T> ListOfData { get; set; }
         public Object DataResult { get; set; }
-        public List<string> Errors { get; set; }
+        public List<string> Errors { get; set; } = new List<string>();
 
         public ApiResponse()
         {

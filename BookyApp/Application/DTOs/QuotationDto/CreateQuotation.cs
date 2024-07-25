@@ -9,7 +9,7 @@ namespace Application.DTOs.QuotationDto
 {
     public class CreateQuotation 
     {
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
         public Guid BookId { get; set; }
         public string Content { get; set; }
     }

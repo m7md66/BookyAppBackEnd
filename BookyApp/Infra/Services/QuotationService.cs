@@ -5,6 +5,7 @@ using Mapster;
 using Application.UtilityClasses;
 using Application.Contracts.Services;
 using Application.DTOs.QuotationDto;
+using Infra.Helper.Filters;
 namespace Infra.Services
 {
     public class QuotationService: IQuotationService
@@ -12,39 +13,46 @@ namespace Infra.Services
         private readonly IBaseRepository<Quotation> _quotationRepository;
         private readonly IBaseRepository<QuotationLike> _QuotationLikeRepository;
         private readonly IBaseRepository<ReQuote> _reQuoteRepository;
+        private readonly IBaseRepository<Comment> _commentRepository;
+        private readonly Session _session;
 
-        public QuotationService(IBaseRepository<Quotation> quotationRepository, IBaseRepository<QuotationLike> quotationLikeRepository, IBaseRepository<ReQuote> reQuoteLikeRepository)
+        public QuotationService(IBaseRepository<Quotation> quotationRepository
+            , IBaseRepository<QuotationLike> quotationLikeRepository
+            , IBaseRepository<ReQuote> reQuoteLikeRepository
+            ,Session session
+            , IBaseRepository<Comment> commentRepository)
         {
             _quotationRepository = quotationRepository;
             _QuotationLikeRepository = quotationLikeRepository;
             _reQuoteRepository = reQuoteLikeRepository;
+            _session = session;
+            _commentRepository = commentRepository;
         }
 
-        public ApiResponse<Quotation> CreateQuotation(CreateQuotation quotationDto)
+        public async Task<ApiResponse<Quotation>> CreateQuotation(CreateQuotation quotationDto)
         {
-
             var response = new ApiResponse<Quotation>();
             var newQuotation = quotationDto.Adapt<Quotation>();
+            newQuotation.UserId = _session.UserId;
             try
             {
                 _quotationRepository.Add(newQuotation);
+               await _quotationRepository.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.ToString());
                 response.Errors.Add(ex.ToString());
                 response.Status = false;
                 return response;
-
             }
             response.Status = true;
             return response;
         }
 
-        public async Task<ApiResponse<Quotation>> LikeQuotation(Guid quotationId, string userId)
+        public async Task<ApiResponse<bool>> LikeQuotation(Guid quotationId, string userId)
         {
-            var response = new ApiResponse<Quotation>();
+            var response = new ApiResponse<bool>();
 
             try
             {
@@ -64,13 +72,14 @@ namespace Infra.Services
                 return response;
 
             }
+            await _QuotationLikeRepository.SaveChangesAsync();
             response.Status = true;
             return response;
         }
 
-        public async Task<ApiResponse<Quotation>> RequoteQuotation(Guid quotationId, string userId)
+        public async Task<ApiResponse<bool>> RequoteQuotation(Guid quotationId, string userId)
         {
-            var response = new ApiResponse<Quotation>();
+            var response = new ApiResponse<bool>();
 
             try
             {
@@ -89,13 +98,14 @@ namespace Infra.Services
                 return response;
 
             }
+            await _reQuoteRepository.SaveChangesAsync();
             response.Status = true;
             return response;
         }
 
-        public async Task<ApiResponse<Quotation>> GetMyQuotation(string userId)
+        public async Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation(string userId)
         {
-            var response = new ApiResponse<Quotation>();
+            var response = new ApiResponse<List<QuotationResponse>>();
 
             try
             {
@@ -103,8 +113,10 @@ namespace Infra.Services
                 var myQuotation1 =await _quotationRepository.GetManyAsync(q => q.UserId == userId);
                var r= myQuotation.ToPagedResult(2, 5);
 
-               var rr= myQuotation1.ToPagedResult(2, 5).Items.OrderBy(a=>a.CreatedDate);
-                response.DataResult= rr;
+               var rr= myQuotation1.ToPagedResult(1, 5).Items.OrderBy(a=>a.CreatedDate).ToList();
+                response.DataResult= r;
+
+                response.Data= rr.Adapt<List<QuotationResponse>>();
             }
             catch (Exception ex)
             {
@@ -120,8 +132,38 @@ namespace Infra.Services
         }
 
 
+
+
+
+        public async Task<ApiResponse<bool>> CommentQuotation(CommentQuotationDto dto)
+        {
+            var response = new ApiResponse<bool>();
+
+            try
+            {
+                _commentRepository.Add(new Comment { UserId = _session.UserId, Content = dto.comment, QuotationId = dto.QuotationId });
+                await _commentRepository.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+
+            }
+            
+            response.Status = true;
+            return response;
+        }
+
+
+
+
+
     }
     //*********************************************************
-   
+
 
 }

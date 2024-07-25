@@ -36,7 +36,11 @@ namespace Infra.Persistence.Repository
             _dbSet.Remove(entity);
         }
 
+        public DbSet<T> GetDb()
+        {
 
+            return _dbSet;
+        }
         //public IEnumerable<T> GetAll() { 
         //return _dbSet.OrderByDescending()
         //}

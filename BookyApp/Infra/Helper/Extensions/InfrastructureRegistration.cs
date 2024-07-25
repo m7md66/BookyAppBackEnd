@@ -106,6 +106,7 @@ namespace Infra.Helper.Extensions
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserInterestsService, UserInterestsService>();
+            services.AddScoped<IQuotationService, QuotationService>();
 
             services.AddScoped<Session>();
             services.AddMvc(options =>

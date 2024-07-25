@@ -47,6 +47,7 @@ namespace BookyApp.Controllers
 
         //  so@gmail.com
         //    123qweASD
+        //  git rm -r .vs/
 
 
         [AllowAnonymous]

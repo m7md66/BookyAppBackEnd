@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Contracts.Repository
 {
-    public interface IBaseRepository<T>
+    public interface IBaseRepository<T> where T : class
     {
         void Add(T entity);
         void Delete(T entity);
@@ -18,7 +19,7 @@ namespace Application.Contracts.Repository
         Task UpdateAsync(T entity);
         Task<T> FindById(object id);
 
-
+        DbSet<T> GetDb();
 
 
 

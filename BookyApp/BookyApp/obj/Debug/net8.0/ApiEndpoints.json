@@ -210,7 +210,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Genres, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.interests.InterestsResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -224,7 +224,7 @@
     "ContainingType": "BookyApp.Controllers.GenresController",
     "Method": "GetUserInterests",
     "RelativePath": "api/Genres/GetUserInterests",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
@@ -294,12 +294,44 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.QuotationController",
-    "Method": "GetMyQuotation",
-    "RelativePath": "api/Quotation",
-    "HttpMethod": "GET",
+    "Method": "CommentQuotation",
+    "RelativePath": "api/Quotation/CommentQuotation",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.QuotationDto.CommentQuotationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.QuotationController",
+    "Method": "CreateQuotation",
+    "RelativePath": "api/Quotation/CreateQuotation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quotation",
+        "Type": "Application.DTOs.QuotationDto.CreateQuotation",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Quotation, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -314,21 +346,15 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.QuotationController",
-    "Method": "CreateQuotation",
-    "RelativePath": "api/Quotation",
-    "HttpMethod": "POST",
+    "Method": "GetMyQuotation",
+    "RelativePath": "api/Quotation/GetMyQuotation",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "quotation",
-        "Type": "Application.DTOs.QuotationDto.CreateQuotation",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Quotation, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.QuotationDto.QuotationResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -354,7 +380,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Quotation, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -380,7 +406,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Application.DTOs.ApiResponse\u00601[[Domain.Entities.Quotation, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

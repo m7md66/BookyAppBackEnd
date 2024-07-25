@@ -1,4 +1,6 @@
 ﻿using Application.DTOs;
+using Application.DTOs.QuotationDto;
+using Domain.Entities;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -12,6 +14,25 @@ namespace Application
             var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
             Assembly applicationAssembly = typeof(BaseDto<,>).Assembly;
             typeAdapterConfig.Scan(applicationAssembly);
+            MappingConfig.Configure();
         }
     }
+
+
+
+
+
+    public static class MappingConfig
+    {
+        public static void Configure()
+        {
+            //src.HireDate.ToString("yyyy-MM-dd")
+
+            TypeAdapterConfig<Quotation, QuotationResponse>.NewConfig()
+                .Map(dest => dest.BookAuther, src => src.Book!=null? $"{src.Book.Auther}  ":"")
+                .Map(dest => dest.BookTitle, src => src.Book != null ? $"{src.Book.Title}  " : "")
+                .Map(dest => dest.CommentsNumber, src => src.Comments != null ?  src.Comments.Count:0);
+        }
+    }
+
 }

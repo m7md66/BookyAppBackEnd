@@ -25,15 +25,15 @@ namespace BookyApp.Controllers
 
 
 
-        [HttpGet]
-        public Task<ApiResponse<Quotation>> GetMyQuotation()
+        [HttpGet("GetMyQuotation")]
+        public Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation()
         { var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
 
            return _quotationService.GetMyQuotation(userId);
         }
 
-        [HttpPost]
-        public ApiResponse<Quotation> CreateQuotation(CreateQuotation quotation)
+        [HttpPost("CreateQuotation")]
+        public Task<ApiResponse<Quotation>> CreateQuotation(CreateQuotation quotation)
         {
 
             return _quotationService.CreateQuotation(quotation);
@@ -41,7 +41,7 @@ namespace BookyApp.Controllers
 
         [HttpPost("LikeQuotation")]
         
-        public Task<ApiResponse<Quotation>> LikeQuotation(Guid QuotationId)
+        public Task<ApiResponse<bool>> LikeQuotation(Guid QuotationId)
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
 
@@ -50,12 +50,18 @@ namespace BookyApp.Controllers
         }
 
         [HttpPost("RequoteQuotation")]
-        public Task<ApiResponse<Quotation>> RequoteQuotation(Guid QuotationId)
+        public Task<ApiResponse<bool>> RequoteQuotation(Guid QuotationId)
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
 
 
             return _quotationService.RequoteQuotation(QuotationId, userId);
+        }
+
+        [HttpPost("CommentQuotation")]
+        public Task<ApiResponse<bool>> CommentQuotation(CommentQuotationDto dto)
+        {
+            return _quotationService.CommentQuotation(dto);
         }
 
     }

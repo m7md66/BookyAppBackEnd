@@ -29,7 +29,7 @@ namespace Domain.Entities
         public virtual ICollection<QuotationLike> QuotationLikes { get; set; }
         public virtual ICollection<QuotationShare> QuotationShares { get; set; }
         public virtual ICollection<FavoriteUserBooks> favoriteUserBooks { get; set; }
-        public virtual ICollection<UserInterest> UserInterests { get; set; }
+        public virtual ICollection<UserInterest> UserInterests { get; set; }= new HashSet<UserInterest>();
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using Application.Contracts.Services;
 using Application.DTOs;
+using Application.DTOs.interests;
 using Domain.Entities;
 using Infra.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -23,7 +24,7 @@ namespace BookyApp.Controllers
 
 
         [HttpGet("GetAllInterests")]
-        public Task<ApiResponse<Genres>> GetAllInterests()
+        public Task<ApiResponse<List<InterestsResponse>>> GetAllInterests()
         {
             return _userInterestsService.GetAllInterests();
         }
@@ -36,19 +37,21 @@ namespace BookyApp.Controllers
         }
 
 
-        [HttpPost("GetUserInterests")]
+        [HttpGet("GetUserInterests")]
         public ApiResponse<Genres> GetUserInterests()
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
-
             return _userInterestsService.GetUserInterests(userId);
         }
 
+
+
         [HttpPost("MakeInterest")]
         public Task<ApiResponse<bool>> MakeInterest(Guid GenreId) { 
-      return  _userInterestsService.MakeInterest(GenreId);
-
+           return  _userInterestsService.MakeInterest(GenreId);
         }
+
+
         [HttpPost("MakeInterests")]
         public Task<ApiResponse<bool>> MakeInterests(List<Guid> GenreIds)
         {

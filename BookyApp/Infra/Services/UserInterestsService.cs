@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Application.Contracts.Services;
 using Application.DTOs;
 using Infra.Helper.Filters;
+using Mapster;
+using Application.DTOs.interests;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Services
 {
@@ -30,8 +33,6 @@ namespace Infra.Services
         public ApiResponse<Genres> GetUserInterests(string UserId)
         {
             var response = new ApiResponse<Genres>();
-
-          
             try
             {
                  response.DataResult = _userInterestsRepository.GetMany(a => a.UserId == UserId).Select(x => new  { x.Interest.Name }).ToList();
@@ -49,28 +50,29 @@ namespace Infra.Services
             response.Status = true;
             return response;
         }
-        public async Task<ApiResponse<Genres>> GetAllInterests()
+
+
+        public async Task<ApiResponse<List<InterestsResponse>>> GetAllInterests()
         {
-            var response = new ApiResponse<Genres>();
-
-
+            var response = new ApiResponse<List<InterestsResponse>>();
             try
             {
-                response.DataResult = await _interestsRepository.GetAllAsync();
+              var generes = await _interestsRepository.GetAllAsync();
+               response.Data= generes.Adapt<List<InterestsResponse>>();
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.ToString());
                 response.Errors.Add(ex.ToString());
                 response.Status = false;
                 return response;
-
             }
 
             response.Status = true;
             return response;
         }
+
+
         public async Task<ApiResponse<Genres>> addInterest(string name)
         {
             var response = new ApiResponse<Genres>();
@@ -120,13 +122,15 @@ namespace Infra.Services
             {
                 if (!userInterestsIds.Any()) throw new Exception("User interests IDs cannot be empty.");
                
-                var theUser=await _applicationUserRepository.FindById(_session.UserId);
+                //var theUser=await _applicationUserRepository.FindById(_session.UserId);
+                var theUser = _applicationUserRepository.GetDb().Where(a => a.Id == _session.UserId).Include(a => a.UserInterests).FirstOrDefault();
                 if (theUser is ApplicationUser user) {
-                    theUser.UserInterests.Clear();
-                    await _applicationUserRepository.SaveChangesAsync();
+                  if (theUser.UserInterests!= null)   theUser.UserInterests.Clear();
+                    //await _applicationUserRepository.SaveChangesAsync();
                 }
                 foreach (var userInterest in userInterestsIds)
                 {
+
                     theUser.UserInterests.Add(new UserInterest { UserId=_session.UserId,InterestId= userInterest });
                 }
             }

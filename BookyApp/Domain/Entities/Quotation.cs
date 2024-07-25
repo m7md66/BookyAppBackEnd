@@ -11,7 +11,6 @@ namespace Domain.Entities
 {
     public class Quotation: EntityBase
     {
-       
        public string UserId { get; set; }
         public Guid BookId { get; set; }
         public string Content { get; set; }

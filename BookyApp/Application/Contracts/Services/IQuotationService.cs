@@ -10,9 +10,10 @@ namespace Application.Contracts.Services
 {
     public interface IQuotationService
     {
-        ApiResponse<Quotation> CreateQuotation(CreateQuotation quotationDto);
-        Task<ApiResponse<Quotation>> LikeQuotation(Guid quotationId, string userId);
-        Task<ApiResponse<Quotation>> RequoteQuotation(Guid quotationId, string userId);
-        Task<ApiResponse<Quotation>> GetMyQuotation(string userId);
+        Task<ApiResponse<Quotation>> CreateQuotation(CreateQuotation quotationDto);
+        Task<ApiResponse<bool>> LikeQuotation(Guid quotationId, string userId);
+        Task<ApiResponse<bool>> RequoteQuotation(Guid quotationId, string userId);
+        Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation(string userId);
+        Task<ApiResponse<bool>> CommentQuotation(CommentQuotationDto dto);
     }
 }
