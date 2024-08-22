@@ -57,8 +57,20 @@ namespace Infrastructure.Persistence.Repository
         public async Task UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+          
         }
+        public async Task<bool> IsExist(Expression<Func<T, bool>> predicate)
+        {
+          
+            return  await _dbSet.AnyAsync(predicate); 
+
+        }
+        //public async Task Delete(Expression<Func<T, bool>> predicate)
+        //{
+        //    _dbSet.Remove(predicate);
+          
+
+        //}
 
 
 

@@ -4054,19 +4054,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\moess\\.nuget\\packages\\": {}
+    "C:\\Users\\Win11\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "D:\\books\\BookyApp\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\moess\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infrastructure\\obj\\",
+      "projectPath": "D:\\books\\BookyApp\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Win11\\.nuget\\packages\\",
+      "outputPath": "D:\\books\\BookyApp\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\moess\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Win11\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4074,18 +4074,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj": {
-              "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Application.csproj"
+            "D:\\books\\BookyApp\\Application\\Application.csproj": {
+              "projectPath": "D:\\books\\BookyApp\\Application\\Application.csproj"
             },
-            "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Domain\\Domain.csproj"
+            "D:\\books\\BookyApp\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\books\\BookyApp\\Domain\\Domain.csproj"
             }
           }
         }
@@ -4152,7 +4151,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

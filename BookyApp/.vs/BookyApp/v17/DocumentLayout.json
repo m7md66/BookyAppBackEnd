@@ -1,7 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\books\\BookyApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|d:\\books\\bookyapp\\infrastructure\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|d:\\books\\bookyapp\\application\\utility classes\\paginationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\utility classes\\paginationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|d:\\books\\bookyapp\\infrastructure\\persistence\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1DFD86-12AA-4078-A903-8068E80D5180}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\repository\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|d:\\books\\bookyapp\\domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABB94027-4D56-4233-B566-F3465986458E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,47 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaginationExtensions.cs",
+              "DocumentMoniker": "D:\\books\\BookyApp\\Application\\Utility Classes\\PaginationExtensions.cs",
+              "RelativeDocumentMoniker": "Application\\Utility Classes\\PaginationExtensions.cs",
+              "ToolTip": "D:\\books\\BookyApp\\Application\\Utility Classes\\PaginationExtensions.cs",
+              "RelativeToolTip": "Application\\Utility Classes\\PaginationExtensions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:18:38.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BaseRepository.cs",
+              "DocumentMoniker": "D:\\books\\BookyApp\\Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
+              "ToolTip": "D:\\books\\BookyApp\\Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\Repository\\BaseRepository.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAApwBcAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T09:08:31.314Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "D:\\books\\BookyApp\\Domain\\Entities\\Comment.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Comment.cs",
+              "ToolTip": "D:\\books\\BookyApp\\Domain\\Entities\\Comment.cs",
+              "RelativeToolTip": "Domain\\Entities\\Comment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T08:53:32.062Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuotationService.cs",
+              "DocumentMoniker": "D:\\books\\BookyApp\\Infrastructure\\Services\\QuotationService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\QuotationService.cs",
+              "ToolTip": "D:\\books\\BookyApp\\Infrastructure\\Services\\QuotationService.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\QuotationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAK0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T13:27:59.453Z",
+              "EditorCaption": ""
             }
           ]
         }
