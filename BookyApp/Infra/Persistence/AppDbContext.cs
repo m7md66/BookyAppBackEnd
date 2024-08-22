@@ -40,8 +40,9 @@ namespace Infra.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableDetailedErrors();
-            optionsBuilder.EnableSensitiveDataLogging();
+            //optionsBuilder.LogTo().EnableSensitiveDataLogging().EnableDetailedErrors();
+            //optionsBuilder.EnableDetailedErrors();
+            //optionsBuilder.EnableSensitiveDataLogging();
             base.OnConfiguring(optionsBuilder);
         }
 

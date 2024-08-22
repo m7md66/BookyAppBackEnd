@@ -22,6 +22,7 @@ var builder = WebApplication.CreateBuilder(args);
 //    ;
 
 builder.Services.AddInfra(builder.Configuration);
+builder.Services.AddFluentEmail(builder.Configuration);
 builder.Services.AddMapster();
 builder.Services.AddApplicationRegitrations();
 

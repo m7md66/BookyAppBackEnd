@@ -658,3 +658,5 @@ D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\refint\Boo
 D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\BookyApp.pdb
 D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\BookyApp.genruntimeconfig.cache
 D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\obj\Debug\net8.0\ref\BookyApp.dll
+D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\FluentEmail.Core.dll
+D:\Work\.net projects\BookyAppBack\BookyApp\BookyApp\bin\Debug\net8.0\FluentEmail.Smtp.dll

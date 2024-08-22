@@ -11,27 +11,39 @@ using Infra.Helper.Filters;
 using Mapster;
 using Application.DTOs.interests;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Infra.Persistence;
 
 namespace Infra.Services
 {
     class UserInterestsService: IUserInterestsService
     {
+      
+     private readonly AppDbContext _appDb;
         private readonly IBaseRepository<UserInterest> _userInterestsRepository;
         private readonly IBaseRepository<Genres> _interestsRepository;
         private readonly IBaseRepository<ApplicationUser> _applicationUserRepository;
         private readonly Session _session;
-        public UserInterestsService(IBaseRepository<UserInterest> userInterestsRepository
+        public UserInterestsService(AppDbContext appDb,
+            IBaseRepository<UserInterest> userInterestsRepository
             , IBaseRepository<Genres> interestsRepository
             ,Session session
-            , IBaseRepository<ApplicationUser> applicationUserRepository) {
+            , IBaseRepository<ApplicationUser> applicationUserRepository
+          ) {
           _userInterestsRepository = userInterestsRepository;
             _interestsRepository = interestsRepository;
             _session = session;
+    
             _applicationUserRepository = applicationUserRepository;
+            _appDb = appDb;
         }
 
         public ApiResponse<Genres> GetUserInterests(string UserId)
         {
+            var a = _appDb.UserInterests.Where(a=>a.Id==new Guid("2FACEEDF-1336-40D1-8694-4997CFADDED1")).FirstOrDefault();
+            a.InterestId = new Guid("4E5A41D9-DAFD-49FD-B423-16DEFBB56724");
+
+            var qq = _appDb.UserInterests;
             var response = new ApiResponse<Genres>();
             try
             {

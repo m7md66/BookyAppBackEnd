@@ -51,6 +51,9 @@ namespace Infra.Persistence.Repository
         }
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
+            var a= await _dbSet.Where(predicate).FirstOrDefaultAsync();
+            
+
             return await _dbSet.Where(predicate).FirstOrDefaultAsync();
         }
         public async Task<T> FindById(object id)

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\application\\contracts\\services\\iquotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19CA4BA7-EB7C-42F0-8996-676D24BAC381}|Application\\Application.csproj|solutionrelative:application\\contracts\\services\\iquotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\infra\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95D6D95B-0193-43FE-9A3F-590AD6FC904F}|Infra\\Infra.csproj|solutionrelative:infra\\services\\quotationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|d:\\work\\.net projects\\bookyappback\\bookyapp\\bookyapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CA44D54E-CF68-4F8B-94F7-D654FF965302}|BookyApp\\BookyApp.csproj|solutionrelative:bookyapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,41 +58,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QuotationService.cs",
-              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\QuotationService.cs",
-              "RelativeDocumentMoniker": "Infra\\Services\\QuotationService.cs",
-              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Infra\\Services\\QuotationService.cs",
-              "RelativeToolTip": "Infra\\Services\\QuotationService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAuwHEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T18:28:18.63Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QuotationController.cs",
-              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\QuotationController.cs",
-              "RelativeDocumentMoniker": "BookyApp\\Controllers\\QuotationController.cs",
-              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\Controllers\\QuotationController.cs",
-              "RelativeToolTip": "BookyApp\\Controllers\\QuotationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T15:25:35.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IQuotationService.cs",
-              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Contracts\\Services\\IQuotationService.cs",
-              "RelativeDocumentMoniker": "Application\\Contracts\\Services\\IQuotationService.cs",
-              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\Application\\Contracts\\Services\\IQuotationService.cs",
-              "RelativeToolTip": "Application\\Contracts\\Services\\IQuotationService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T20:11:06.81Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.json",
+              "RelativeDocumentMoniker": "BookyApp\\appsettings.json",
+              "ToolTip": "D:\\Work\\.net projects\\BookyAppBack\\BookyApp\\BookyApp\\appsettings.json",
+              "RelativeToolTip": "BookyApp\\appsettings.json",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-21T16:31:33.893Z",
               "EditorCaption": ""
             }
           ]

@@ -107,6 +107,7 @@ namespace Infra.Helper.Extensions
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserInterestsService, UserInterestsService>();
             services.AddScoped<IQuotationService, QuotationService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             services.AddScoped<Session>();
             services.AddMvc(options =>
@@ -117,6 +118,21 @@ namespace Infra.Helper.Extensions
 
 
             return services;
+        }
+
+
+
+        public static void AddFluentEmail(this IServiceCollection services, IConfiguration configuration)
+        {
+            var emailSettings = configuration.GetSection("EmailSettings");
+            var defaultFromEmail = emailSettings["DefaultFromEmail"];
+            var host = emailSettings["SMTPSetting:Host"];
+            var port = emailSettings.GetValue<int>("SMTPSetting:Port");
+            var userName = emailSettings["DefaultFromEmail"];
+            var password = emailSettings["SMTPSetting:Password"];
+
+            services.AddFluentEmail(defaultFromEmail)
+                .AddSmtpSender(host, port, userName, password);
         }
 
     }

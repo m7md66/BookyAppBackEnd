@@ -403,7 +403,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.QuotationDto.GetMyQuotationRequest",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "Application.DTOs.ApiResponse\u00601[[System.Collections.Generic.List\u00601[[Application.DTOs.QuotationDto.QuotationResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
