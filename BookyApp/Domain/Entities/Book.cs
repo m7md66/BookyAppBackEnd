@@ -12,6 +12,16 @@ namespace Domain.Entities
     public class Book: EntityBase
     {
        
+
+
+
+
+
+
+
+
+
+
       
         public string Title { get; set; }
         public string Auther { get; set; }
