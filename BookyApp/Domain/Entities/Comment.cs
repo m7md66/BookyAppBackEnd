@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Domain.Entities
 {
     public class Comment:EntityBase
-    {ggggg
+    {
        public string UserId { get; set; }
         public Guid QuotationId { get; set; }
         public string Content { get; set; }
