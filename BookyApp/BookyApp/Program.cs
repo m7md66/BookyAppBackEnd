@@ -5,9 +5,11 @@ using Infra.Helper.Extensions;
 using Application;
 using BookyApp.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Add Application Insights services
+builder.Services.AddApplicationInsightsTelemetry();
 // Add services to the container.
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 //    ;

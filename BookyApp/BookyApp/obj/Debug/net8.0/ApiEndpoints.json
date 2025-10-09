@@ -23,27 +23,7 @@
         "IsRequired": false
       },
       {
-        "Name": "ImageUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ImageName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ImageExtention",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Role",
         "Type": "System.String",
         "IsRequired": false
       }

@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Services;
 using Application.DTOs.UserDto;
 using Domain.Entities;
+using FluentEmail.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -37,8 +38,8 @@ namespace BookyApp.Controllers
         [HttpPost("AddUser")]
         public async Task<IActionResult> AddUser([FromForm] AddUserRequest request)
         {
-            var ss = User.Claims.FirstOrDefault(a=>a.Type.Contains("nameidentifier")).Value;
-            var ssd = User.Claims;
+            //var ss = User.Claims.FirstOrDefault(a=>a.Type.Contains("nameidentifier")).Value;
+            //var ssd = User.Claims;
             var response = await _accountService.AddUser(request);
 
             return Ok(response);
@@ -48,6 +49,12 @@ namespace BookyApp.Controllers
         //  so@gmail.com
         //    123qweASD
         //  git rm -r .vs/
+
+        //Noaman
+        // Noaman
+        //messamn @gmail.com
+        //    Aaaaa
+
 
 
         [AllowAnonymous]

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookyApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : BaseController

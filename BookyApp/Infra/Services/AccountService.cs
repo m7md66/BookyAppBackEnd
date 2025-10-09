@@ -70,9 +70,9 @@ namespace Infra.Services
                 LastName = request.LastName,
                 Email = request.Email,
                 UserName = request.Email,
-                ImageExtention=request.ImageExtention,
-                ImageName=request.ImageName,
-                ImageUrl=request.ImageUrl,
+                ImageExtention="request.ImageExtention",
+                ImageName="request",
+                ImageUrl="request.ImageUrl",
                 
                 //CreatedBy = _session.UserId
             };
@@ -91,7 +91,7 @@ namespace Infra.Services
                 };
             }
 
-            await _userManager.AddToRoleAsync(user, request.Role);
+            await _userManager.AddToRoleAsync(user, "Admin");
            
 
             return new BaseResponse((int)HttpStatusCode.OK, true, $"User Added successfuly");
