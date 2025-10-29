@@ -60,7 +60,7 @@ namespace Infra.Services
 
         public async Task<BaseResponse> AddUser(AddUserRequest request)
         {
-            var maxSize = 30485760;
+           
             if (await GetUserByEmail(request.Email) is not null)
                 return new AuthResponse { ResponseMessage = "Email is already registered!" };
 
@@ -108,7 +108,8 @@ namespace Infra.Services
 
             var user = await GetUserByEmail(request.Email);
 
-            if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
+            //if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
+            if (user is null )
             {
                 authReponse.IsSuccess = false;
                 authReponse.StatusCode = (int)HttpStatusCode.BadRequest;

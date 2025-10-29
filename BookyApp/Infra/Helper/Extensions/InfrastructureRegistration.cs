@@ -128,11 +128,11 @@ namespace Infra.Helper.Extensions
             var defaultFromEmail = emailSettings["DefaultFromEmail"];
             var host = emailSettings["SMTPSetting:Host"];
             var port = emailSettings.GetValue<int>("SMTPSetting:Port");
-            var userName = emailSettings["DefaultFromEmail"];
+            //var userName = emailSettings["DefaultFromEmail"];
             var password = emailSettings["SMTPSetting:Password"];
 
             services.AddFluentEmail(defaultFromEmail)
-                .AddSmtpSender(host, port, userName, password);
+                .AddSmtpSender(host, port, defaultFromEmail,  password);
         }
 
     }

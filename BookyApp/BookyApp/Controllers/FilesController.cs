@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.Contracts.Services;
+using Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +10,10 @@ namespace BookyApp.Controllers
     [ApiController]
     public class FilesController : BaseController
     {
+        private readonly IEmailService _emailService;
+        public FilesController(IEmailService emailService) {
+        _emailService = emailService;
+        }
 
 
         [HttpPost("upload")]
@@ -31,5 +37,13 @@ namespace BookyApp.Controllers
 
             return Ok(fileUrl);
         }
+        [HttpPost("SendMail")]
+        public Task<ApiResponse<bool>> SendMail()
+        {
+           
+
+            return _emailService.sendMailAsync();
+        }
+
     }
 }

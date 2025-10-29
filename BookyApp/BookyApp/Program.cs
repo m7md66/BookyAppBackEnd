@@ -8,6 +8,14 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    // ???? Kestrel ????? ??? ?? ????? IP ??? ??? ??????
+//    options.ListenAnyIP(5212);
+
+//    // ?? ????? ????? ????:
+//    // options.Listen(IPAddress.Parse("192.168.1.100"), 5212);
+//});
 // Add Application Insights services
 builder.Services.AddApplicationInsightsTelemetry();
 // Add services to the container.
@@ -40,7 +48,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
         {
-            policy.WithOrigins()
+            policy.AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });

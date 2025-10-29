@@ -140,6 +140,26 @@
   },
   {
     "ContainingType": "BookyApp.Controllers.FilesController",
+    "Method": "SendMail",
+    "RelativePath": "api/Files/SendMail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.ApiResponse\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BookyApp.Controllers.FilesController",
     "Method": "Upload",
     "RelativePath": "api/Files/upload",
     "HttpMethod": "POST",

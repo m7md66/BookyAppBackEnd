@@ -5,7 +5,7 @@ import '../services/genres_service.dart';
 class InterestsProvider extends ChangeNotifier {
   final GenresService _genresService = GenresService();
   List<Genre> _allGenres = [];
-  List<String> _selectedGenreIds = [];
+  final List<String> _selectedGenreIds = [];
   bool _isLoading = false;
   String? _error;
 

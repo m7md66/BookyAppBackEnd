@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -7,7 +6,8 @@ class ApiService {
   ApiService._internal();
 
   static const String baseUrl =
-      'http://127.0.0.1:5001/api'; // Replace with your backend URL
+      // 'http://127.0.0.1:5001/api'; // Replace with your backend URL
+      'http://10.0.2.2:5212/api'; // Replace with your backend URL
 
   Future<http.Response> get(String endpoint,
       {Map<String, String>? headers}) async {
