@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookyApp.Controllers
@@ -8,9 +9,7 @@ namespace BookyApp.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-
-
-
+    [AllowAnonymous] // TEMP: auth disabled
     public class BaseController : ControllerBase
     {
         

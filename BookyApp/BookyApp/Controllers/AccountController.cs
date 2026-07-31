@@ -36,7 +36,7 @@ namespace BookyApp.Controllers
         [AllowAnonymous]
        
         [HttpPost("AddUser")]
-        public async Task<IActionResult> AddUser([FromForm] AddUserRequest request)
+        public async Task<IActionResult> AddUser(AddUserRequest request)
         {
             //var ss = User.Claims.FirstOrDefault(a=>a.Type.Contains("nameidentifier")).Value;
             //var ssd = User.Claims;

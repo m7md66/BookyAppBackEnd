@@ -8,6 +8,7 @@ using Application.DTOs.QuotationDto;
 using Infra.Helper.Filters;
 using Microsoft.EntityFrameworkCore;
 using Application.DTOs.UserDto;
+using Application.DTOs.BookDto;
 
 namespace Infra.Services
 {
@@ -18,16 +19,17 @@ namespace Infra.Services
         private readonly IBaseRepository<ReQuote> _reQuoteRepository;
         private readonly IBaseRepository<Comment> _commentRepository;
         private readonly IBaseRepository<QuotationShare> _shareRepository;
+        private readonly IBaseRepository<UserInterest> _userInterestRepository;
         private readonly Session _session;
 
 
         public QuotationService(IBaseRepository<Quotation> quotationRepository
             , IBaseRepository<QuotationLike> quotationLikeRepository
             , IBaseRepository<ReQuote> reQuoteLikeRepository
-            ,Session session
-            , IBaseRepository<Comment> commentRepository,
-              IBaseRepository<QuotationShare> shareRepository)
-            
+            , Session session
+            , IBaseRepository<Comment> commentRepository
+            , IBaseRepository<QuotationShare> shareRepository
+            , IBaseRepository<UserInterest> userInterestRepository)
         {
             _quotationRepository = quotationRepository;
             _QuotationLikeRepository = quotationLikeRepository;
@@ -35,6 +37,7 @@ namespace Infra.Services
             _session = session;
             _commentRepository = commentRepository;
             _shareRepository = shareRepository;
+            _userInterestRepository = userInterestRepository;
         }
 
         public async Task<ApiResponse<Quotation>> CreateQuotation(CreateQuotation quotationDto)
@@ -275,8 +278,39 @@ namespace Infra.Services
 
 
 
+        public async Task<ApiResponse<List<QuotationResponse>>> GetFeed(GetFeedRequest request)
+        {
+            var response = new ApiResponse<List<QuotationResponse>>();
+            try
+            {
+                var userInterestIds = _userInterestRepository
+                    .GetMany(a => a.UserId == _session.UserId)
+                    .Select(a => a.InterestId)
+                    .ToList();
+
+                var quotations = _quotationRepository
+                    .GetMany(q => true)
+                    .Include(q => q.Book)
+                        .ThenInclude(b => b.BookGenres)
+                    .Include(q => q.ReQuotes)
+                    .Include(q => q.QuotationLikes)
+                    .Include(q => q.Comments)
+                    .Include(q => q.QuotationShares)
+                    .OrderByDescending(q => q.Book.BookGenres.Any(bg => userInterestIds.Contains(bg.GenrId)))
+                    .ThenByDescending(q => q.CreatedDate);
+
+                var adapted = quotations.Adapt<List<QuotationResponse>>();
+                response.DataResult = adapted.ToPagedResult(request.Pagenation.pageNumber, request.Pagenation.pageSize);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            response.Status = true;
+            return response;
+        }
     }
-    //*********************************************************
-
-
 }

@@ -86,10 +86,16 @@ namespace BookyApp.Controllers
         }
 
         [HttpGet("GetLikes")]
-       
+
         public ApiResponse<List<UserResponse>> GetLikes([FromServices] ApiResponse<List<UserResponse>> response, GetQuotationCommentsRequest request)
         {
             return _quotationService.GetQuotationLikes(response,request);
+        }
+
+        [HttpGet("GetFeed")]
+        public Task<ApiResponse<List<QuotationResponse>>> GetFeed([FromQuery] GetFeedRequest request)
+        {
+            return _quotationService.GetFeed(request);
         }
 
     }
