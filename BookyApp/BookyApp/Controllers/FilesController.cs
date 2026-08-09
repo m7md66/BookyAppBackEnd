@@ -33,7 +33,7 @@ namespace BookyApp.Controllers
                 file.CopyTo(stream);
             }
 
-            var fileUrl = $"https://localhost:7265/{fileName}";
+            var fileUrl = $"{Request.Scheme}://{Request.Host}/Books/{fileName}";
 
             return Ok(fileUrl);
         }

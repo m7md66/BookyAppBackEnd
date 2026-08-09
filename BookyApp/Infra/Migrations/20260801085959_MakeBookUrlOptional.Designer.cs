@@ -4,6 +4,7 @@ using Infra.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260801085959_MakeBookUrlOptional")]
+    partial class MakeBookUrlOptional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,8 +120,8 @@ namespace Infra.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e557439e-5a33-4188-983b-4e2a7c8b419b",
-                            CreatedDate = new DateTime(2026, 8, 1, 14, 38, 23, 844, DateTimeKind.Local).AddTicks(784),
+                            ConcurrencyStamp = "faf8ea17-b7e1-4f6f-b9c8-2793b16f22e1",
+                            CreatedDate = new DateTime(2026, 8, 1, 11, 59, 57, 32, DateTimeKind.Local).AddTicks(9617),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -142,9 +145,6 @@ namespace Infra.Migrations
 
                     b.Property<string>("Auther")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContentFileUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -373,7 +373,7 @@ namespace Infra.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b6718dca-50d1-461b-a7fe-ea4660c3d1ea"),
+                            Id = new Guid("e0765cba-c1d7-4815-8070-1a017712b465"),
                             Name = "Fantasy"
                         },
                         new
@@ -588,7 +588,7 @@ namespace Infra.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "b441045a-fc0d-4e30-b9a6-acf913ca7a6f",
+                            ConcurrencyStamp = "b3e3c643-30db-4b19-9c1a-43091f0b3682",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

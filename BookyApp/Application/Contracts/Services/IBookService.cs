@@ -13,7 +13,8 @@ namespace Application.Contracts.Services
     {
         ApiResponse<List<BookResponse>> getFavoriteBooks(string UserId);
         Task<ApiResponse<List<BookResponse>>> getBooks();
-        ApiResponse<bool> AddBook(CreateBook createBook);
+        Task<ApiResponse<List<BookResponse>>> GetBrowseBooks();
+        Task<ApiResponse<bool>> AddBook(CreateBook createBook);
         Task<ApiResponse<bool>> FavorBook(Guid bookId);
 
     }

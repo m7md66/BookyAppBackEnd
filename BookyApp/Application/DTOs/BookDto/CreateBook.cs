@@ -11,6 +11,7 @@ namespace Application.DTOs.BookDto
         public string Title { get; set; }
         public string Auther { get; set; }
         public string Description { get; set; }
-        public string URL { get; set; }
+        public string? URL { get; set; }
+        public string? ContentFileUrl { get; set; }
     }
 }

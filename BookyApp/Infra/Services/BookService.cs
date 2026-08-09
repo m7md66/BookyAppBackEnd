@@ -30,16 +30,17 @@ namespace Infra.Services
 
         }
 
-        public ApiResponse<bool> AddBook(CreateBook createBook)
+        public async Task<ApiResponse<bool>> AddBook(CreateBook createBook)
         {
             var response = new ApiResponse<bool>();
             var book = createBook.Adapt<Book>();
             try
             {
                 _bookRepository.Add(book);
-                _bookRepository.SaveChangesAsync();
+                _favoriteUserBooksRepository.Add(new FavoriteUserBooks { UserId = _session.UserId, Book = book });
+                await _bookRepository.SaveChangesAsync();
             }
-            catch (Exception ex) { 
+            catch (Exception ex) {
 
             Console.WriteLine(ex.ToString());
                 response.Errors.Add(ex.ToString());
@@ -76,11 +77,12 @@ namespace Infra.Services
 
         public ApiResponse<List<BookResponse>> getFavoriteBooks(string UserId) {
             var response = new ApiResponse<List<BookResponse>>();
-            List<Book> Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => new Book { Title =x.Book.Title,Auther=x.Book.Auther, Description =x.Book.Description, URL =x.Book.URL, PublicationDate =x.Book.PublicationDate}).ToList();
-            var bookss = Fboks.Adapt<List<BookResponse>>();
             try
             {
-                
+                List<Book> Fboks = _favoriteUserBooksRepository.GetMany(a => a.UserId == UserId).Select(x => x.Book).ToList();
+                var bookss = Fboks.Adapt<List<BookResponse>>();
+                foreach (var b in bookss) b.IsFavorite = true;
+                response.DataResult = bookss;
             }
             catch (Exception ex)
             {
@@ -91,7 +93,30 @@ namespace Infra.Services
                 return response;
 
             }
-            response.DataResult=bookss;
+            response.Status = true;
+            return response;
+        }
+
+        public async Task<ApiResponse<List<BookResponse>>> GetBrowseBooks()
+        {
+            var response = new ApiResponse<List<BookResponse>>();
+            try
+            {
+                var books = await _bookRepository.GetManyAsync(b => b.CreatedBy != _session.UserId);
+                var favoriteBookIds = _favoriteUserBooksRepository.GetMany(f => f.UserId == _session.UserId).Select(f => f.BookId).ToHashSet();
+                var result = books.Adapt<List<BookResponse>>();
+                foreach (var b in result) b.IsFavorite = favoriteBookIds.Contains(b.Id);
+                response.DataResult = result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+
+            }
             response.Status = true;
             return response;
         }
@@ -99,14 +124,19 @@ namespace Infra.Services
         public async Task<ApiResponse<bool>> FavorBook(Guid bookId) {
 
             var response = new ApiResponse<bool>();
-          
+
             try
             {
-               var bookEntity=await _bookRepository.FindById(bookId);
-                if (bookEntity is Book book) {
-                    _favoriteUserBooksRepository.Add(new FavoriteUserBooks { UserId = _session.UserId, BookId = bookId });
+                var alreadyFavorited = await _favoriteUserBooksRepository.GetAsync(f => f.UserId == _session.UserId && f.BookId == bookId);
+                if (alreadyFavorited == null)
+                {
+                    var bookEntity = await _bookRepository.FindById(bookId);
+                    if (bookEntity is Book book)
+                    {
+                        _favoriteUserBooksRepository.Add(new FavoriteUserBooks { UserId = _session.UserId, BookId = bookId });
+                    }
                 }
-              
+
             }
             catch (Exception ex)
             {

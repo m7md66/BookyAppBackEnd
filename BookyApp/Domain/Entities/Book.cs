@@ -26,7 +26,8 @@ namespace Domain.Entities
         public string Title { get; set; }
         public string Auther { get; set; }
         public string Description { get; set; }
-        public string URL { get; set; }
+        public string? URL { get; set; }
+        public string? ContentFileUrl { get; set; }
         public DateTime PublicationDate { get; set; }
 
 

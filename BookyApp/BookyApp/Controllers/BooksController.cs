@@ -32,8 +32,16 @@ namespace BookyApp.Controllers
             var result = _bookService.getBooks();
             return result;
         }
+
+        [HttpGet("GetBrowseBooks")]
+        public Task<ApiResponse<List<BookResponse>>> GetBrowseBooks()
+        {
+            var result = _bookService.GetBrowseBooks();
+            return result;
+        }
+
         [HttpPost("AddBook")]
-        public ApiResponse<bool> AddBook(CreateBook createBook)
+        public Task<ApiResponse<bool>> AddBook(CreateBook createBook)
         {
             var result = _bookService.AddBook(createBook);
             return result;
