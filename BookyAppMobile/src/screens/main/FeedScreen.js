@@ -16,7 +16,11 @@ export default function FeedScreen() {
     try {
       const res = await getFeed(pageNum, 20);
       const items = res.data.dataResult?.items ?? res.data.data ?? [];
-      setQuotations((prev) => replace ? items : [...prev, ...items]);
+      setQuotations((prev) => {
+        if (replace) return items;
+        const seen = new Set(prev.map((q) => q.id));
+        return [...prev, ...items.filter((q) => !seen.has(q.id))];
+      });
       setHasMore(items.length === 20);
     } finally {
       setLoading(false);

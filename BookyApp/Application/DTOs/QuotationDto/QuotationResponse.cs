@@ -10,6 +10,7 @@ namespace Application.DTOs.QuotationDto
     public  class QuotationResponse:BaseDto<QuotationResponse,Quotation>
     {
         public string UserId { get; set; }
+        public string UserFullName { get; set; }
         public Guid BookId { get; set; }
         public string Content { get; set; }
 

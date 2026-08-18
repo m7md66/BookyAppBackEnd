@@ -37,6 +37,7 @@ namespace Application
             TypeAdapterConfig<Quotation, QuotationResponse>.NewConfig()
                 .Map(dest => dest.BookAuther, src => src.Book!=null? $"{src.Book.Auther}  ":"")
                 .Map(dest => dest.BookTitle, src => src.Book != null ? $"{src.Book.Title}  " : "")
+                .Map(dest => dest.UserFullName, src => src.User != null ? src.User.FullName : "")
                 //.Map(dest => dest.BookTitle, src =>" src.Book != null ? '")
                 .Map(dest => dest.CommentsNumber, src => src.Comments != null ?  src.Comments.Count:0)
                 .Map(dest => dest.SharesNumber, src => src.QuotationShares != null ?  src.QuotationShares.Count:0)

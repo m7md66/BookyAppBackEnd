@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl, TouchableOpacity, Modal, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import * as DocumentPicker from 'expo-document-picker';
@@ -6,12 +6,14 @@ import { getBrowseBooks, addBook, favorBook } from '../../api/books';
 import { uploadFile } from '../../api/files';
 import BookCard from '../../components/BookCard';
 
-export default function BrowseBooksScreen() {
+export default function BrowseBooksScreen({ route, navigation }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [favoritingId, setFavoritingId] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [highlightedId, setHighlightedId] = useState(null);
+  const listRef = useRef(null);
 
   const load = useCallback(async () => {
     try {
@@ -24,6 +26,18 @@ export default function BrowseBooksScreen() {
   }, []);
 
   useFocusEffect(useCallback(() => { load(); }, [load]));
+
+  useEffect(() => {
+    const highlightBookId = route?.params?.highlightBookId;
+    if (!highlightBookId || books.length === 0) return;
+
+    const index = books.findIndex((b) => b.id === highlightBookId);
+    if (index >= 0) {
+      setHighlightedId(highlightBookId);
+      listRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.2 });
+    }
+    navigation.setParams({ highlightBookId: undefined });
+  }, [route?.params?.highlightBookId, books, navigation]);
 
   const onRefresh = () => { setRefreshing(true); load(); };
 
@@ -49,11 +63,20 @@ export default function BrowseBooksScreen() {
   return (
     <>
       <FlatList
+        ref={listRef}
         data={books}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <BookCard book={item} onFavorite={() => handleFavorite(item)} favoriteBusy={favoritingId === item.id} />
+          <BookCard
+            book={item}
+            onFavorite={() => handleFavorite(item)}
+            favoriteBusy={favoritingId === item.id}
+            highlighted={item.id === highlightedId}
+          />
         )}
+        onScrollToIndexFailed={({ index }) => {
+          setTimeout(() => listRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.2 }), 100);
+        }}
         contentContainerStyle={styles.list}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         ListHeaderComponent={

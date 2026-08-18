@@ -119,6 +119,7 @@ namespace Infra.Services
             {
                 var myQuotation = _quotationRepository.GetMany(q => q.UserId == request.UserId)
                     .Include(q=>q.Book)
+                    .Include(q=>q.User)
                     .Include(q=>q. ReQuotes)
                     .Include(q=>q.QuotationLikes)
                     .Include(q=>q.Comments)
@@ -292,12 +293,14 @@ namespace Infra.Services
                     .GetMany(q => true)
                     .Include(q => q.Book)
                         .ThenInclude(b => b.BookGenres)
+                    .Include(q => q.User)
                     .Include(q => q.ReQuotes)
                     .Include(q => q.QuotationLikes)
                     .Include(q => q.Comments)
                     .Include(q => q.QuotationShares)
                     .OrderByDescending(q => q.Book.BookGenres.Any(bg => userInterestIds.Contains(bg.GenrId)))
-                    .ThenByDescending(q => q.CreatedDate);
+                    .ThenByDescending(q => q.CreatedDate)
+                    .ThenByDescending(q => q.Id);
 
                 var adapted = quotations.Adapt<List<QuotationResponse>>();
                 response.DataResult = adapted.ToPagedResult(request.Pagenation.pageNumber, request.Pagenation.pageSize);
