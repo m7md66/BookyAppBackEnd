@@ -51,12 +51,12 @@ namespace BookyApp.Controllers
         }
 
         [HttpPost("RequoteQuotation")]
-        public Task<ApiResponse<bool>> RequoteQuotation(Guid QuotationId)
+        public Task<ApiResponse<bool>> RequoteQuotation(RequoteQuotationRequest request)
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
 
 
-            return _quotationService.RequoteQuotation(QuotationId, userId);
+            return _quotationService.RequoteQuotation(request.QuotationId, userId, request.Comment);
         }
 
         [HttpPost("CommentQuotation")]

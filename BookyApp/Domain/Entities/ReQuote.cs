@@ -13,6 +13,7 @@ namespace Domain.Entities
     {
         public Guid QuotationId { get; set; }
        public string UserId { get; set; }
+        public string? Content { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; }

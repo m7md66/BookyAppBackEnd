@@ -4,6 +4,7 @@ using Infra.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260823122244_AddContentToReQuote")]
+    partial class AddContentToReQuote
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,8 +120,8 @@ namespace Infra.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e06d0a3b-18a5-40d0-8fcf-1aaad79d52a6",
-                            CreatedDate = new DateTime(2026, 8, 25, 23, 47, 45, 784, DateTimeKind.Local).AddTicks(7873),
+                            ConcurrencyStamp = "035a09d9-4565-487b-b3e0-cd4886e20300",
+                            CreatedDate = new DateTime(2026, 8, 23, 15, 22, 41, 122, DateTimeKind.Local).AddTicks(2358),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -647,7 +650,7 @@ namespace Infra.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "1fd7392a-aa81-48c5-89cb-273cfd49ea78",
+                            ConcurrencyStamp = "57c9f425-8b59-48fa-9eea-87a5682adbb0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

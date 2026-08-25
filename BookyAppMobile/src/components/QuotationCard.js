@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Modal, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { likeQuotation, requoteQuotation, shareQuotation } from '../api/quotations';
 
@@ -26,6 +26,61 @@ function ActionButton({ label, onPress, children }) {
   );
 }
 
+function QuotePreview({ quotation, onPress }) {
+  const Wrapper = onPress ? Pressable : View;
+  return (
+    <View>
+      <Text style={styles.content}>"{quotation.content}"</Text>
+      <Wrapper style={styles.bookRow} onPress={onPress}>
+        <Text style={styles.bookTitle}>{quotation.bookTitle}</Text>
+        {quotation.bookAuther ? <Text style={styles.author}> · {quotation.bookAuther}</Text> : null}
+      </Wrapper>
+    </View>
+  );
+}
+
+function RequoteModal({ visible, quotation, onClose, onSubmit }) {
+  const [comment, setComment] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    try {
+      await onSubmit(comment.trim());
+      setComment('');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
+      <KeyboardAvoidingView style={styles.modalOverlay} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <View style={styles.modalCard}>
+          <Text style={styles.modalTitle}>Re-quote</Text>
+          <View style={styles.previewCard}>
+            <QuotePreview quotation={quotation} />
+          </View>
+          <TextInput
+            style={[styles.input, styles.multiline]}
+            placeholder="Add a comment (optional)"
+            placeholderTextColor="#888"
+            value={comment}
+            onChangeText={setComment}
+            multiline
+          />
+          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit} disabled={submitting}>
+            {submitting ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitButtonText}>Re-quote</Text>}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onClose} disabled={submitting}>
+            <Text style={styles.cancel}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </Modal>
+  );
+}
+
 export default function QuotationCard({ quotation }) {
   const navigation = useNavigation();
   const [likes, setLikes] = useState(quotation.likesNumber ?? 0);
@@ -33,22 +88,26 @@ export default function QuotationCard({ quotation }) {
   const [shares, setShares] = useState(quotation.sharesNumber ?? 0);
   const [liked, setLiked] = useState(false);
   const [requoted, setRequoted] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const targetQuotationId = quotation.originalQuotationId ?? quotation.id;
 
   const handleLike = async () => {
     setLiked((v) => !v);
     setLikes((v) => liked ? v - 1 : v + 1);
-    await likeQuotation(quotation.id);
+    await likeQuotation(targetQuotationId);
   };
 
-  const handleRequote = async () => {
+  const handleRequoteSubmit = async (comment) => {
     setRequoted((v) => !v);
     setRequotes((v) => requoted ? v - 1 : v + 1);
-    await requoteQuotation(quotation.id);
+    await requoteQuotation(targetQuotationId, comment);
+    setModalVisible(false);
   };
 
   const handleShare = async () => {
     setShares((v) => v + 1);
-    await shareQuotation(quotation.id);
+    await shareQuotation(targetQuotationId);
   };
 
   const handleBookPress = () => {
@@ -57,18 +116,27 @@ export default function QuotationCard({ quotation }) {
 
   return (
     <View style={styles.card}>
-      {quotation.userFullName ? <Text style={styles.userName}>{quotation.userFullName}</Text> : null}
-      <Text style={styles.content}>"{quotation.content}"</Text>
-      <Pressable style={styles.bookRow} onPress={handleBookPress}>
-        <Text style={styles.bookTitle}>{quotation.bookTitle}</Text>
-        {quotation.bookAuther ? <Text style={styles.author}> · {quotation.bookAuther}</Text> : null}
-      </Pressable>
+      {quotation.isRequote ? (
+        <View style={styles.requoteHeader}>
+          <Text style={styles.requoteHeaderIcon}>↺</Text>
+          <Text style={styles.requoteHeaderText}>{quotation.requoterFullName} re-quoted</Text>
+        </View>
+      ) : null}
+      {quotation.isRequote && quotation.requoteComment ? (
+        <Text style={styles.requoteComment}>{quotation.requoteComment}</Text>
+      ) : null}
+
+      <View style={quotation.isRequote ? styles.nestedCard : undefined}>
+        {quotation.userFullName ? <Text style={styles.userName}>{quotation.userFullName}</Text> : null}
+        <QuotePreview quotation={quotation} onPress={handleBookPress} />
+      </View>
+
       <View style={styles.actions}>
         <ActionButton label="Like" onPress={handleLike}>
           <Text style={[styles.actionIcon, liked && styles.active]}>♥</Text>
           <Text style={styles.actionCount}>{likes}</Text>
         </ActionButton>
-        <ActionButton label="Re-quote" onPress={handleRequote}>
+        <ActionButton label="Re-quote" onPress={() => setModalVisible(true)}>
           <Text style={[styles.actionIcon, requoted && styles.active]}>↺</Text>
           <Text style={styles.actionCount}>{requotes}</Text>
         </ActionButton>
@@ -81,6 +149,13 @@ export default function QuotationCard({ quotation }) {
           <Text style={styles.actionCount}>{quotation.commentsNumber ?? 0}</Text>
         </ActionButton>
       </View>
+
+      <RequoteModal
+        visible={modalVisible}
+        quotation={quotation}
+        onClose={() => setModalVisible(false)}
+        onSubmit={handleRequoteSubmit}
+      />
     </View>
   );
 }
@@ -98,6 +173,11 @@ const styles = StyleSheet.create({
   actionIcon: { fontSize: 18, color: '#888' },
   actionCount: { fontSize: 13, color: '#888' },
   active: { color: '#ef4444' },
+  requoteHeader: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 },
+  requoteHeaderIcon: { fontSize: 13, color: '#888' },
+  requoteHeaderText: { fontSize: 13, fontWeight: '600', color: '#888' },
+  requoteComment: { fontSize: 15, color: '#1a1a1a', lineHeight: 22, marginBottom: 12 },
+  nestedCard: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14 },
   tooltip: {
     position: 'absolute',
     bottom: '100%',
@@ -123,4 +203,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     transform: [{ rotate: '45deg' }],
   },
+  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
+  modalCard: { backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24 },
+  modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#1a1a1a', marginBottom: 16 },
+  previewCard: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, marginBottom: 14 },
+  input: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, fontSize: 15, marginBottom: 14, color: '#1a1a1a' },
+  multiline: { height: 90, textAlignVertical: 'top' },
+  submitButton: { backgroundColor: '#4F46E5', borderRadius: 10, padding: 16, alignItems: 'center', marginBottom: 12 },
+  submitButtonText: { color: '#fff', fontWeight: '600', fontSize: 16 },
+  cancel: { textAlign: 'center', color: '#888', fontSize: 14, marginBottom: 8 },
 });

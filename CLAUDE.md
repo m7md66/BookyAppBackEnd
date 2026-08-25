@@ -68,3 +68,6 @@ Returns all quotations sorted so that quotations from books whose genres match t
 ### Configuration
 Local dev uses SQL Server: `Server=.;Database=books9;Trusted_Connection=True;TrustServerCertificate=True;`
 Email uses Gmail SMTP; credentials are in `appsettings.json` (not secrets-managed in dev).
+
+### Related
+This repo also contains `BookyAppMobile/`, an Expo/React Native client that consumes this API (see its own `AGENTS.md`). When changing a controller/DTO shape, check whether the mobile app's `src/api/*.js` files need matching updates.

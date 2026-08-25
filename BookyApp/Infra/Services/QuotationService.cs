@@ -86,17 +86,23 @@ namespace Infra.Services
             response.Status = true;
             return response;
         }
-        public async Task<ApiResponse<bool>> RequoteQuotation(Guid quotationId, string userId)
+        public async Task<ApiResponse<bool>> RequoteQuotation(Guid quotationId, string userId, string? comment)
         {
             var response = new ApiResponse<bool>();
+            var hasComment = !string.IsNullOrWhiteSpace(comment);
 
             try
             {
                 var isRequoted = await _reQuoteRepository.GetAsync(a => a.QuotationId == quotationId && a.UserId == userId);
                 if (isRequoted is ReQuote reQuote)
-                    _reQuoteRepository.Delete(isRequoted);
+                {
+                    if (hasComment)
+                        reQuote.Content = comment;
+                    else
+                        _reQuoteRepository.Delete(isRequoted);
+                }
                 else
-                    _reQuoteRepository.Add(new ReQuote { QuotationId = quotationId, UserId = userId });
+                    _reQuoteRepository.Add(new ReQuote { QuotationId = quotationId, UserId = userId, Content = hasComment ? comment : null });
             }
             catch (Exception ex)
             {
@@ -298,12 +304,48 @@ namespace Infra.Services
                     .Include(q => q.QuotationLikes)
                     .Include(q => q.Comments)
                     .Include(q => q.QuotationShares)
-                    .OrderByDescending(q => q.Book.BookGenres.Any(bg => userInterestIds.Contains(bg.GenrId)))
-                    .ThenByDescending(q => q.CreatedDate)
-                    .ThenByDescending(q => q.Id);
+                    .ToList();
 
-                var adapted = quotations.Adapt<List<QuotationResponse>>();
-                response.DataResult = adapted.ToPagedResult(request.Pagenation.pageNumber, request.Pagenation.pageSize);
+                var quotationsById = quotations.ToDictionary(q => q.Id);
+
+                var requotesWithComment = _reQuoteRepository
+                    .GetMany(r => r.Content != null && r.Content != "")
+                    .Include(r => r.User)
+                    .ToList();
+
+                var feedItems = new List<(QuotationResponse Item, bool MatchesInterest, DateTime? SortDate)>();
+
+                foreach (var q in quotations)
+                {
+                    var dto = q.Adapt<QuotationResponse>();
+                    var matches = q.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
+                    feedItems.Add((dto, matches, q.CreatedDate));
+                }
+
+                foreach (var r in requotesWithComment)
+                {
+                    if (!quotationsById.TryGetValue(r.QuotationId, out var originalQuotation))
+                        continue;
+
+                    var dto = originalQuotation.Adapt<QuotationResponse>();
+                    dto.Id = r.Id;
+                    dto.CreatedDate = r.CreatedDate;
+                    dto.IsRequote = true;
+                    dto.OriginalQuotationId = originalQuotation.Id;
+                    dto.RequoteComment = r.Content;
+                    dto.RequoterUserId = r.UserId;
+                    dto.RequoterFullName = r.User?.FullName;
+                    var matches = originalQuotation.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
+                    feedItems.Add((dto, matches, r.CreatedDate));
+                }
+
+                var ordered = feedItems
+                    .OrderByDescending(x => x.MatchesInterest)
+                    .ThenByDescending(x => x.SortDate)
+                    .Select(x => x.Item)
+                    .ToList();
+
+                response.DataResult = ordered.ToPagedResult(request.Pagenation.pageNumber, request.Pagenation.pageSize);
             }
             catch (Exception ex)
             {

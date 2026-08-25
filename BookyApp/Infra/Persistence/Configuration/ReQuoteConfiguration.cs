@@ -17,6 +17,8 @@ namespace Infra.Persistence.Configuration
     .WithMany(x => x.ReQuotes)
     .HasForeignKey(x => x.QuotationId)
     .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Property(x => x.Content).HasMaxLength(1000);
         }
     }
 }
