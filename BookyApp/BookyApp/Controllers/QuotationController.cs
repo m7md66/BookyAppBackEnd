@@ -27,11 +27,21 @@ namespace BookyApp.Controllers
 
 
         [HttpGet("GetMyQuotation")]
-        public Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation(GetMyQuotationRequest request)
+        public Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation([FromQuery] GetMyQuotationRequest request)
         {
-            var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
+            return _quotationService.GetMyQuotation(request);
+        }
 
-           return _quotationService.GetMyQuotation(request);
+        [HttpGet("GetMyLikedQuotations")]
+        public Task<ApiResponse<List<QuotationResponse>>> GetMyLikedQuotations([FromQuery] GetMyQuotationRequest request)
+        {
+            return _quotationService.GetMyLikedQuotations(request);
+        }
+
+        [HttpGet("GetMyRequotedQuotations")]
+        public Task<ApiResponse<List<QuotationResponse>>> GetMyRequotedQuotations([FromQuery] GetMyQuotationRequest request)
+        {
+            return _quotationService.GetMyRequotedQuotations(request);
         }
 
         [HttpPost("CreateQuotation")]

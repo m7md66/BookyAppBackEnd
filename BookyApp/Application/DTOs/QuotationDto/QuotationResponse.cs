@@ -33,5 +33,8 @@ namespace Application.DTOs.QuotationDto
         public string? RequoterUserId { get; set; }
         public string? RequoterFullName { get; set; }
 
+        public bool IsLikedByMe { get; set; } = false;
+        public bool IsRequotedByMe { get; set; } = false;
+
     }
 }

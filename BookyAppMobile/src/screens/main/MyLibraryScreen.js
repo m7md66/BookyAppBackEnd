@@ -1,10 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { getFavoriteBooks } from '../../api/books';
 import BookCard from '../../components/BookCard';
+import { colors } from '../../theme';
 
 export default function MyLibraryScreen({ navigation }) {
+  const { t } = useTranslation();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -23,7 +26,7 @@ export default function MyLibraryScreen({ navigation }) {
 
   const onRefresh = () => { setRefreshing(true); load(); };
 
-  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color="#4F46E5" /></View>;
+  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color={colors.primary} /></View>;
 
   return (
     <FlatList
@@ -32,8 +35,8 @@ export default function MyLibraryScreen({ navigation }) {
       renderItem={({ item }) => <BookCard book={item} onPress={() => navigation.navigate('ReadBook', { book: item })} />}
       contentContainerStyle={styles.list}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      ListHeaderComponent={<Text style={styles.header}>My Library</Text>}
-      ListEmptyComponent={<Text style={styles.empty}>No books yet. Add some from Browse Books.</Text>}
+      ListHeaderComponent={<Text style={styles.header}>{t('library.title')}</Text>}
+      ListEmptyComponent={<Text style={styles.empty}>{t('library.empty')}</Text>}
     />
   );
 }
@@ -41,6 +44,6 @@ export default function MyLibraryScreen({ navigation }) {
 const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   list: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 24 },
-  header: { fontSize: 26, fontWeight: 'bold', color: '#1a1a1a', marginBottom: 20 },
-  empty: { textAlign: 'center', color: '#888', fontSize: 14, marginTop: 40 },
+  header: { fontSize: 26, fontWeight: 'bold', color: colors.text, marginBottom: 20 },
+  empty: { textAlign: 'center', color: colors.textSecondary, fontSize: 14, marginTop: 40 },
 });

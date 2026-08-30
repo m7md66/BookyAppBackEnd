@@ -1,12 +1,15 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl, TouchableOpacity, Modal, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import * as DocumentPicker from 'expo-document-picker';
 import { getBrowseBooks, addBook, favorBook } from '../../api/books';
 import { uploadFile } from '../../api/files';
 import BookCard from '../../components/BookCard';
+import { colors, radius } from '../../theme';
 
 export default function BrowseBooksScreen({ route, navigation }) {
+  const { t } = useTranslation();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -58,7 +61,7 @@ export default function BrowseBooksScreen({ route, navigation }) {
     load();
   };
 
-  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color="#4F46E5" /></View>;
+  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color={colors.primary} /></View>;
 
   return (
     <>
@@ -81,13 +84,13 @@ export default function BrowseBooksScreen({ route, navigation }) {
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         ListHeaderComponent={
           <View style={styles.headerRow}>
-            <Text style={styles.header}>Browse Books</Text>
+            <Text style={styles.header}>{t('browse.title')}</Text>
             <TouchableOpacity style={styles.addButton} onPress={() => setModalVisible(true)}>
-              <Text style={styles.addButtonText}>+ Add Book</Text>
+              <Text style={styles.addButtonText}>{t('browse.addBook')}</Text>
             </TouchableOpacity>
           </View>
         }
-        ListEmptyComponent={<Text style={styles.empty}>No books to browse right now.</Text>}
+        ListEmptyComponent={<Text style={styles.empty}>{t('browse.empty')}</Text>}
       />
       <AddBookModal visible={modalVisible} onClose={() => setModalVisible(false)} onAdded={handleAdded} />
     </>
@@ -95,6 +98,7 @@ export default function BrowseBooksScreen({ route, navigation }) {
 }
 
 function AddBookModal({ visible, onClose, onAdded }) {
+  const { t } = useTranslation();
   const [title, setTitle] = useState('');
   const [auther, setAuther] = useState('');
   const [description, setDescription] = useState('');
@@ -111,7 +115,7 @@ function AddBookModal({ visible, onClose, onAdded }) {
   };
 
   const handleSubmit = async () => {
-    if (!title.trim()) { setError('Title is required'); return; }
+    if (!title.trim()) { setError(t('browse.titleRequired')); return; }
     setSubmitting(true);
     setError(null);
     try {
@@ -127,13 +131,13 @@ function AddBookModal({ visible, onClose, onAdded }) {
         ContentFileUrl: contentFileUrl,
       });
       if (res.data?.status === false) {
-        setError(res.data.errors?.[0] ?? 'Failed to add book');
+        setError(res.data.errors?.[0] ?? t('browse.addFailed'));
         return;
       }
       reset();
       onAdded();
     } catch (e) {
-      setError(e.response?.data?.errors?.[0] ?? 'Failed to add book');
+      setError(e.response?.data?.errors?.[0] ?? t('browse.addFailed'));
     } finally {
       setSubmitting(false);
     }
@@ -143,19 +147,19 @@ function AddBookModal({ visible, onClose, onAdded }) {
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <KeyboardAvoidingView style={styles.modalOverlay} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <View style={styles.modalCard}>
-          <Text style={styles.modalTitle}>Add a Book</Text>
+          <Text style={styles.modalTitle}>{t('browse.modalTitle')}</Text>
           {error ? <Text style={styles.error}>{error}</Text> : null}
-          <TextInput style={styles.input} placeholder="Title" placeholderTextColor="#888" value={title} onChangeText={setTitle} />
-          <TextInput style={styles.input} placeholder="Author" placeholderTextColor="#888" value={auther} onChangeText={setAuther} />
-          <TextInput style={[styles.input, styles.multiline]} placeholder="Description" placeholderTextColor="#888" value={description} onChangeText={setDescription} multiline />
+          <TextInput style={styles.input} placeholder={t('browse.titleField')} placeholderTextColor={colors.textSecondary} value={title} onChangeText={setTitle} />
+          <TextInput style={styles.input} placeholder={t('browse.authorField')} placeholderTextColor={colors.textSecondary} value={auther} onChangeText={setAuther} />
+          <TextInput style={[styles.input, styles.multiline]} placeholder={t('browse.descriptionField')} placeholderTextColor={colors.textSecondary} value={description} onChangeText={setDescription} multiline />
           <TouchableOpacity style={styles.filePickerButton} onPress={handlePickFile}>
-            <Text style={styles.filePickerText}>{bookFile ? bookFile.name : '📄 Choose Book File (PDF)'}</Text>
+            <Text style={styles.filePickerText}>{bookFile ? bookFile.name : t('browse.chooseFile')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.submitButton} onPress={handleSubmit} disabled={submitting}>
-            {submitting ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitButtonText}>Add Book</Text>}
+            {submitting ? <ActivityIndicator color={colors.onPrimary} /> : <Text style={styles.submitButtonText}>{t('browse.submit')}</Text>}
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { reset(); onClose(); }}>
-            <Text style={styles.cancel}>Cancel</Text>
+            <Text style={styles.cancel}>{t('common.cancel')}</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -167,19 +171,19 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   list: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 24 },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-  header: { fontSize: 26, fontWeight: 'bold', color: '#1a1a1a' },
-  addButton: { backgroundColor: '#4F46E5', borderRadius: 8, paddingVertical: 8, paddingHorizontal: 14 },
-  addButtonText: { color: '#fff', fontWeight: '600', fontSize: 14 },
-  empty: { textAlign: 'center', color: '#888', fontSize: 14, marginTop: 40 },
-  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  modalCard: { backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24 },
-  modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#1a1a1a', marginBottom: 16 },
-  input: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, fontSize: 15, marginBottom: 14, color: '#1a1a1a' },
+  header: { fontSize: 26, fontWeight: 'bold', color: colors.text },
+  addButton: { backgroundColor: colors.primary, borderRadius: radius.sm, paddingVertical: 8, paddingHorizontal: 14 },
+  addButtonText: { color: colors.onPrimary, fontWeight: '600', fontSize: 14 },
+  empty: { textAlign: 'center', color: colors.textSecondary, fontSize: 14, marginTop: 40 },
+  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: colors.overlay },
+  modalCard: { backgroundColor: colors.card, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl, padding: 24 },
+  modalTitle: { fontSize: 20, fontWeight: 'bold', color: colors.text, marginBottom: 16 },
+  input: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, fontSize: 15, marginBottom: 14, color: colors.text, backgroundColor: colors.card },
   multiline: { height: 90, textAlignVertical: 'top' },
-  filePickerButton: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, marginBottom: 14, borderStyle: 'dashed' },
-  filePickerText: { fontSize: 14, color: '#4F46E5', textAlign: 'center' },
-  submitButton: { backgroundColor: '#4F46E5', borderRadius: 10, padding: 16, alignItems: 'center', marginBottom: 12 },
-  submitButtonText: { color: '#fff', fontWeight: '600', fontSize: 16 },
-  cancel: { textAlign: 'center', color: '#888', fontSize: 14, marginBottom: 8 },
-  error: { color: '#ef4444', marginBottom: 12, fontSize: 14 },
+  filePickerButton: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, marginBottom: 14, borderStyle: 'dashed' },
+  filePickerText: { fontSize: 14, color: colors.primary, textAlign: 'center' },
+  submitButton: { backgroundColor: colors.primary, borderRadius: radius.md, padding: 16, alignItems: 'center', marginBottom: 12 },
+  submitButtonText: { color: colors.onPrimary, fontWeight: '600', fontSize: 16 },
+  cancel: { textAlign: 'center', color: colors.textSecondary, fontSize: 14, marginBottom: 8 },
+  error: { color: colors.danger, marginBottom: 12, fontSize: 14 },
 });

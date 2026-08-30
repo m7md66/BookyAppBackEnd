@@ -13,6 +13,10 @@ using Application.DTOs.interests;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Infra.Persistence;
+using Application;
+using Application.Localization;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
 
 namespace Infra.Services
 {
@@ -24,18 +28,21 @@ namespace Infra.Services
         private readonly IBaseRepository<Genres> _interestsRepository;
         private readonly IBaseRepository<ApplicationUser> _applicationUserRepository;
         private readonly Session _session;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         public UserInterestsService(AppDbContext appDb,
             IBaseRepository<UserInterest> userInterestsRepository
             , IBaseRepository<Genres> interestsRepository
             ,Session session
             , IBaseRepository<ApplicationUser> applicationUserRepository
+            , IStringLocalizer<SharedResource> localizer
           ) {
           _userInterestsRepository = userInterestsRepository;
             _interestsRepository = interestsRepository;
             _session = session;
-    
+
             _applicationUserRepository = applicationUserRepository;
             _appDb = appDb;
+            _localizer = localizer;
         }
 
         public ApiResponse<Genres> GetUserInterests(string UserId)
@@ -70,7 +77,14 @@ namespace Infra.Services
             try
             {
               var generes = await _interestsRepository.GetAllAsync();
-               response.Data= generes.Adapt<List<InterestsResponse>>();
+               var isArabic = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar";
+               response.Data = generes
+                   .Select(g => new InterestsResponse
+                   {
+                       Id = g.Id,
+                       Name = isArabic && !string.IsNullOrWhiteSpace(g.NameAr) ? g.NameAr : g.Name
+                   })
+                   .ToList();
             }
             catch (Exception ex)
             {
@@ -132,7 +146,12 @@ namespace Infra.Services
             var response = new ApiResponse<bool>();
             try
             {
-                if (!userInterestsIds.Any()) throw new Exception("User interests IDs cannot be empty.");
+                if (!userInterestsIds.Any())
+                {
+                    response.Errors.Add(_localizer[MessageKeys.InterestIdsEmpty]);
+                    response.Status = false;
+                    return response;
+                }
                
                 //var theUser=await _applicationUserRepository.FindById(_session.UserId);
                 var theUser = _applicationUserRepository.GetDb().Where(a => a.Id == _session.UserId).Include(a => a.UserInterests).FirstOrDefault();

@@ -1,0 +1,90 @@
+{
+  "common": {
+    "cancel": "إلغاء",
+    "back": "رجوع",
+    "loading": "جارٍ التحميل…",
+    "retry": "إعادة المحاولة",
+    "genericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "auth": {
+    "appName": "BookyApp",
+    "welcomeBack": "مرحبًا بعودتك",
+    "createAccount": "إنشاء حساب",
+    "joinBooky": "انضم إلى BookyApp",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "toRegister": "ليس لديك حساب؟ أنشئ حسابًا",
+    "toLogin": "لديك حساب بالفعل؟ سجّل الدخول",
+    "loginFailed": "فشل تسجيل الدخول",
+    "registerFailed": "فشل إنشاء الحساب"
+  },
+  "interests": {
+    "title": "اهتماماتك",
+    "subtitle": "اختر التصنيفات التي تحبها",
+    "cta": "لنبدأ"
+  },
+  "feed": {
+    "title": "الرئيسية"
+  },
+  "browse": {
+    "title": "تصفّح الكتب",
+    "addBook": "+ إضافة كتاب",
+    "empty": "لا توجد كتب للتصفّح حاليًا.",
+    "modalTitle": "إضافة كتاب",
+    "titleField": "العنوان",
+    "authorField": "المؤلف",
+    "descriptionField": "الوصف",
+    "chooseFile": "📄 اختر ملف الكتاب (PDF)",
+    "titleRequired": "العنوان مطلوب",
+    "addFailed": "تعذّرت إضافة الكتاب",
+    "submit": "إضافة الكتاب"
+  },
+  "library": {
+    "title": "مكتبتي",
+    "empty": "لا توجد كتب بعد. أضف بعضها من تصفّح الكتب."
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "empty": "لا توجد اقتباسات هنا بعد.",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "English",
+    "tabs": {
+      "mine": "اقتباساتي",
+      "liked": "لايكاتي",
+      "requoted": "إعادة الاقتباس"
+    }
+  },
+  "readBook": {
+    "noFile": "لم يتم رفع أي ملف لهذا الكتاب.",
+    "posted": "تم النشر",
+    "postedBody": "تم نشر اقتباسك في الرئيسية.",
+    "error": "خطأ",
+    "postFailed": "تعذّر نشر الاقتباس. يرجى المحاولة مرة أخرى.",
+    "postingQuote": "جارٍ نشر الاقتباس…"
+  },
+  "pdfViewer": {
+    "prev": "السابق",
+    "next": "التالي",
+    "loadingBook": "جارٍ تحميل الكتاب…",
+    "postAsQuote": "انشر كاقتباس",
+    "failedToLoad": "تعذّر تحميل الكتاب"
+  },
+  "quotation": {
+    "like": "إعجاب",
+    "requote": "إعادة اقتباس",
+    "share": "مشاركة",
+    "comment": "تعليق",
+    "reQuotedBy": "أعاد {{name}} اقتباسها",
+    "addComment": "أضف تعليقًا (اختياري)"
+  },
+  "book": {
+    "inLibrary": "♥ في المكتبة",
+    "addToLibrary": "♡ إضافة إلى المكتبة"
+  }
+}

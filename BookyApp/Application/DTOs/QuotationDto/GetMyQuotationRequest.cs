@@ -9,7 +9,6 @@ namespace Application.DTOs.QuotationDto
 {
     public class GetMyQuotationRequest
     {
-        public string UserId { get; set; }
         public PagenationObj pagenation { get; set; }
     }
 }

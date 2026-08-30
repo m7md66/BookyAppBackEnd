@@ -6,6 +6,9 @@ using Application;
 using BookyApp.Helper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 //builder.WebHost.ConfigureKestrel(options =>
@@ -37,7 +40,28 @@ builder.Services.AddMapster();
 builder.Services.AddApplicationRegitrations();
 
 
-builder.Services.AddControllers();
+// Localization: shared .resx resources live in the Application project (Application/Resources).
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllers()
+    .AddDataAnnotationsLocalization(options =>
+        options.DataAnnotationLocalizerProvider = (type, factory) =>
+            factory.Create(typeof(Application.SharedResource)));
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[] { new CultureInfo("en"), new CultureInfo("ar") };
+    options.DefaultRequestCulture = new RequestCulture("en");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+    options.ApplyCurrentCultureToResponseHeaders = true;
+    // Allow ?lang=ar in addition to the Accept-Language header (which is already handled by default).
+    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider
+    {
+        QueryStringKey = "lang",
+        UIQueryStringKey = "lang"
+    });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,6 +79,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Resolve request culture from ?lang / Accept-Language before anything else runs.
+app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

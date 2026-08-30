@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// Muted / earthy set that harmonises with the deep-green + cream palette.
 const COLORS = [
-  '#4F46E5', '#0EA5E9', '#059669', '#D97706', '#DC2626',
-  '#7C3AED', '#DB2777', '#0891B2', '#65A30D', '#EA580C',
+  '#2F5D50', '#3E6B7A', '#7A5C3E', '#8A6D3B', '#6E4B4B',
+  '#4A6B52', '#5B5170', '#7C6A4A', '#556B60', '#8A5A44',
 ];
 
 function hashString(str) {

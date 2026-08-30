@@ -14,5 +14,6 @@ namespace Application.Contracts.Services
        Task<BaseResponse> AddUser(AddUserRequest request);
         Task<AuthResponse> Login(UserLoginRequest request);
         Task<ApplicationUser> GetUserByEmail(string email);
+        Task<UserResponse> GetMyProfile();
     }
 }

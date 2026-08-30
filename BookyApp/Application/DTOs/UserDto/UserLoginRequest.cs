@@ -9,10 +9,10 @@ namespace Application.DTOs.UserDto
 {
     public class UserLoginRequest
     {
-        [Required]
+        [Required(ErrorMessage = "The {0} field is required.")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The {0} field is required.")]
         public string Password { get; set; }
     }
 }

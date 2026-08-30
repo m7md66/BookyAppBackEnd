@@ -66,7 +66,14 @@ namespace BookyApp.Controllers
             return Ok(response);
         }
 
+        [Authorize]
+        [HttpGet("Me")]
+        public async Task<IActionResult> Me()
+        {
+            var response = await _accountService.GetMyProfile();
 
+            return Ok(response);
+        }
 
     }
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl, TouchableOpacity } from 'react-native';
+import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { getFeed } from '../../api/quotations';
 import QuotationCard from '../../components/QuotationCard';
-import { useAuthStore } from '../../store/authStore';
+import { colors } from '../../theme';
 
 export default function FeedScreen() {
-  const logout = useAuthStore((state) => state.logout);
+  const { t } = useTranslation();
   const [quotations, setQuotations] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -43,7 +44,7 @@ export default function FeedScreen() {
     load(next);
   };
 
-  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color="#4F46E5" /></View>;
+  if (loading) return <View style={styles.center}><ActivityIndicator size="large" color={colors.primary} /></View>;
 
   return (
     <FlatList
@@ -56,10 +57,7 @@ export default function FeedScreen() {
       onEndReachedThreshold={0.5}
       ListHeaderComponent={
         <View style={styles.headerRow}>
-          <Text style={styles.header}>Feed</Text>
-          <TouchableOpacity onPress={logout}>
-            <Text style={styles.logout}>Logout</Text>
-          </TouchableOpacity>
+          <Text style={styles.header}>{t('feed.title')}</Text>
         </View>
       }
     />
@@ -70,6 +68,5 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   list: { paddingHorizontal: 16, paddingTop: 56, paddingBottom: 24 },
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  header: { fontSize: 26, fontWeight: 'bold', color: '#1a1a1a' },
-  logout: { fontSize: 14, fontWeight: '600', color: '#4F46E5' },
+  header: { fontSize: 26, fontWeight: 'bold', color: colors.text },
 });

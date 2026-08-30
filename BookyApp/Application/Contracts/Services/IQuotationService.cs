@@ -15,6 +15,8 @@ namespace Application.Contracts.Services
         Task<ApiResponse<bool>> LikeQuotation(Guid quotationId, string userId);
         Task<ApiResponse<bool>> RequoteQuotation(Guid quotationId, string userId, string? comment);
         Task<ApiResponse<List<QuotationResponse>>> GetMyQuotation(GetMyQuotationRequest request);
+        Task<ApiResponse<List<QuotationResponse>>> GetMyLikedQuotations(GetMyQuotationRequest request);
+        Task<ApiResponse<List<QuotationResponse>>> GetMyRequotedQuotations(GetMyQuotationRequest request);
         Task<ApiResponse<bool>> CommentQuotation(CommentQuotationRequest dto);
         Task<ApiResponse<bool>> ShareQuotation(ApiResponse<bool> response,Guid quotationId);
        ApiResponse<List<GetCommentsResponse>> GetQuotationComments(ApiResponse<List<GetCommentsResponse>> response, GetQuotationCommentsRequest request);

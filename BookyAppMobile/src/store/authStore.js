@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import i18n from '../i18n';
 import { login as loginApi, register as registerApi } from '../api/auth';
 
 export const useAuthStore = create((set, get) => ({
@@ -18,7 +19,7 @@ export const useAuthStore = create((set, get) => ({
       set({ token, user, isLoading: false });
       return true;
     } catch (e) {
-      set({ error: e.response?.data?.errors?.[0] ?? 'Login failed', isLoading: false });
+      set({ error: e.response?.data?.errors?.[0] ?? i18n.t('auth.loginFailed'), isLoading: false });
       return false;
     }
   },
@@ -30,7 +31,7 @@ export const useAuthStore = create((set, get) => ({
       // AddUser always responds 200, even on failure (weak password, duplicate email, etc.) -
       // the real result is in isSuccess, so check it before treating registration as done
       if (res.data?.isSuccess === false) {
-        const msg = res.data.validationErrors?.[0]?.description ?? res.data.responseMessage ?? 'Register failed';
+        const msg = res.data.validationErrors?.[0]?.description ?? res.data.responseMessage ?? i18n.t('auth.registerFailed');
         set({ error: msg, isLoading: false });
         return false;
       }
@@ -39,7 +40,7 @@ export const useAuthStore = create((set, get) => ({
       if (ok) set({ needsInterests: true });
       return ok;
     } catch (e) {
-      set({ error: e.response?.data?.errors?.[0] ?? 'Register failed', isLoading: false });
+      set({ error: e.response?.data?.errors?.[0] ?? i18n.t('auth.registerFailed'), isLoading: false });
       return false;
     }
   },

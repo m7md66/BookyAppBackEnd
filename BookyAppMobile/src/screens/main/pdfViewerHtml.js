@@ -1,46 +1,55 @@
+import { colors } from '../../theme';
+
 const PDFJS_VERSION = '3.11.174';
 const PDFJS_CDN = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}`;
 
-export function buildPdfViewerHtml(pdfUrl) {
+export function buildPdfViewerHtml(pdfUrl, strings = {}) {
   const safeUrl = JSON.stringify(pdfUrl);
+  const s = {
+    prev: strings.prev ?? 'Prev',
+    next: strings.next ?? 'Next',
+    loadingBook: strings.loadingBook ?? 'Loading book…',
+    postAsQuote: strings.postAsQuote ?? 'Post as Quote',
+    failedToLoad: strings.failedToLoad ?? 'Failed to load book',
+  };
   return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <style>
-    html, body { margin: 0; padding: 0; background: #f4f4f5; overflow-x: hidden; }
-    #toolbar { position: fixed; top: 0; left: 0; right: 0; height: 48px; background: #fff; border-bottom: 1px solid #eee;
+    html, body { margin: 0; padding: 0; background: ${colors.background}; overflow-x: hidden; }
+    #toolbar { position: fixed; top: 0; left: 0; right: 0; height: 48px; background: ${colors.card}; border-bottom: 1px solid ${colors.border};
       display: flex; align-items: center; justify-content: center; gap: 10px; z-index: 20; }
-    #toolbar button { background: #4F46E5; color: #fff; border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; }
+    #toolbar button { background: ${colors.primary}; color: ${colors.onPrimary}; border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; }
     #toolbar button:disabled { opacity: 0.4; }
-    #page-num { width: 44px; text-align: center; border: 1px solid #ddd; border-radius: 6px; padding: 4px; font-size: 14px; }
-    #page-count-label { font-size: 14px; color: #444; }
+    #page-num { width: 44px; text-align: center; border: 1px solid ${colors.border}; border-radius: 6px; padding: 4px; font-size: 14px; }
+    #page-count-label { font-size: 14px; color: ${colors.textTertiary}; }
     #viewer { margin-top: 56px; display: flex; justify-content: center; padding-bottom: 40px; }
     #page-container { position: relative; }
     #text-layer { position: absolute; top: 0; left: 0; overflow: hidden; line-height: 1; }
     #text-layer span { position: absolute; white-space: pre; color: transparent; cursor: text; }
-    #text-layer span::selection { background: rgba(79,70,229,0.35); }
-    #quote-btn { position: absolute; display: none; z-index: 50; background: #4F46E5; color: #fff; border: none;
+    #text-layer span::selection { background: rgba(47,93,80,0.30); }
+    #quote-btn { position: absolute; display: none; z-index: 50; background: ${colors.primary}; color: ${colors.onPrimary}; border: none;
       border-radius: 8px; padding: 8px 14px; font-size: 13px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
-    #status { text-align: center; padding: 40px 16px; color: #888; font-size: 14px; }
+    #status { text-align: center; padding: 40px 16px; color: ${colors.textSecondary}; font-size: 14px; }
   </style>
 </head>
 <body>
   <div id="toolbar">
-    <button id="prev-btn">‹ Prev</button>
+    <button id="prev-btn">${s.prev}</button>
     <input id="page-num" type="number" value="1" />
     <span id="page-count-label">/ <span id="page-count">-</span></span>
-    <button id="next-btn">Next ›</button>
+    <button id="next-btn">${s.next}</button>
   </div>
   <div id="viewer">
-    <div id="status">Loading book…</div>
+    <div id="status">${s.loadingBook}</div>
     <div id="page-container" style="display:none;">
       <canvas id="pdf-canvas"></canvas>
       <div id="text-layer"></div>
     </div>
   </div>
-  <button id="quote-btn">Post as Quote</button>
+  <button id="quote-btn">${s.postAsQuote}</button>
 
   <script src="${PDFJS_CDN}/pdf.min.js"></script>
   <script>
@@ -154,8 +163,8 @@ export function buildPdfViewerHtml(pdfUrl) {
       pageContainer.style.display = 'block';
       renderPage(pageNum);
     }).catch(function (err) {
-      statusEl.textContent = 'Failed to load book: ' + (err && err.message ? err.message : err);
-      statusEl.style.color = '#ef4444';
+      statusEl.textContent = ${JSON.stringify(s.failedToLoad)} + ': ' + (err && err.message ? err.message : err);
+      statusEl.style.color = ${JSON.stringify(colors.danger)};
     });
   </script>
 </body>

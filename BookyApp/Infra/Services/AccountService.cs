@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 using Application.DTOs.UserDto;
 using static System.Collections.Specialized.BitVector32;
 using Application.Contracts.Services;
+using Infra.Helper.Filters;
+using Application;
+using Application.Localization;
+using Microsoft.Extensions.Localization;
 
 namespace Infra.Services
 {
@@ -19,17 +23,19 @@ namespace Infra.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ITokenService _tokenService;
+        private readonly Session _session;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         //private readonly IMapper _mapper;
-        //private readonly Session _session;
         //private readonly IUserRepository _userRepository;
         //private readonly IAmazonFileService _amazonService;
         //private readonly RoleManager<ApplicationRole> _roleManager;
         //private readonly IAmazonFileService _amazonFileService;
         //private readonly IFileHandlerService _fileHandlerService;
         public AccountService(UserManager<ApplicationUser> userManager,
-            ITokenService tokenService
+            ITokenService tokenService,
+            Session session,
+            IStringLocalizer<SharedResource> localizer
             //IMapper mapper
-            //Session session,
             //IUserRepository userRepository,
             //IAmazonFileService amazonService,
             //RoleManager<ApplicationRole> roleManager,
@@ -39,13 +45,29 @@ namespace Infra.Services
         {
             _userManager = userManager;
             _tokenService = tokenService;
+            _session = session;
+            _localizer = localizer;
             //_mapper = mapper;
-            //_session = session;
             //_userRepository = userRepository;
             //_amazonService = amazonService;
             //_roleManager = roleManager;
             //_amazonFileService = amazonFileService;
             //_fileHandlerService = fileHandlerService;
+        }
+
+        public async Task<UserResponse> GetMyProfile()
+        {
+            var user = await _userManager.FindByIdAsync(_session.UserId);
+            return new UserResponse
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                ImageUrl = user.ImageUrl,
+                ImageName = user.ImageName,
+                ImageExtention = user.ImageExtention
+            };
         }
 
         //public async Task<List<RolesDto>> GetAllRoles()
@@ -62,7 +84,12 @@ namespace Infra.Services
         {
            
             if (await GetUserByEmail(request.Email) is not null)
-                return new AuthResponse { ResponseMessage = "Email is already registered!" };
+                return new AuthResponse
+                {
+                    IsSuccess = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    ResponseMessage = _localizer[MessageKeys.EmailAlreadyRegistered]
+                };
 
             var user = new ApplicationUser
             {
@@ -87,14 +114,14 @@ namespace Infra.Services
                 {
                     IsSuccess = false,
                     StatusCode = (int)HttpStatusCode.BadRequest,
-                    ValidationErrors = result.Errors.Select(err => new ValidationError { Name = err.Code, Description = err.Description }).ToList()
+                    ValidationErrors = result.Errors.Select(err => new ValidationError { Name = err.Code, Description = LocalizeIdentityError(err) }).ToList()
                 };
             }
 
             await _userManager.AddToRoleAsync(user, "Admin");
-           
 
-            return new BaseResponse((int)HttpStatusCode.OK, true, $"User Added successfuly");
+
+            return new BaseResponse((int)HttpStatusCode.OK, true, _localizer[MessageKeys.UserAddedSuccessfully]);
         }
 
 
@@ -113,7 +140,7 @@ namespace Infra.Services
             {
                 authReponse.IsSuccess = false;
                 authReponse.StatusCode = (int)HttpStatusCode.BadRequest;
-                authReponse.ResponseMessage = "Email or Password is incorrect!";
+                authReponse.ResponseMessage = _localizer[MessageKeys.InvalidCredentials];
                 return authReponse;
             }
 
@@ -151,6 +178,14 @@ namespace Infra.Services
         public async Task<ApplicationUser> GetUserByEmail(string email)
         {
             return await _userManager.FindByEmailAsync(email);
+        }
+
+        // IdentityError.Code is culture-independent and stable; map it to a localized message,
+        // falling back to the framework's English description when no resource entry exists.
+        private string LocalizeIdentityError(IdentityError err)
+        {
+            var localized = _localizer[$"Identity_{err.Code}"];
+            return localized.ResourceNotFound ? err.Description : localized.Value;
         }
 
         //public async Task<GetUpdateUserProfileResponse> UpdateUserDetails(UpdateUserRequest updateUserRequest)

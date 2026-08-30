@@ -13,3 +13,12 @@ export const shareQuotation = (id) => client.post(`/Quotation/ShareQuotation?Quo
 export const commentQuotation = (data) => client.post('/Quotation/CommentQuotation', data);
 export const getComments = (quotationId, pageNumber = 1, pageSize = 20) =>
   client.get('/Quotation/GetComments', { params: { quotationId, 'pagenation.pageNumber': pageNumber, 'pagenation.pageSize': pageSize } });
+
+export const getMyQuotations = (pageNumber = 1, pageSize = 20) =>
+  client.get('/Quotation/GetMyQuotation', { params: { 'pagenation.pageNumber': pageNumber, 'pagenation.pageSize': pageSize } });
+
+export const getMyLikedQuotations = (pageNumber = 1, pageSize = 20) =>
+  client.get('/Quotation/GetMyLikedQuotations', { params: { 'pagenation.pageNumber': pageNumber, 'pagenation.pageSize': pageSize } });
+
+export const getMyRequotedQuotations = (pageNumber = 1, pageSize = 20) =>
+  client.get('/Quotation/GetMyRequotedQuotations', { params: { 'pagenation.pageNumber': pageNumber, 'pagenation.pageSize': pageSize } });

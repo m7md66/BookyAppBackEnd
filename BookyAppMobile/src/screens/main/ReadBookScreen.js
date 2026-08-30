@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, I18nManager } from 'react-native';
 import { WebView } from 'react-native-webview';
+import { useTranslation } from 'react-i18next';
 import { createQuotation } from '../../api/quotations';
 import { buildPdfViewerHtml } from './pdfViewerHtml';
+import { colors } from '../../theme';
 
 export default function ReadBookScreen({ route, navigation }) {
+  const { t } = useTranslation();
   const { book } = route.params;
   const [posting, setPosting] = useState(false);
 
@@ -19,9 +22,9 @@ export default function ReadBookScreen({ route, navigation }) {
       setPosting(true);
       try {
         await createQuotation(book.id, data.text);
-        Alert.alert('Posted', 'Your quote was posted to the feed.');
+        Alert.alert(t('readBook.posted'), t('readBook.postedBody'));
       } catch (e) {
-        Alert.alert('Error', 'Failed to post the quote. Please try again.');
+        Alert.alert(t('readBook.error'), t('readBook.postFailed'));
       } finally {
         setPosting(false);
       }
@@ -32,7 +35,7 @@ export default function ReadBookScreen({ route, navigation }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backArrow}>‹ Back</Text>
+          <Text style={styles.backArrow}>{I18nManager.isRTL ? '›' : '‹'} {t('common.back')}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle} numberOfLines={1}>{book.title}</Text>
         <View style={styles.headerSpacer} />
@@ -40,11 +43,17 @@ export default function ReadBookScreen({ route, navigation }) {
 
       {!book.contentFileUrl ? (
         <View style={styles.center}>
-          <Text style={styles.emptyText}>No file was uploaded for this book.</Text>
+          <Text style={styles.emptyText}>{t('readBook.noFile')}</Text>
         </View>
       ) : (
         <WebView
-          source={{ html: buildPdfViewerHtml(book.contentFileUrl) }}
+          source={{ html: buildPdfViewerHtml(book.contentFileUrl, {
+            prev: t('pdfViewer.prev'),
+            next: t('pdfViewer.next'),
+            loadingBook: t('pdfViewer.loadingBook'),
+            postAsQuote: t('pdfViewer.postAsQuote'),
+            failedToLoad: t('pdfViewer.failedToLoad'),
+          }) }}
           onMessage={handleMessage}
           originWhitelist={['*']}
           javaScriptEnabled
@@ -52,7 +61,7 @@ export default function ReadBookScreen({ route, navigation }) {
           startInLoadingState
           renderLoading={() => (
             <View style={styles.center}>
-              <ActivityIndicator size="large" color="#4F46E5" />
+              <ActivityIndicator size="large" color={colors.primary} />
             </View>
           )}
           style={styles.webview}
@@ -62,7 +71,7 @@ export default function ReadBookScreen({ route, navigation }) {
       {posting && (
         <View style={styles.postingOverlay}>
           <ActivityIndicator color="#fff" />
-          <Text style={styles.postingText}>Posting quote…</Text>
+          <Text style={styles.postingText}>{t('readBook.postingQuote')}</Text>
         </View>
       )}
     </View>
@@ -70,21 +79,21 @@ export default function ReadBookScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { flex: 1, backgroundColor: colors.card },
   header: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingTop: 48, paddingHorizontal: 12, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: '#eee',
+    paddingTop: 48, paddingHorizontal: 12, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: colors.border,
   },
   backButton: { minWidth: 60 },
-  backArrow: { color: '#4F46E5', fontSize: 15, fontWeight: '600' },
-  headerTitle: { flex: 1, textAlign: 'center', fontSize: 15, fontWeight: '600', color: '#1a1a1a' },
+  backArrow: { color: colors.primary, fontSize: 15, fontWeight: '600' },
+  headerTitle: { flex: 1, textAlign: 'center', fontSize: 15, fontWeight: '600', color: colors.text },
   headerSpacer: { minWidth: 60 },
   webview: { flex: 1 },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
-  emptyText: { color: '#888', fontSize: 14, textAlign: 'center' },
+  emptyText: { color: colors.textSecondary, fontSize: 14, textAlign: 'center' },
   postingOverlay: {
     position: 'absolute', bottom: 24, alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.75)',
     borderRadius: 10, paddingVertical: 10, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 8,
   },
-  postingText: { color: '#fff', fontSize: 13, marginLeft: 8 },
+  postingText: { color: colors.onPrimary, fontSize: 13, marginStart: 8 },
 });

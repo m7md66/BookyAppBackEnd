@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, StyleSheet, Modal, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import { likeQuotation, requoteQuotation, shareQuotation } from '../api/quotations';
+import { colors, radius, shadow } from '../theme';
 
 function ActionButton({ label, onPress, children }) {
   const [hovered, setHovered] = useState(false);
@@ -40,6 +42,7 @@ function QuotePreview({ quotation, onPress }) {
 }
 
 function RequoteModal({ visible, quotation, onClose, onSubmit }) {
+  const { t } = useTranslation();
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -57,23 +60,23 @@ function RequoteModal({ visible, quotation, onClose, onSubmit }) {
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <KeyboardAvoidingView style={styles.modalOverlay} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <View style={styles.modalCard}>
-          <Text style={styles.modalTitle}>Re-quote</Text>
+          <Text style={styles.modalTitle}>{t('quotation.requote')}</Text>
           <View style={styles.previewCard}>
             <QuotePreview quotation={quotation} />
           </View>
           <TextInput
             style={[styles.input, styles.multiline]}
-            placeholder="Add a comment (optional)"
-            placeholderTextColor="#888"
+            placeholder={t('quotation.addComment')}
+            placeholderTextColor={colors.textSecondary}
             value={comment}
             onChangeText={setComment}
             multiline
           />
           <TouchableOpacity style={styles.submitButton} onPress={handleSubmit} disabled={submitting}>
-            {submitting ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitButtonText}>Re-quote</Text>}
+            {submitting ? <ActivityIndicator color={colors.onPrimary} /> : <Text style={styles.submitButtonText}>{t('quotation.requote')}</Text>}
           </TouchableOpacity>
           <TouchableOpacity onPress={onClose} disabled={submitting}>
-            <Text style={styles.cancel}>Cancel</Text>
+            <Text style={styles.cancel}>{t('common.cancel')}</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -82,12 +85,13 @@ function RequoteModal({ visible, quotation, onClose, onSubmit }) {
 }
 
 export default function QuotationCard({ quotation }) {
+  const { t } = useTranslation();
   const navigation = useNavigation();
   const [likes, setLikes] = useState(quotation.likesNumber ?? 0);
   const [requotes, setRequotes] = useState(quotation.reQueteNumber ?? 0);
   const [shares, setShares] = useState(quotation.sharesNumber ?? 0);
-  const [liked, setLiked] = useState(false);
-  const [requoted, setRequoted] = useState(false);
+  const [liked, setLiked] = useState(quotation.isLikedByMe ?? false);
+  const [requoted, setRequoted] = useState(quotation.isRequotedByMe ?? false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const targetQuotationId = quotation.originalQuotationId ?? quotation.id;
@@ -119,7 +123,7 @@ export default function QuotationCard({ quotation }) {
       {quotation.isRequote ? (
         <View style={styles.requoteHeader}>
           <Text style={styles.requoteHeaderIcon}>↺</Text>
-          <Text style={styles.requoteHeaderText}>{quotation.requoterFullName} re-quoted</Text>
+          <Text style={styles.requoteHeaderText}>{t('quotation.reQuotedBy', { name: quotation.requoterFullName })}</Text>
         </View>
       ) : null}
       {quotation.isRequote && quotation.requoteComment ? (
@@ -132,19 +136,19 @@ export default function QuotationCard({ quotation }) {
       </View>
 
       <View style={styles.actions}>
-        <ActionButton label="Like" onPress={handleLike}>
+        <ActionButton label={t('quotation.like')} onPress={handleLike}>
           <Text style={[styles.actionIcon, liked && styles.active]}>♥</Text>
           <Text style={styles.actionCount}>{likes}</Text>
         </ActionButton>
-        <ActionButton label="Re-quote" onPress={() => setModalVisible(true)}>
-          <Text style={[styles.actionIcon, requoted && styles.active]}>↺</Text>
+        <ActionButton label={t('quotation.requote')} onPress={() => setModalVisible(true)}>
+          <Text style={[styles.actionIcon, requoted && styles.activeRequote]}>↺</Text>
           <Text style={styles.actionCount}>{requotes}</Text>
         </ActionButton>
-        <ActionButton label="Share" onPress={handleShare}>
+        <ActionButton label={t('quotation.share')} onPress={handleShare}>
           <Text style={styles.actionIcon}>↗</Text>
           <Text style={styles.actionCount}>{shares}</Text>
         </ActionButton>
-        <ActionButton label="Comment">
+        <ActionButton label={t('quotation.comment')}>
           <Text style={styles.actionIcon}>💬</Text>
           <Text style={styles.actionCount}>{quotation.commentsNumber ?? 0}</Text>
         </ActionButton>
@@ -161,28 +165,29 @@ export default function QuotationCard({ quotation }) {
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: '#fff', borderRadius: 14, padding: 18, marginBottom: 14, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 3 },
-  userName: { fontSize: 13, fontWeight: '600', color: '#1a1a1a', marginBottom: 6 },
-  content: { fontSize: 16, color: '#1a1a1a', lineHeight: 24, marginBottom: 12, fontStyle: 'italic' },
+  card: { backgroundColor: colors.card, borderRadius: radius.lg, padding: 18, marginBottom: 14, ...shadow.card },
+  userName: { fontSize: 13, fontWeight: '600', color: colors.text, marginBottom: 6 },
+  content: { fontSize: 16, color: colors.text, lineHeight: 24, marginBottom: 12, fontStyle: 'italic' },
   bookRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
-  bookTitle: { fontSize: 13, fontWeight: '600', color: '#4F46E5' },
-  author: { fontSize: 13, color: '#888' },
+  bookTitle: { fontSize: 13, fontWeight: '600', color: colors.primary },
+  author: { fontSize: 13, color: colors.textSecondary },
   actions: { flexDirection: 'row', gap: 20 },
   actionWrapper: { alignItems: 'center', position: 'relative' },
   action: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  actionIcon: { fontSize: 18, color: '#888' },
-  actionCount: { fontSize: 13, color: '#888' },
-  active: { color: '#ef4444' },
+  actionIcon: { fontSize: 18, color: colors.textSecondary },
+  actionCount: { fontSize: 13, color: colors.textSecondary },
+  active: { color: colors.danger },
+  activeRequote: { color: colors.primary },
   requoteHeader: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 },
-  requoteHeaderIcon: { fontSize: 13, color: '#888' },
-  requoteHeaderText: { fontSize: 13, fontWeight: '600', color: '#888' },
-  requoteComment: { fontSize: 15, color: '#1a1a1a', lineHeight: 22, marginBottom: 12 },
-  nestedCard: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14 },
+  requoteHeaderIcon: { fontSize: 13, color: colors.textSecondary },
+  requoteHeaderText: { fontSize: 13, fontWeight: '600', color: colors.textSecondary },
+  requoteComment: { fontSize: 15, color: colors.text, lineHeight: 22, marginBottom: 12 },
+  nestedCard: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14 },
   tooltip: {
     position: 'absolute',
     bottom: '100%',
     marginBottom: 10,
-    backgroundColor: '#fff',
+    backgroundColor: colors.card,
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 6,
@@ -194,22 +199,22 @@ const styles = StyleSheet.create({
     elevation: 6,
     zIndex: 10,
   },
-  tooltipText: { fontSize: 12, color: '#1a1a1a', fontWeight: '500' },
+  tooltipText: { fontSize: 12, color: colors.text, fontWeight: '500' },
   tooltipArrow: {
     position: 'absolute',
     bottom: -4,
     width: 8,
     height: 8,
-    backgroundColor: '#fff',
+    backgroundColor: colors.card,
     transform: [{ rotate: '45deg' }],
   },
-  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  modalCard: { backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 24 },
-  modalTitle: { fontSize: 20, fontWeight: 'bold', color: '#1a1a1a', marginBottom: 16 },
-  previewCard: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, marginBottom: 14 },
-  input: { borderWidth: 1, borderColor: '#ddd', borderRadius: 10, padding: 14, fontSize: 15, marginBottom: 14, color: '#1a1a1a' },
+  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: colors.overlay },
+  modalCard: { backgroundColor: colors.card, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl, padding: 24 },
+  modalTitle: { fontSize: 20, fontWeight: 'bold', color: colors.text, marginBottom: 16 },
+  previewCard: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, marginBottom: 14 },
+  input: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, fontSize: 15, marginBottom: 14, color: colors.text, backgroundColor: colors.card },
   multiline: { height: 90, textAlignVertical: 'top' },
-  submitButton: { backgroundColor: '#4F46E5', borderRadius: 10, padding: 16, alignItems: 'center', marginBottom: 12 },
-  submitButtonText: { color: '#fff', fontWeight: '600', fontSize: 16 },
-  cancel: { textAlign: 'center', color: '#888', fontSize: 14, marginBottom: 8 },
+  submitButton: { backgroundColor: colors.primary, borderRadius: radius.md, padding: 16, alignItems: 'center', marginBottom: 12 },
+  submitButtonText: { color: colors.onPrimary, fontWeight: '600', fontSize: 16 },
+  cancel: { textAlign: 'center', color: colors.textSecondary, fontSize: 14, marginBottom: 8 },
 });

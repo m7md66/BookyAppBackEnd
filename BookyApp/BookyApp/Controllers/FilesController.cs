@@ -1,8 +1,11 @@
-﻿using Application.Contracts.Services;
+﻿using Application;
+using Application.Contracts.Services;
 using Application.DTOs;
+using Application.Localization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace BookyApp.Controllers
 {
@@ -11,8 +14,10 @@ namespace BookyApp.Controllers
     public class FilesController : BaseController
     {
         private readonly IEmailService _emailService;
-        public FilesController(IEmailService emailService) {
+        private readonly IStringLocalizer<SharedResource> _localizer;
+        public FilesController(IEmailService emailService, IStringLocalizer<SharedResource> localizer) {
         _emailService = emailService;
+        _localizer = localizer;
         }
 
 
@@ -22,7 +27,7 @@ namespace BookyApp.Controllers
             //var ss = _userId;
             if (file == null || file.Length == 0)
             {
-                return BadRequest("No file is selected.");
+                return BadRequest(_localizer[MessageKeys.NoFileSelected].Value);
             }
 
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);

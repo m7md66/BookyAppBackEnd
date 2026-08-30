@@ -1,0 +1,90 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "back": "Back",
+    "loading": "Loading…",
+    "retry": "Retry",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "auth": {
+    "appName": "BookyApp",
+    "welcomeBack": "Welcome back",
+    "createAccount": "Create Account",
+    "joinBooky": "Join BookyApp",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "login": "Login",
+    "register": "Register",
+    "toRegister": "Don't have an account? Register",
+    "toLogin": "Already have an account? Login",
+    "loginFailed": "Login failed",
+    "registerFailed": "Register failed"
+  },
+  "interests": {
+    "title": "Your Interests",
+    "subtitle": "Pick genres you love",
+    "cta": "Let's Go"
+  },
+  "feed": {
+    "title": "Feed"
+  },
+  "browse": {
+    "title": "Browse Books",
+    "addBook": "+ Add Book",
+    "empty": "No books to browse right now.",
+    "modalTitle": "Add a Book",
+    "titleField": "Title",
+    "authorField": "Author",
+    "descriptionField": "Description",
+    "chooseFile": "📄 Choose Book File (PDF)",
+    "titleRequired": "Title is required",
+    "addFailed": "Failed to add book",
+    "submit": "Add Book"
+  },
+  "library": {
+    "title": "My Library",
+    "empty": "No books yet. Add some from Browse Books."
+  },
+  "profile": {
+    "title": "Profile",
+    "logout": "Logout",
+    "empty": "No quotations here yet.",
+    "language": "Language",
+    "arabic": "العربية",
+    "english": "English",
+    "tabs": {
+      "mine": "My Quotes",
+      "liked": "Likes",
+      "requoted": "Re-quotes"
+    }
+  },
+  "readBook": {
+    "noFile": "No file was uploaded for this book.",
+    "posted": "Posted",
+    "postedBody": "Your quote was posted to the feed.",
+    "error": "Error",
+    "postFailed": "Failed to post the quote. Please try again.",
+    "postingQuote": "Posting quote…"
+  },
+  "pdfViewer": {
+    "prev": "Prev",
+    "next": "Next",
+    "loadingBook": "Loading book…",
+    "postAsQuote": "Post as Quote",
+    "failedToLoad": "Failed to load book"
+  },
+  "quotation": {
+    "like": "Like",
+    "requote": "Re-quote",
+    "share": "Share",
+    "comment": "Comment",
+    "reQuotedBy": "{{name}} re-quoted",
+    "addComment": "Add a comment (optional)"
+  },
+  "book": {
+    "inLibrary": "♥ In Library",
+    "addToLibrary": "♡ Add to Library"
+  }
+}

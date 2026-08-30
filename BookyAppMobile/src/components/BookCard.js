@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import BookCoverPlaceholder from './BookCoverPlaceholder';
+import { colors, radius, shadow } from '../theme';
 
 export default function BookCard({ book, onFavorite, favoriteBusy, onPress, highlighted }) {
+  const { t } = useTranslation();
   const Container = onPress ? TouchableOpacity : View;
   return (
     <Container style={[styles.card, highlighted && styles.cardHighlighted]} onPress={onPress} activeOpacity={onPress ? 0.7 : 1}>
@@ -17,7 +20,7 @@ export default function BookCard({ book, onFavorite, favoriteBusy, onPress, high
       {onFavorite ? (
         <TouchableOpacity style={styles.favoriteButton} onPress={onFavorite} disabled={book.isFavorite || favoriteBusy}>
           <Text style={[styles.favoriteText, book.isFavorite && styles.favoriteTextActive]}>
-            {book.isFavorite ? '♥ In Library' : '♡ Add to Library'}
+            {book.isFavorite ? t('book.inLibrary') : t('book.addToLibrary')}
           </Text>
         </TouchableOpacity>
       ) : null}
@@ -26,14 +29,14 @@ export default function BookCard({ book, onFavorite, favoriteBusy, onPress, high
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: '#fff', borderRadius: 14, padding: 18, marginBottom: 14, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 3 },
-  cardHighlighted: { borderWidth: 2, borderColor: '#4F46E5' },
+  card: { backgroundColor: colors.card, borderRadius: radius.lg, padding: 18, marginBottom: 14, ...shadow.card },
+  cardHighlighted: { borderWidth: 2, borderColor: colors.accent },
   row: { flexDirection: 'row', gap: 14 },
   info: { flex: 1 },
-  title: { fontSize: 17, fontWeight: '600', color: '#1a1a1a', marginBottom: 4 },
-  author: { fontSize: 13, color: '#888', marginBottom: 10 },
-  description: { fontSize: 14, color: '#444', lineHeight: 20 },
+  title: { fontSize: 17, fontWeight: '600', color: colors.text, marginBottom: 4 },
+  author: { fontSize: 13, color: colors.textSecondary, marginBottom: 10 },
+  description: { fontSize: 14, color: colors.textTertiary, lineHeight: 20 },
   favoriteButton: { marginTop: 14 },
-  favoriteText: { fontSize: 14, fontWeight: '600', color: '#4F46E5' },
-  favoriteTextActive: { color: '#888' },
+  favoriteText: { fontSize: 14, fontWeight: '600', color: colors.primary },
+  favoriteTextActive: { color: colors.textSecondary },
 });

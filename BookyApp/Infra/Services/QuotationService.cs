@@ -123,23 +123,20 @@ namespace Infra.Services
 
             try
             {
-                var myQuotation = _quotationRepository.GetMany(q => q.UserId == request.UserId)
+                var myQuotation = _quotationRepository.GetMany(q => q.UserId == _session.UserId)
                     .Include(q=>q.Book)
                     .Include(q=>q.User)
                     .Include(q=>q. ReQuotes)
                     .Include(q=>q.QuotationLikes)
                     .Include(q=>q.Comments)
-                    .Include(q=>q.QuotationShares);
+                    .Include(q=>q.QuotationShares)
+                    .ToList();
 
               var adaptQuotation = myQuotation.Adapt<List<QuotationResponse>>();
+              SetMyLikeAndRequoteFlags(myQuotation, adaptQuotation);
               var pagedQ = adaptQuotation.ToPagedResult(request.pagenation.pageNumber, request.pagenation.pageSize);
 
                 response.DataResult = pagedQ;
-               // var myQuotation1 =await _quotationRepository.GetManyAsync(q => q.UserId == userId);
-               //var r= myQuotation.ToPagedResult(1, 5);
-               //var rr= myQuotation1.ToPagedResult(1, 5).Items.OrderBy(a=>a.CreatedDate).ToList();
-                //response.DataResult= r;
-                //response.Data= rr.Adapt<List<QuotationResponse>>();
             }
             catch (Exception ex)
             {
@@ -152,6 +149,98 @@ namespace Infra.Services
             }
             response.Status = true;
             return response;
+        }
+
+        public async Task<ApiResponse<List<QuotationResponse>>> GetMyLikedQuotations(GetMyQuotationRequest request)
+        {
+            var response = new ApiResponse<List<QuotationResponse>>();
+
+            try
+            {
+                var likedQuotations = _QuotationLikeRepository.GetMany(l => l.UserId == _session.UserId)
+                    .Include(l => l.Quotation).ThenInclude(q => q.Book)
+                    .Include(l => l.Quotation).ThenInclude(q => q.User)
+                    .Include(l => l.Quotation).ThenInclude(q => q.ReQuotes)
+                    .Include(l => l.Quotation).ThenInclude(q => q.QuotationLikes)
+                    .Include(l => l.Quotation).ThenInclude(q => q.Comments)
+                    .Include(l => l.Quotation).ThenInclude(q => q.QuotationShares)
+                    .OrderByDescending(l => l.CreatedDate)
+                    .Select(l => l.Quotation)
+                    .ToList();
+
+                var adaptQuotation = likedQuotations.Adapt<List<QuotationResponse>>();
+                SetMyLikeAndRequoteFlags(likedQuotations, adaptQuotation);
+                var pagedQ = adaptQuotation.ToPagedResult(request.pagenation.pageNumber, request.pagenation.pageSize);
+
+                response.DataResult = pagedQ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            response.Status = true;
+            return response;
+        }
+
+        public async Task<ApiResponse<List<QuotationResponse>>> GetMyRequotedQuotations(GetMyQuotationRequest request)
+        {
+            var response = new ApiResponse<List<QuotationResponse>>();
+
+            try
+            {
+                var myRequotes = _reQuoteRepository.GetMany(r => r.UserId == _session.UserId)
+                    .Include(r => r.User)
+                    .Include(r => r.Quotation).ThenInclude(q => q.Book)
+                    .Include(r => r.Quotation).ThenInclude(q => q.User)
+                    .Include(r => r.Quotation).ThenInclude(q => q.ReQuotes)
+                    .Include(r => r.Quotation).ThenInclude(q => q.QuotationLikes)
+                    .Include(r => r.Quotation).ThenInclude(q => q.Comments)
+                    .Include(r => r.Quotation).ThenInclude(q => q.QuotationShares)
+                    .OrderByDescending(r => r.CreatedDate)
+                    .ToList();
+
+                var result = new List<QuotationResponse>();
+                foreach (var r in myRequotes)
+                {
+                    var originalQuotation = r.Quotation;
+                    var dto = originalQuotation.Adapt<QuotationResponse>();
+                    dto.Id = r.Id;
+                    dto.CreatedDate = r.CreatedDate;
+                    dto.IsRequote = true;
+                    dto.OriginalQuotationId = originalQuotation.Id;
+                    dto.RequoteComment = r.Content;
+                    dto.RequoterUserId = r.UserId;
+                    dto.RequoterFullName = r.User?.FullName;
+                    dto.IsLikedByMe = originalQuotation.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
+                    dto.IsRequotedByMe = true;
+                    result.Add(dto);
+                }
+
+                var pagedQ = result.ToPagedResult(request.pagenation.pageNumber, request.pagenation.pageSize);
+
+                response.DataResult = pagedQ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            response.Status = true;
+            return response;
+        }
+
+        private void SetMyLikeAndRequoteFlags(List<Quotation> source, List<QuotationResponse> adapted)
+        {
+            for (int i = 0; i < source.Count; i++)
+            {
+                adapted[i].IsLikedByMe = source[i].QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
+                adapted[i].IsRequotedByMe = source[i].ReQuotes?.Any(r => r.UserId == _session.UserId) ?? false;
+            }
         }
         public async Task<ApiResponse<bool>> CommentQuotation(CommentQuotationRequest dto)
         {
@@ -318,6 +407,8 @@ namespace Infra.Services
                 foreach (var q in quotations)
                 {
                     var dto = q.Adapt<QuotationResponse>();
+                    dto.IsLikedByMe = q.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
+                    dto.IsRequotedByMe = q.ReQuotes?.Any(r => r.UserId == _session.UserId) ?? false;
                     var matches = q.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
                     feedItems.Add((dto, matches, q.CreatedDate));
                 }
@@ -335,6 +426,8 @@ namespace Infra.Services
                     dto.RequoteComment = r.Content;
                     dto.RequoterUserId = r.UserId;
                     dto.RequoterFullName = r.User?.FullName;
+                    dto.IsLikedByMe = originalQuotation.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
+                    dto.IsRequotedByMe = originalQuotation.ReQuotes?.Any(l => l.UserId == _session.UserId) ?? false;
                     var matches = originalQuotation.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
                     feedItems.Add((dto, matches, r.CreatedDate));
                 }
