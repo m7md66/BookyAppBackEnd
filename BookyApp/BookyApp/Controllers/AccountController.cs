@@ -66,6 +66,24 @@ namespace BookyApp.Controllers
             return Ok(response);
         }
 
+        [AllowAnonymous]
+        [HttpPost("ConfirmEmail")]
+        public async Task<IActionResult> ConfirmEmail(ConfirmEmailRequest request)
+        {
+            var response = await _accountService.ConfirmEmail(request);
+
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("ResendOtp")]
+        public async Task<IActionResult> ResendOtp(ResendOtpRequest request)
+        {
+            var response = await _accountService.ResendOtp(request);
+
+            return Ok(response);
+        }
+
         [Authorize]
         [HttpGet("Me")]
         public async Task<IActionResult> Me()

@@ -3,6 +3,7 @@
     "name": "BookyAppMobile",
     "slug": "BookyAppMobile",
     "version": "1.0.0",
+    "scheme": "bookyapp",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

@@ -37,6 +37,7 @@ namespace Infra.Persistence
         public DbSet<Comment>? Comments { get; set; }
         public DbSet<Genres>? Genres { get; set; }
         public DbSet<UserInterest>? UserInterests { get; set; }
+        public DbSet<EmailOtp>? EmailOtps { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

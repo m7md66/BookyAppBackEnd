@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, StyleSheet, Modal, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Modal, TextInput, KeyboardAvoidingView, Platform, TouchableOpacity, ActivityIndicator, Share } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { likeQuotation, requoteQuotation, shareQuotation } from '../api/quotations';
+import { SHARE_BASE_URL } from '../api/client';
 import { colors, radius, shadow } from '../theme';
 
 function ActionButton({ label, onPress, children }) {
@@ -92,6 +93,7 @@ export default function QuotationCard({ quotation }) {
   const [shares, setShares] = useState(quotation.sharesNumber ?? 0);
   const [liked, setLiked] = useState(quotation.isLikedByMe ?? false);
   const [requoted, setRequoted] = useState(quotation.isRequotedByMe ?? false);
+  const [shared, setShared] = useState(quotation.isSharedByMe ?? false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const targetQuotationId = quotation.originalQuotationId ?? quotation.id;
@@ -110,8 +112,35 @@ export default function QuotationCard({ quotation }) {
   };
 
   const handleShare = async () => {
+    const author = quotation.bookAuther ? `، ${quotation.bookAuther}` : '';
+    const link = `${SHARE_BASE_URL}/q/${targetQuotationId}`;
+    let result;
+    try {
+      result = await Share.share({
+        message: `"${quotation.content}"\n\n— ${quotation.bookTitle}${author}\n\n${link}`,
+      });
+    } catch {
+      return;
+    }
+    if (result.action === Share.dismissedAction) return;
+
+    // Backend toggles the share record; only register the first time so the
+    // counter reflects the number of distinct users who shared this quote.
+    if (shared) return;
+
+    setShared(true);
     setShares((v) => v + 1);
-    await shareQuotation(targetQuotationId);
+    try {
+      const res = await shareQuotation(targetQuotationId);
+      const isSharedNow = res?.data?.data;
+      if (typeof isSharedNow === 'boolean' && !isSharedNow) {
+        setShared(false);
+        setShares((v) => Math.max(0, v - 1));
+      }
+    } catch {
+      setShared(false);
+      setShares((v) => Math.max(0, v - 1));
+    }
   };
 
   const handleBookPress = () => {
@@ -145,8 +174,8 @@ export default function QuotationCard({ quotation }) {
           <Text style={styles.actionCount}>{requotes}</Text>
         </ActionButton>
         <ActionButton label={t('quotation.share')} onPress={handleShare}>
-          <Text style={styles.actionIcon}>↗</Text>
-          <Text style={styles.actionCount}>{shares}</Text>
+          <Text style={[styles.actionIcon, shared && styles.activeShare]}>↗</Text>
+          <Text style={[styles.actionCount, shared && styles.activeShare]}>{shares}</Text>
         </ActionButton>
         <ActionButton label={t('quotation.comment')}>
           <Text style={styles.actionIcon}>💬</Text>
@@ -178,6 +207,7 @@ const styles = StyleSheet.create({
   actionCount: { fontSize: 13, color: colors.textSecondary },
   active: { color: colors.danger },
   activeRequote: { color: colors.primary },
+  activeShare: { color: colors.accent },
   requoteHeader: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 },
   requoteHeaderIcon: { fontSize: 13, color: colors.textSecondary },
   requoteHeaderText: { fontSize: 13, fontWeight: '600', color: colors.textSecondary },

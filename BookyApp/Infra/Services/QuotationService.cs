@@ -216,6 +216,7 @@ namespace Infra.Services
                     dto.RequoterFullName = r.User?.FullName;
                     dto.IsLikedByMe = originalQuotation.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
                     dto.IsRequotedByMe = true;
+                    dto.IsSharedByMe = originalQuotation.QuotationShares?.Any(s => s.UserId == _session.UserId) ?? false;
                     result.Add(dto);
                 }
 
@@ -240,6 +241,7 @@ namespace Infra.Services
             {
                 adapted[i].IsLikedByMe = source[i].QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
                 adapted[i].IsRequotedByMe = source[i].ReQuotes?.Any(r => r.UserId == _session.UserId) ?? false;
+                adapted[i].IsSharedByMe = source[i].QuotationShares?.Any(s => s.UserId == _session.UserId) ?? false;
             }
         }
         public async Task<ApiResponse<bool>> CommentQuotation(CommentQuotationRequest dto)
@@ -267,13 +269,20 @@ namespace Infra.Services
 
         public async Task<ApiResponse<bool>> ShareQuotation(ApiResponse<bool> response, Guid quotationId)
         {
+            bool isSharedNow;
             try
             {
                 var isShared = await _shareRepository.GetAsync(a => a.QuotationId == quotationId && a.UserId == _session.UserId);
                 if (isShared is QuotationShare shared)
+                {
                     _shareRepository.Delete(isShared);
+                    isSharedNow = false;
+                }
                 else
+                {
                     _shareRepository.Add(new QuotationShare { QuotationId = quotationId, UserId = _session.UserId });
+                    isSharedNow = true;
+                }
             }
             catch (Exception ex)
             {
@@ -285,6 +294,7 @@ namespace Infra.Services
             }
             await _shareRepository.SaveChangesAsync();
             response.Status = true;
+            response.Data = isSharedNow;
             return response;
         }
 
@@ -409,6 +419,7 @@ namespace Infra.Services
                     var dto = q.Adapt<QuotationResponse>();
                     dto.IsLikedByMe = q.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
                     dto.IsRequotedByMe = q.ReQuotes?.Any(r => r.UserId == _session.UserId) ?? false;
+                    dto.IsSharedByMe = q.QuotationShares?.Any(s => s.UserId == _session.UserId) ?? false;
                     var matches = q.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
                     feedItems.Add((dto, matches, q.CreatedDate));
                 }
@@ -428,6 +439,7 @@ namespace Infra.Services
                     dto.RequoterFullName = r.User?.FullName;
                     dto.IsLikedByMe = originalQuotation.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
                     dto.IsRequotedByMe = originalQuotation.ReQuotes?.Any(l => l.UserId == _session.UserId) ?? false;
+                    dto.IsSharedByMe = originalQuotation.QuotationShares?.Any(s => s.UserId == _session.UserId) ?? false;
                     var matches = originalQuotation.Book?.BookGenres?.Any(bg => userInterestIds.Contains(bg.GenrId)) ?? false;
                     feedItems.Add((dto, matches, r.CreatedDate));
                 }
@@ -439,6 +451,46 @@ namespace Infra.Services
                     .ToList();
 
                 response.DataResult = ordered.ToPagedResult(request.Pagenation.pageNumber, request.Pagenation.pageSize);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                response.Errors.Add(ex.ToString());
+                response.Status = false;
+                return response;
+            }
+            response.Status = true;
+            return response;
+        }
+
+        public async Task<ApiResponse<QuotationResponse>> GetQuotationById(Guid quotationId)
+        {
+            var response = new ApiResponse<QuotationResponse>();
+            try
+            {
+                var quotation = _quotationRepository
+                    .GetMany(q => q.Id == quotationId)
+                    .Include(q => q.Book)
+                    .Include(q => q.User)
+                    .Include(q => q.ReQuotes)
+                    .Include(q => q.QuotationLikes)
+                    .Include(q => q.Comments)
+                    .Include(q => q.QuotationShares)
+                    .FirstOrDefault();
+
+                if (quotation is null)
+                {
+                    response.Status = false;
+                    response.Message = "Quotation not found";
+                    return response;
+                }
+
+                var dto = quotation.Adapt<QuotationResponse>();
+                // _session.UserId is null for anonymous callers (e.g. the public /q/{id} page) — flags stay false.
+                dto.IsLikedByMe = quotation.QuotationLikes?.Any(l => l.UserId == _session.UserId) ?? false;
+                dto.IsRequotedByMe = quotation.ReQuotes?.Any(r => r.UserId == _session.UserId) ?? false;
+                dto.IsSharedByMe = quotation.QuotationShares?.Any(s => s.UserId == _session.UserId) ?? false;
+                response.Data = dto;
             }
             catch (Exception ex)
             {

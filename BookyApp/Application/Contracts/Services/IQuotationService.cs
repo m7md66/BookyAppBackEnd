@@ -24,6 +24,7 @@ namespace Application.Contracts.Services
 
         ApiResponse<List<UserResponse>> GetQuotationLikes(ApiResponse<List<UserResponse>> response, GetQuotationCommentsRequest request);
         Task<ApiResponse<List<QuotationResponse>>> GetFeed(GetFeedRequest request);
+        Task<ApiResponse<QuotationResponse>> GetQuotationById(Guid quotationId);
 
 
 

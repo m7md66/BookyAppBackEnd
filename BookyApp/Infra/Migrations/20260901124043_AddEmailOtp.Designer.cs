@@ -4,6 +4,7 @@ using Infra.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260901124043_AddEmailOtp")]
+    partial class AddEmailOtp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,8 +120,8 @@ namespace Infra.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1efb0523-0fd0-45d1-8fbd-1994a498965a",
-                            CreatedDate = new DateTime(2026, 9, 1, 16, 24, 11, 545, DateTimeKind.Local).AddTicks(4716),
+                            ConcurrencyStamp = "7d636d12-aa77-48f7-a442-619c477e4952",
+                            CreatedDate = new DateTime(2026, 9, 1, 15, 40, 40, 999, DateTimeKind.Local).AddTicks(2627),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -717,7 +720,7 @@ namespace Infra.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "76e5a173-946d-44ab-b907-c89ca4d590fd",
+                            ConcurrencyStamp = "e9ff4312-ef12-4af1-acc6-6be727b72f27",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

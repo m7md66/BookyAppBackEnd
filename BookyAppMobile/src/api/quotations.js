@@ -3,6 +3,8 @@ import client from './client';
 export const createQuotation = (bookId, content) =>
   client.post('/Quotation/CreateQuotation', { BookId: bookId, Content: content });
 
+export const getQuotation = (id) => client.get('/Quotation/GetQuotation', { params: { id } });
+
 export const getFeed = (pageNumber = 1, pageSize = 20) =>
   client.get('/Quotation/GetFeed', { params: { 'Pagenation.pageNumber': pageNumber, 'Pagenation.pageSize': pageSize } });
 

@@ -57,7 +57,9 @@ namespace Infra.Helper.Extensions
             //});
 
             services.Configure<JWT>(c => configuration.GetSection("JWT"));
-       
+
+            services.Configure<FeatureFlags>(configuration.GetSection("Features"));
+
             return services;
         }
 

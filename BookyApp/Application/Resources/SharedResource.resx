@@ -76,6 +76,24 @@
   <data name="NoFileSelected" xml:space="preserve">
     <value>No file is selected.</value>
   </data>
+  <data name="OtpEmailSubject" xml:space="preserve">
+    <value>Your Booky verification code</value>
+  </data>
+  <data name="OtpEmailBody" xml:space="preserve">
+    <value>&lt;p&gt;Welcome to Booky!&lt;/p&gt;&lt;p&gt;Your email verification code is:&lt;/p&gt;&lt;h2 style="letter-spacing:4px"&gt;{0}&lt;/h2&gt;&lt;p&gt;This code expires in 10 minutes. If you did not create a Booky account you can ignore this email.&lt;/p&gt;</value>
+  </data>
+  <data name="OtpInvalid" xml:space="preserve">
+    <value>The verification code is incorrect. Please check it and try again.</value>
+  </data>
+  <data name="OtpExpired" xml:space="preserve">
+    <value>The verification code has expired. Request a new one.</value>
+  </data>
+  <data name="EmailConfirmedSuccess" xml:space="preserve">
+    <value>Your email has been verified.</value>
+  </data>
+  <data name="OtpResendTooSoon" xml:space="preserve">
+    <value>Please wait a moment before requesting another code.</value>
+  </data>
   <data name="Identity_PasswordTooShort" xml:space="preserve">
     <value>Passwords must be at least 5 characters.</value>
   </data>

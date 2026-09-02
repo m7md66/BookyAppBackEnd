@@ -12,5 +12,11 @@ namespace Application.Localization
         public const string GenericError = "GenericError";
         public const string InterestIdsEmpty = "InterestIdsEmpty";
         public const string NoFileSelected = "NoFileSelected";
+        public const string OtpEmailSubject = "OtpEmailSubject";
+        public const string OtpEmailBody = "OtpEmailBody";
+        public const string OtpInvalid = "OtpInvalid";
+        public const string OtpExpired = "OtpExpired";
+        public const string EmailConfirmedSuccess = "EmailConfirmedSuccess";
+        public const string OtpResendTooSoon = "OtpResendTooSoon";
     }
 }

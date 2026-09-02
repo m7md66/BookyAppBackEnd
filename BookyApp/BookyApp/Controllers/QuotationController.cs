@@ -108,5 +108,11 @@ namespace BookyApp.Controllers
             return _quotationService.GetFeed(request);
         }
 
+        [HttpGet("GetQuotation")]
+        public Task<ApiResponse<QuotationResponse>> GetQuotation(Guid id)
+        {
+            return _quotationService.GetQuotationById(id);
+        }
+
     }
     }

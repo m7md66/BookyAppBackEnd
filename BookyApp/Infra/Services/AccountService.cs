@@ -7,15 +7,19 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Application.DTOs.UserDto;
 using static System.Collections.Specialized.BitVector32;
+using Application.Contracts.Repository;
 using Application.Contracts.Services;
+using Application.DTOs.Settings;
 using Infra.Helper.Filters;
 using Application;
 using Application.Localization;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 
 namespace Infra.Services
 {
@@ -25,6 +29,13 @@ namespace Infra.Services
         private readonly ITokenService _tokenService;
         private readonly Session _session;
         private readonly IStringLocalizer<SharedResource> _localizer;
+        private readonly IEmailService _emailService;
+        private readonly IBaseRepository<EmailOtp> _emailOtpRepo;
+        private readonly FeatureFlags _featureFlags;
+
+        private const int OtpLifetimeMinutes = 10;
+        private const int OtpResendCooldownSeconds = 60;
+        private const int OtpMaxAttempts = 5;
         //private readonly IMapper _mapper;
         //private readonly IUserRepository _userRepository;
         //private readonly IAmazonFileService _amazonService;
@@ -34,7 +45,10 @@ namespace Infra.Services
         public AccountService(UserManager<ApplicationUser> userManager,
             ITokenService tokenService,
             Session session,
-            IStringLocalizer<SharedResource> localizer
+            IStringLocalizer<SharedResource> localizer,
+            IEmailService emailService,
+            IBaseRepository<EmailOtp> emailOtpRepo,
+            IOptions<FeatureFlags> featureFlags
             //IMapper mapper
             //IUserRepository userRepository,
             //IAmazonFileService amazonService,
@@ -47,6 +61,9 @@ namespace Infra.Services
             _tokenService = tokenService;
             _session = session;
             _localizer = localizer;
+            _emailService = emailService;
+            _emailOtpRepo = emailOtpRepo;
+            _featureFlags = featureFlags.Value;
             //_mapper = mapper;
             //_userRepository = userRepository;
             //_amazonService = amazonService;
@@ -120,8 +137,138 @@ namespace Infra.Services
 
             await _userManager.AddToRoleAsync(user, "Admin");
 
+            var requiresEmailConfirmation = _featureFlags.RequireEmailConfirmation;
+            if (requiresEmailConfirmation)
+            {
+                // Don't fail registration if SMTP is momentarily unavailable -
+                // the client can trigger ResendOtp.
+                try { await GenerateAndSendOtpAsync(user); }
+                catch { /* logged upstream; user can resend */ }
+            }
 
-            return new BaseResponse((int)HttpStatusCode.OK, true, _localizer[MessageKeys.UserAddedSuccessfully]);
+            return new AddUserResponse((int)HttpStatusCode.OK, true, _localizer[MessageKeys.UserAddedSuccessfully])
+            {
+                RequiresEmailConfirmation = requiresEmailConfirmation
+            };
+        }
+
+        public async Task<AuthResponse> ConfirmEmail(ConfirmEmailRequest request)
+        {
+            var user = await GetUserByEmail(request.Email);
+            if (user is null)
+                return new AuthResponse
+                {
+                    IsSuccess = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    ResponseMessage = _localizer[MessageKeys.OtpInvalid]
+                };
+
+            if (user.EmailConfirmed)
+                return await BuildAuthResponse(user);
+
+            var otps = await _emailOtpRepo.GetManyAsync(o => o.UserId == user.Id && o.ConsumedAt == null);
+            var otp = otps.OrderByDescending(o => o.CreatedDate).FirstOrDefault();
+
+            if (otp is null)
+                return new AuthResponse
+                {
+                    IsSuccess = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    ResponseMessage = _localizer[MessageKeys.OtpInvalid]
+                };
+
+            if (otp.ExpiresAt < DateTime.UtcNow)
+                return new AuthResponse
+                {
+                    IsSuccess = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    ResponseMessage = _localizer[MessageKeys.OtpExpired]
+                };
+
+            otp.Attempts++;
+
+            if (otp.Attempts > OtpMaxAttempts || otp.CodeHash != HashCode(request.Code?.Trim()))
+            {
+                await _emailOtpRepo.SaveChangesAsync();
+                return new AuthResponse
+                {
+                    IsSuccess = false,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
+                    ResponseMessage = _localizer[MessageKeys.OtpInvalid]
+                };
+            }
+
+            otp.ConsumedAt = DateTime.UtcNow;
+            await _emailOtpRepo.SaveChangesAsync();
+
+            user.EmailConfirmed = true;
+            await _userManager.UpdateAsync(user);
+
+            var response = await BuildAuthResponse(user);
+            response.ResponseMessage = _localizer[MessageKeys.EmailConfirmedSuccess];
+            return response;
+        }
+
+        public async Task<BaseResponse> ResendOtp(ResendOtpRequest request)
+        {
+            var user = await GetUserByEmail(request.Email);
+
+            // Do not reveal whether the email exists.
+            if (user is null || user.EmailConfirmed)
+                return new BaseResponse((int)HttpStatusCode.OK, true, _localizer[MessageKeys.OtpEmailSubject]);
+
+            var otps = await _emailOtpRepo.GetManyAsync(o => o.UserId == user.Id);
+            var last = otps.OrderByDescending(o => o.CreatedDate).FirstOrDefault();
+            if (last?.CreatedDate is DateTime created &&
+                created.AddSeconds(OtpResendCooldownSeconds) > DateTime.UtcNow)
+            {
+                return new BaseResponse((int)HttpStatusCode.BadRequest, false, _localizer[MessageKeys.OtpResendTooSoon]);
+            }
+
+            await GenerateAndSendOtpAsync(user);
+            return new BaseResponse((int)HttpStatusCode.OK, true, _localizer[MessageKeys.OtpEmailSubject]);
+        }
+
+        private async Task<AuthResponse> BuildAuthResponse(ApplicationUser user)
+        {
+            var jwtSecurityToken = await _tokenService.CreateToken(user);
+            return new AuthResponse
+            {
+                IsSuccess = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+                Email = user.Email,
+                ExpiresOn = jwtSecurityToken.ValidTo.ToString("yyyy-MM-dd")
+            };
+        }
+
+        private async Task GenerateAndSendOtpAsync(ApplicationUser user)
+        {
+            // Invalidate any codes still outstanding for this user.
+            var outstanding = await _emailOtpRepo.GetManyAsync(o => o.UserId == user.Id && o.ConsumedAt == null);
+            foreach (var old in outstanding)
+                old.ConsumedAt = DateTime.UtcNow;
+
+            var code = RandomNumberGenerator.GetInt32(0, 1_000_000).ToString("D6");
+
+            _emailOtpRepo.Add(new EmailOtp
+            {
+                UserId = user.Id,
+                CodeHash = HashCode(code),
+                ExpiresAt = DateTime.UtcNow.AddMinutes(OtpLifetimeMinutes)
+            });
+            await _emailOtpRepo.SaveChangesAsync();
+
+            var subject = _localizer[MessageKeys.OtpEmailSubject];
+            var body = string.Format(_localizer[MessageKeys.OtpEmailBody], code);
+            await _emailService.SendAsync(user.Email, subject, body);
+        }
+
+        private static string HashCode(string code)
+        {
+            using var sha = SHA256.Create();
+            var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(code ?? string.Empty));
+            return Convert.ToHexString(bytes);
         }
 
 

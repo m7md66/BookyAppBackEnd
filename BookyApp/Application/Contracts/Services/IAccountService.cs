@@ -13,6 +13,8 @@ namespace Application.Contracts.Services
     {
        Task<BaseResponse> AddUser(AddUserRequest request);
         Task<AuthResponse> Login(UserLoginRequest request);
+        Task<AuthResponse> ConfirmEmail(ConfirmEmailRequest request);
+        Task<BaseResponse> ResendOtp(ResendOtpRequest request);
         Task<ApplicationUser> GetUserByEmail(string email);
         Task<UserResponse> GetMyProfile();
     }

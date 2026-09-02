@@ -16,9 +16,22 @@ namespace Infra.Services
     public class EmailService: IEmailService
     {
         private readonly EmailSettings _emailSettings;
+        private readonly IFluentEmail _fluentEmail;
 
-         public EmailService(IOptions<EmailSettings> options) {
+         public EmailService(IOptions<EmailSettings> options, IFluentEmail fluentEmail) {
         _emailSettings = options.Value;
+        _fluentEmail = fluentEmail;
+        }
+
+        public async Task<bool> SendAsync(string toEmail, string subject, string htmlBody)
+        {
+            var result = await _fluentEmail
+                .To(toEmail)
+                .Subject(subject)
+                .Body(htmlBody, isHtml: true)
+                .SendAsync();
+
+            return result.Successful;
         }
       public async Task<ApiResponse<bool>> sendMailAsync() {
             var response = new ApiResponse<bool>();

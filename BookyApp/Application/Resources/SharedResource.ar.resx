@@ -76,6 +76,24 @@
   <data name="NoFileSelected" xml:space="preserve">
     <value>لم يتم اختيار أي ملف.</value>
   </data>
+  <data name="OtpEmailSubject" xml:space="preserve">
+    <value>رمز التحقق الخاص بـ Booky</value>
+  </data>
+  <data name="OtpEmailBody" xml:space="preserve">
+    <value>&lt;p&gt;أهلاً بك في Booky!&lt;/p&gt;&lt;p&gt;رمز تأكيد بريدك الإلكتروني هو:&lt;/p&gt;&lt;h2 style="letter-spacing:4px"&gt;{0}&lt;/h2&gt;&lt;p&gt;ينتهي هذا الرمز خلال 10 دقائق. إذا لم تُنشئ حساباً على Booky يمكنك تجاهل هذه الرسالة.&lt;/p&gt;</value>
+  </data>
+  <data name="OtpInvalid" xml:space="preserve">
+    <value>رمز التحقق غير صحيح. يرجى التأكد منه والمحاولة مرة أخرى.</value>
+  </data>
+  <data name="OtpExpired" xml:space="preserve">
+    <value>انتهت صلاحية رمز التحقق. اطلب رمزاً جديداً.</value>
+  </data>
+  <data name="EmailConfirmedSuccess" xml:space="preserve">
+    <value>تم تأكيد بريدك الإلكتروني.</value>
+  </data>
+  <data name="OtpResendTooSoon" xml:space="preserve">
+    <value>يرجى الانتظار قليلاً قبل طلب رمز جديد.</value>
+  </data>
   <data name="Identity_PasswordTooShort" xml:space="preserve">
     <value>يجب أن تتكوّن كلمة المرور من 5 أحرف على الأقل.</value>
   </data>

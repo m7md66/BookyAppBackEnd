@@ -35,6 +35,7 @@ namespace Application.DTOs.QuotationDto
 
         public bool IsLikedByMe { get; set; } = false;
         public bool IsRequotedByMe { get; set; } = false;
+        public bool IsSharedByMe { get; set; } = false;
 
     }
 }
