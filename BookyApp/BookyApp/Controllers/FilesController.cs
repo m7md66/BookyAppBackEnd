@@ -39,8 +39,36 @@ namespace BookyApp.Controllers
             }
 
             var fileUrl = $"{Request.Scheme}://{Request.Host}/Books/{fileName}";
+            string? coverImageUrl = TryGenerateCoverFromFirstPage(filePath, fileName);
 
-            return Ok(fileUrl);
+            return Ok(new { fileUrl, coverImageUrl });
+        }
+
+        // Renders the first page of an uploaded PDF as the book's default cover image.
+        private string? TryGenerateCoverFromFirstPage(string filePath, string fileName)
+        {
+            if (!string.Equals(Path.GetExtension(fileName), ".pdf", StringComparison.OrdinalIgnoreCase))
+            {
+                return null;
+            }
+
+            try
+            {
+                var coverFileName = Path.GetFileNameWithoutExtension(fileName) + "_cover.png";
+                var coverPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Books", coverFileName);
+
+                using (var pdfStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    PDFtoImage.Conversion.SavePng(coverPath, pdfStream, page: 0);
+                }
+
+                return $"{Request.Scheme}://{Request.Host}/Books/{coverFileName}";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to generate cover image from PDF: {ex}");
+                return null;
+            }
         }
         [HttpPost("SendMail")]
         public Task<ApiResponse<bool>> SendMail()

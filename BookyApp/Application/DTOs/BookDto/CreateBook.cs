@@ -13,5 +13,6 @@ namespace Application.DTOs.BookDto
         public string Description { get; set; }
         public string? URL { get; set; }
         public string? ContentFileUrl { get; set; }
+        public string? CoverImageUrl { get; set; }
     }
 }

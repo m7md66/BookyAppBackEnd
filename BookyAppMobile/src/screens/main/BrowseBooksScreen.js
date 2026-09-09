@@ -120,15 +120,18 @@ function AddBookModal({ visible, onClose, onAdded }) {
     setError(null);
     try {
       let contentFileUrl = null;
+      let coverImageUrl = null;
       if (bookFile) {
         const uploadRes = await uploadFile(bookFile);
-        contentFileUrl = uploadRes.data;
+        contentFileUrl = uploadRes.data.fileUrl;
+        coverImageUrl = uploadRes.data.coverImageUrl;
       }
       const res = await addBook({
         Title: title.trim(),
         Auther: auther.trim(),
         Description: description.trim(),
         ContentFileUrl: contentFileUrl,
+        CoverImageUrl: coverImageUrl,
       });
       if (res.data?.status === false) {
         setError(res.data.errors?.[0] ?? t('browse.addFailed'));

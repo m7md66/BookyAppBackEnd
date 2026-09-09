@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import BookCoverPlaceholder from './BookCoverPlaceholder';
 import { colors, radius, shadow } from '../theme';
+
+const COVER_SIZE = 56;
 
 export default function BookCard({ book, onFavorite, favoriteBusy, onPress, highlighted }) {
   const { t } = useTranslation();
@@ -10,7 +12,11 @@ export default function BookCard({ book, onFavorite, favoriteBusy, onPress, high
   return (
     <Container style={[styles.card, highlighted && styles.cardHighlighted]} onPress={onPress} activeOpacity={onPress ? 0.7 : 1}>
       <View style={styles.row}>
-        <BookCoverPlaceholder title={book.title} author={book.auther} size={56} />
+        {book.coverImageUrl ? (
+          <Image source={{ uri: book.coverImageUrl }} style={styles.cover} resizeMode="cover" />
+        ) : (
+          <BookCoverPlaceholder title={book.title} author={book.auther} size={COVER_SIZE} />
+        )}
         <View style={styles.info}>
           <Text style={styles.title}>{book.title}</Text>
           {book.auther ? <Text style={styles.author}>{book.auther}</Text> : null}
@@ -32,6 +38,7 @@ const styles = StyleSheet.create({
   card: { backgroundColor: colors.card, borderRadius: radius.lg, padding: 18, marginBottom: 14, ...shadow.card },
   cardHighlighted: { borderWidth: 2, borderColor: colors.accent },
   row: { flexDirection: 'row', gap: 14 },
+  cover: { width: COVER_SIZE, height: COVER_SIZE * 1.4, borderRadius: radius.sm, backgroundColor: colors.border },
   info: { flex: 1 },
   title: { fontSize: 17, fontWeight: '600', color: colors.text, marginBottom: 4 },
   author: { fontSize: 13, color: colors.textSecondary, marginBottom: 10 },

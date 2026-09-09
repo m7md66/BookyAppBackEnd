@@ -193,19 +193,30 @@ namespace Infra.Services
             {
                 var myRequotes = _reQuoteRepository.GetMany(r => r.UserId == _session.UserId)
                     .Include(r => r.User)
-                    .Include(r => r.Quotation).ThenInclude(q => q.Book)
-                    .Include(r => r.Quotation).ThenInclude(q => q.User)
-                    .Include(r => r.Quotation).ThenInclude(q => q.ReQuotes)
-                    .Include(r => r.Quotation).ThenInclude(q => q.QuotationLikes)
-                    .Include(r => r.Quotation).ThenInclude(q => q.Comments)
-                    .Include(r => r.Quotation).ThenInclude(q => q.QuotationShares)
                     .OrderByDescending(r => r.CreatedDate)
                     .ToList();
+
+                var quotationIds = myRequotes.Select(r => r.QuotationId).Distinct().ToList();
+
+                // Loaded as a separate Quotation-rooted query (matching GetFeed's approach) rather than
+                // .Include(r => r.Quotation).ThenInclude(q => q.ReQuotes) off the ReQuote root above -
+                // that shape is a self-referencing include cycle (ReQuote -> Quotation -> ReQuotes) and
+                // EF Core throws InvalidOperationException on no-tracking queries.
+                var quotationsById = _quotationRepository.GetMany(q => quotationIds.Contains(q.Id))
+                    .Include(q => q.Book)
+                    .Include(q => q.User)
+                    .Include(q => q.ReQuotes)
+                    .Include(q => q.QuotationLikes)
+                    .Include(q => q.Comments)
+                    .Include(q => q.QuotationShares)
+                    .ToDictionary(q => q.Id);
 
                 var result = new List<QuotationResponse>();
                 foreach (var r in myRequotes)
                 {
-                    var originalQuotation = r.Quotation;
+                    if (!quotationsById.TryGetValue(r.QuotationId, out var originalQuotation))
+                        continue;
+
                     var dto = originalQuotation.Adapt<QuotationResponse>();
                     dto.Id = r.Id;
                     dto.CreatedDate = r.CreatedDate;
