@@ -11,6 +11,7 @@ namespace Application.Localization
         public const string InvalidCredentials = "InvalidCredentials";
         public const string GenericError = "GenericError";
         public const string InterestIdsEmpty = "InterestIdsEmpty";
+        public const string InterestNameEmpty = "InterestNameEmpty";
         public const string NoFileSelected = "NoFileSelected";
         public const string OtpEmailSubject = "OtpEmailSubject";
         public const string OtpEmailBody = "OtpEmailBody";

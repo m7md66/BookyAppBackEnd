@@ -18,14 +18,17 @@ namespace Infra.Services
     {
         private readonly IBaseRepository<Book> _bookRepository;
         private readonly IBaseRepository<FavoriteUserBooks> _favoriteUserBooksRepository;
+        private readonly IBaseRepository<BookGenres> _bookGenresRepository;
         private readonly Session _session;
         public BookService(IBaseRepository<Book> bookRepository,
             IBaseRepository<FavoriteUserBooks> favoriteUserBooksRepository,
+            IBaseRepository<BookGenres> bookGenresRepository,
             Session session
             )
         {
             _bookRepository = bookRepository;
             _favoriteUserBooksRepository = favoriteUserBooksRepository;
+            _bookGenresRepository = bookGenresRepository;
             _session = session;
 
         }
@@ -38,6 +41,10 @@ namespace Infra.Services
             {
                 _bookRepository.Add(book);
                 _favoriteUserBooksRepository.Add(new FavoriteUserBooks { UserId = _session.UserId, Book = book });
+                foreach (var genreId in createBook.GenreIds.Distinct())
+                {
+                    _bookGenresRepository.Add(new BookGenres { Book = book, GenrId = genreId });
+                }
                 await _bookRepository.SaveChangesAsync();
             }
             catch (Exception ex) {

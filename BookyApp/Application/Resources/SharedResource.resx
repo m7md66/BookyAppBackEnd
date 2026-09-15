@@ -73,6 +73,9 @@
   <data name="InterestIdsEmpty" xml:space="preserve">
     <value>User interests cannot be empty.</value>
   </data>
+  <data name="InterestNameEmpty" xml:space="preserve">
+    <value>Interest name cannot be empty.</value>
+  </data>
   <data name="NoFileSelected" xml:space="preserve">
     <value>No file is selected.</value>
   </data>

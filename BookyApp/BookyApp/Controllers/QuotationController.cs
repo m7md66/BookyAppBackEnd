@@ -82,22 +82,22 @@ namespace BookyApp.Controllers
         }
 
         [HttpGet("GetComments")]
-       
-        public ApiResponse<List<GetCommentsResponse>> GetComments([FromServices] ApiResponse<List<GetCommentsResponse>> response, GetQuotationCommentsRequest request)
+
+        public ApiResponse<List<GetCommentsResponse>> GetComments([FromServices] ApiResponse<List<GetCommentsResponse>> response, [FromQuery] GetQuotationCommentsRequest request)
         {
             return _quotationService.GetQuotationComments(response,request);
         }
 
         [HttpGet("GetReQuotes")]
-       
-        public ApiResponse<List<UserResponse>> GetReQuotes([FromServices] ApiResponse<List<UserResponse>> response, GetQuotationCommentsRequest request)
+
+        public ApiResponse<List<UserResponse>> GetReQuotes([FromServices] ApiResponse<List<UserResponse>> response, [FromQuery] GetQuotationCommentsRequest request)
         {
             return _quotationService.GetQuotationReQuote(response,request);
         }
 
         [HttpGet("GetLikes")]
 
-        public ApiResponse<List<UserResponse>> GetLikes([FromServices] ApiResponse<List<UserResponse>> response, GetQuotationCommentsRequest request)
+        public ApiResponse<List<UserResponse>> GetLikes([FromServices] ApiResponse<List<UserResponse>> response, [FromQuery] GetQuotationCommentsRequest request)
         {
             return _quotationService.GetQuotationLikes(response,request);
         }

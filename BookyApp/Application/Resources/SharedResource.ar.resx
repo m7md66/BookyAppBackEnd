@@ -73,6 +73,9 @@
   <data name="InterestIdsEmpty" xml:space="preserve">
     <value>لا يمكن ترك الاهتمامات فارغة.</value>
   </data>
+  <data name="InterestNameEmpty" xml:space="preserve">
+    <value>لا يمكن ترك اسم الاهتمام فارغًا.</value>
+  </data>
   <data name="NoFileSelected" xml:space="preserve">
     <value>لم يتم اختيار أي ملف.</value>
   </data>

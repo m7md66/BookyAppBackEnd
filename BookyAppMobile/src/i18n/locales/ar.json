@@ -37,7 +37,14 @@
   "interests": {
     "title": "اهتماماتك",
     "subtitle": "اختر التصنيفات التي تحبها",
-    "cta": "لنبدأ"
+    "cta": "لنبدأ",
+    "editTitle": "تعديل الاهتمامات",
+    "editSubtitle": "حدّث التصنيفات التي تحبها",
+    "save": "حفظ",
+    "addPlaceholder": "أضف اهتمامًا جديدًا...",
+    "addButton": "إضافة",
+    "addFailed": "تعذّرت إضافة الاهتمام. يرجى المحاولة مرة أخرى.",
+    "saveFailed": "تعذّر حفظ الاهتمامات. يرجى المحاولة مرة أخرى."
   },
   "feed": {
     "title": "الرئيسية"
@@ -51,6 +58,7 @@
     "authorField": "المؤلف",
     "descriptionField": "الوصف",
     "chooseFile": "📄 اختر ملف الكتاب (PDF)",
+    "genresLabel": "التصنيفات",
     "titleRequired": "العنوان مطلوب",
     "addFailed": "تعذّرت إضافة الكتاب",
     "submit": "إضافة الكتاب"
@@ -66,6 +74,10 @@
     "language": "اللغة",
     "arabic": "العربية",
     "english": "English",
+    "avatarPermissionTitle": "الوصول إلى الصور مطلوب",
+    "avatarPermissionMessage": "اسمح لتطبيق BookyApp بالوصول إلى صورك لتعيين صورة الملف الشخصي.",
+    "avatarUploadFailed": "تعذّر تحديث صورة ملفك الشخصي. يرجى المحاولة مرة أخرى.",
+    "myInterests": "اهتماماتي",
     "tabs": {
       "mine": "اقتباساتي",
       "liked": "لايكاتي",
@@ -100,5 +112,16 @@
   "book": {
     "inLibrary": "♥ في المكتبة",
     "addToLibrary": "♡ إضافة إلى المكتبة"
+  },
+  "comments": {
+    "title": "التعليقات",
+    "empty": "لا توجد تعليقات بعد. كن أول من يعلّق.",
+    "placeholder": "اكتب تعليقًا…",
+    "post": "نشر",
+    "loadFailed": "تعذّر تحميل التعليقات.",
+    "justNow": "الآن",
+    "minutesAgo": "منذ {{count}} د",
+    "hoursAgo": "منذ {{count}} س",
+    "daysAgo": "منذ {{count}} يوم"
   }
 }

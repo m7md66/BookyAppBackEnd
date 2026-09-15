@@ -87,6 +87,28 @@ namespace Infra.Services
             };
         }
 
+        public async Task<UserResponse> UpdateAvatar(UpdateAvatarRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(_session.UserId);
+
+            user.ImageUrl = request.ImageUrl;
+            user.ImageName = Path.GetFileNameWithoutExtension(request.ImageUrl);
+            user.ImageExtention = Path.GetExtension(request.ImageUrl);
+
+            await _userManager.UpdateAsync(user);
+
+            return new UserResponse
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                ImageUrl = user.ImageUrl,
+                ImageName = user.ImageName,
+                ImageExtention = user.ImageExtention
+            };
+        }
+
         //public async Task<List<RolesDto>> GetAllRoles()
         //{
         //    return await _roleManager.Roles
@@ -114,10 +136,7 @@ namespace Infra.Services
                 LastName = request.LastName,
                 Email = request.Email,
                 UserName = request.Email,
-                ImageExtention="request.ImageExtention",
-                ImageName="request",
-                ImageUrl="request.ImageUrl",
-                
+
                 //CreatedBy = _session.UserId
             };
 

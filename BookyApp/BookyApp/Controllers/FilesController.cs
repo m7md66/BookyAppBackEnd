@@ -44,6 +44,30 @@ namespace BookyApp.Controllers
             return Ok(new { fileUrl, coverImageUrl });
         }
 
+        [HttpPost("uploadAvatar")]
+        public IActionResult UploadAvatar(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest(_localizer[MessageKeys.NoFileSelected].Value);
+            }
+
+            var avatarsDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Avatars");
+            Directory.CreateDirectory(avatarsDir);
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(avatarsDir, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            var fileUrl = $"{Request.Scheme}://{Request.Host}/Avatars/{fileName}";
+
+            return Ok(new { fileUrl });
+        }
+
         // Renders the first page of an uploaded PDF as the book's default cover image.
         private string? TryGenerateCoverFromFirstPage(string filePath, string fileName)
         {

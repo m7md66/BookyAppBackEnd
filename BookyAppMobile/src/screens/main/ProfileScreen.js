@@ -1,10 +1,14 @@
 import React, { useState, useCallback } from 'react';
-import { FlatList, View, Text, Image, StyleSheet, ActivityIndicator, RefreshControl, TouchableOpacity } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { FlatList, View, Text, StyleSheet, ActivityIndicator, RefreshControl, TouchableOpacity, Alert } from 'react-native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { getMyProfile } from '../../api/auth';
+import * as ImagePicker from 'expo-image-picker';
+import { getMyProfile, updateAvatar } from '../../api/auth';
+import { uploadAvatar } from '../../api/files';
 import { getMyQuotations, getMyLikedQuotations, getMyRequotedQuotations } from '../../api/quotations';
 import QuotationCard from '../../components/QuotationCard';
+import Avatar from '../../components/Avatar';
 import { useAuthStore } from '../../store/authStore';
 import { useLanguageStore } from '../../store/languageStore';
 import { colors, radius, shadow } from '../../theme';
@@ -17,22 +21,26 @@ const TABS = [
   { key: 'requoted', labelKey: 'profile.tabs.requoted', fetch: getMyRequotedQuotations },
 ];
 
-function ProfileHeader({ profile, onLogout }) {
+function ProfileHeader({ profile, onLogout, onAvatarPress, avatarUploading, onEditInterests }) {
   const { t } = useTranslation();
   const { language, setLanguage } = useLanguageStore();
   const fullName = profile ? `${profile.firstName ?? ''} ${profile.lastName ?? ''}`.trim() : '';
-  const initial = fullName ? fullName[0].toUpperCase() : '?';
 
   return (
     <View>
       <View style={styles.profileCard}>
-        {profile?.imageUrl ? (
-          <Image source={{ uri: profile.imageUrl }} style={styles.avatar} />
-        ) : (
-          <View style={[styles.avatar, styles.avatarPlaceholder]}>
-            <Text style={styles.avatarInitial}>{initial}</Text>
-          </View>
-        )}
+        <TouchableOpacity onPress={onAvatarPress} disabled={avatarUploading} style={styles.avatarWrapper}>
+          <Avatar imageUrl={profile?.imageUrl} name={fullName} size={52} />
+          {avatarUploading ? (
+            <View style={styles.avatarOverlay}>
+              <ActivityIndicator size="small" color={colors.onPrimary} />
+            </View>
+          ) : (
+            <View style={styles.avatarEditBadge}>
+              <Text style={styles.avatarEditIcon}>✎</Text>
+            </View>
+          )}
+        </TouchableOpacity>
         <View style={styles.profileInfo}>
           <Text style={styles.profileName}>{fullName || '...'}</Text>
           <Text style={styles.profileEmail}>{profile?.email ?? ''}</Text>
@@ -41,6 +49,11 @@ function ProfileHeader({ profile, onLogout }) {
           <Text style={styles.logout}>{t('profile.logout')}</Text>
         </TouchableOpacity>
       </View>
+
+      <TouchableOpacity style={styles.interestsRow} onPress={onEditInterests}>
+        <Text style={styles.langLabel}>{t('profile.myInterests')}</Text>
+        <Ionicons name="chevron-forward" size={18} color={colors.textSecondary} />
+      </TouchableOpacity>
 
       <View style={styles.langRow}>
         <Text style={styles.langLabel}>{t('profile.language')}</Text>
@@ -65,7 +78,9 @@ function ProfileHeader({ profile, onLogout }) {
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
+  const navigation = useNavigation();
   const logout = useAuthStore((state) => state.logout);
+  const updateStoredUser = useAuthStore((state) => state.updateUser);
   const [profile, setProfile] = useState(null);
   const [activeTab, setActiveTab] = useState('mine');
   const [quotations, setQuotations] = useState([]);
@@ -73,6 +88,42 @@ export default function ProfileScreen() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [avatarUploading, setAvatarUploading] = useState(false);
+
+  const handleAvatarPress = async () => {
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      Alert.alert(t('profile.avatarPermissionTitle'), t('profile.avatarPermissionMessage'));
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.7,
+    });
+    if (result.canceled) return;
+
+    const asset = result.assets[0];
+    setAvatarUploading(true);
+    try {
+      const uploadRes = await uploadAvatar({
+        uri: asset.uri,
+        name: asset.fileName ?? `avatar-${Date.now()}.jpg`,
+        mimeType: asset.mimeType,
+      });
+      const fileUrl = uploadRes.data?.fileUrl;
+      const updateRes = await updateAvatar(fileUrl);
+      const updated = updateRes.data?.data ?? updateRes.data;
+      setProfile(updated);
+      updateStoredUser({ imageUrl: updated.imageUrl });
+    } catch {
+      Alert.alert(t('profile.avatarUploadFailed'));
+    } finally {
+      setAvatarUploading(false);
+    }
+  };
 
   const load = useCallback(async (tabKey, pageNum = 1, replace = false) => {
     const tab = TABS.find((item) => item.key === tabKey);
@@ -130,7 +181,13 @@ export default function ProfileScreen() {
       ListHeaderComponent={
         <View>
           <Text style={styles.header}>{t('profile.title')}</Text>
-          <ProfileHeader profile={profile} onLogout={logout} />
+          <ProfileHeader
+            profile={profile}
+            onLogout={logout}
+            onAvatarPress={handleAvatarPress}
+            avatarUploading={avatarUploading}
+            onEditInterests={() => navigation.navigate('EditInterests')}
+          />
           <View style={styles.tabs}>
             {TABS.map((tab) => (
               <TouchableOpacity
@@ -167,13 +224,42 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     ...shadow.card,
   },
-  avatar: { width: 52, height: 52, borderRadius: 26 },
-  avatarPlaceholder: { backgroundColor: colors.primary, justifyContent: 'center', alignItems: 'center' },
-  avatarInitial: { color: colors.onPrimary, fontSize: 20, fontWeight: 'bold' },
+  avatarWrapper: { position: 'relative' },
+  avatarOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 26,
+    backgroundColor: colors.overlay,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatarEditBadge: {
+    position: 'absolute',
+    bottom: -2,
+    right: -2,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: colors.card,
+  },
+  avatarEditIcon: { color: colors.onPrimary, fontSize: 10 },
   profileInfo: { flex: 1, marginStart: 12 },
   profileName: { fontSize: 16, fontWeight: '600', color: colors.text },
   profileEmail: { fontSize: 13, color: colors.textSecondary, marginTop: 2 },
   logout: { fontSize: 14, fontWeight: '600', color: colors.primary },
+  interestsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: colors.card,
+    borderRadius: radius.md,
+    padding: 14,
+    marginBottom: 12,
+    ...shadow.card,
+  },
   langRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
   langLabel: { fontSize: 14, fontWeight: '600', color: colors.text },
   langToggle: { flexDirection: 'row', backgroundColor: colors.track, borderRadius: radius.md, padding: 4 },

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { likeQuotation, requoteQuotation, shareQuotation } from '../api/quotations';
 import { SHARE_BASE_URL } from '../api/client';
 import { colors, radius, shadow } from '../theme';
+import CommentsModal from './CommentsModal';
 
 function ActionButton({ label, onPress, children }) {
   const [hovered, setHovered] = useState(false);
@@ -95,6 +96,8 @@ export default function QuotationCard({ quotation }) {
   const [requoted, setRequoted] = useState(quotation.isRequotedByMe ?? false);
   const [shared, setShared] = useState(quotation.isSharedByMe ?? false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [commentsVisible, setCommentsVisible] = useState(false);
+  const [comments, setComments] = useState(quotation.commentsNumber ?? 0);
 
   const targetQuotationId = quotation.originalQuotationId ?? quotation.id;
 
@@ -177,9 +180,9 @@ export default function QuotationCard({ quotation }) {
           <Text style={[styles.actionIcon, shared && styles.activeShare]}>↗</Text>
           <Text style={[styles.actionCount, shared && styles.activeShare]}>{shares}</Text>
         </ActionButton>
-        <ActionButton label={t('quotation.comment')}>
+        <ActionButton label={t('quotation.comment')} onPress={() => setCommentsVisible(true)}>
           <Text style={styles.actionIcon}>💬</Text>
-          <Text style={styles.actionCount}>{quotation.commentsNumber ?? 0}</Text>
+          <Text style={styles.actionCount}>{comments}</Text>
         </ActionButton>
       </View>
 
@@ -188,6 +191,13 @@ export default function QuotationCard({ quotation }) {
         quotation={quotation}
         onClose={() => setModalVisible(false)}
         onSubmit={handleRequoteSubmit}
+      />
+
+      <CommentsModal
+        visible={commentsVisible}
+        quotationId={targetQuotationId}
+        onClose={() => setCommentsVisible(false)}
+        onCommentPosted={() => setComments((v) => v + 1)}
       />
     </View>
   );

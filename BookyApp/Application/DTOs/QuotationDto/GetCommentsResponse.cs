@@ -9,7 +9,9 @@ namespace Application.DTOs.QuotationDto
 {
     public class GetCommentsResponse
     {
+        public Guid Id { get; set; }
         public string Content { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public UserResponse User { get; set; }
 
     }

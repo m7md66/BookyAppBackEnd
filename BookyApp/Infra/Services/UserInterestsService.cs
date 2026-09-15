@@ -45,16 +45,21 @@ namespace Infra.Services
             _localizer = localizer;
         }
 
-        public ApiResponse<Genres> GetUserInterests(string UserId)
+        public ApiResponse<List<InterestsResponse>> GetUserInterests(string UserId)
         {
-            var a = _appDb.UserInterests.Where(a=>a.Id==new Guid("2FACEEDF-1336-40D1-8694-4997CFADDED1")).FirstOrDefault();
-            a.InterestId = new Guid("4E5A41D9-DAFD-49FD-B423-16DEFBB56724");
-
-            var qq = _appDb.UserInterests;
-            var response = new ApiResponse<Genres>();
+            var response = new ApiResponse<List<InterestsResponse>>();
             try
             {
-                 response.DataResult = _userInterestsRepository.GetMany(a => a.UserId == UserId).Select(x => new  { x.Interest.Name }).ToList();
+                var isArabic = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar";
+                response.Data = _userInterestsRepository.GetMany(a => a.UserId == UserId)
+                    .Select(x => x.Interest)
+                    .ToList()
+                    .Select(g => new InterestsResponse
+                    {
+                        Id = g.Id,
+                        Name = isArabic && !string.IsNullOrWhiteSpace(g.NameAr) ? g.NameAr : g.Name
+                    })
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -65,7 +70,7 @@ namespace Infra.Services
                 return response;
 
             }
-          
+
             response.Status = true;
             return response;
         }
@@ -99,14 +104,32 @@ namespace Infra.Services
         }
 
 
-        public async Task<ApiResponse<Genres>> addInterest(string name)
+        public async Task<ApiResponse<InterestsResponse>> addInterest(string name)
         {
-            var response = new ApiResponse<Genres>();
+            var response = new ApiResponse<InterestsResponse>();
+            var trimmedName = name?.Trim();
 
+            if (string.IsNullOrWhiteSpace(trimmedName))
+            {
+                response.Errors.Add(_localizer[MessageKeys.InterestNameEmpty]);
+                response.Status = false;
+                return response;
+            }
 
             try
             {
-              _interestsRepository.Add(new Genres { Name = name });
+                var existing = _interestsRepository.GetMany(g => g.Name.ToLower() == trimmedName.ToLower()).FirstOrDefault();
+                if (existing != null)
+                {
+                    response.Data = new InterestsResponse { Id = existing.Id, Name = existing.Name };
+                    response.Status = true;
+                    return response;
+                }
+
+                var genre = new Genres { Name = trimmedName };
+                _interestsRepository.Add(genre);
+                await _interestsRepository.SaveChangesAsync();
+                response.Data = new InterestsResponse { Id = genre.Id, Name = genre.Name };
             }
             catch (Exception ex)
             {
@@ -115,7 +138,6 @@ namespace Infra.Services
                 response.Status = false;
                 return response;
             }
-            await _interestsRepository.SaveChangesAsync();
             response.Status = true;
             return response;
         }

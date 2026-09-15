@@ -37,7 +37,14 @@
   "interests": {
     "title": "Your Interests",
     "subtitle": "Pick genres you love",
-    "cta": "Let's Go"
+    "cta": "Let's Go",
+    "editTitle": "Edit Interests",
+    "editSubtitle": "Update the genres you love",
+    "save": "Save",
+    "addPlaceholder": "Add a new interest...",
+    "addButton": "Add",
+    "addFailed": "Failed to add interest. Please try again.",
+    "saveFailed": "Failed to save interests. Please try again."
   },
   "feed": {
     "title": "Feed"
@@ -51,6 +58,7 @@
     "authorField": "Author",
     "descriptionField": "Description",
     "chooseFile": "📄 Choose Book File (PDF)",
+    "genresLabel": "Genres",
     "titleRequired": "Title is required",
     "addFailed": "Failed to add book",
     "submit": "Add Book"
@@ -66,6 +74,10 @@
     "language": "Language",
     "arabic": "العربية",
     "english": "English",
+    "avatarPermissionTitle": "Photo access needed",
+    "avatarPermissionMessage": "Allow BookyApp to access your photos to set a profile picture.",
+    "avatarUploadFailed": "Failed to update your profile picture. Please try again.",
+    "myInterests": "My Interests",
     "tabs": {
       "mine": "My Quotes",
       "liked": "Likes",
@@ -100,5 +112,16 @@
   "book": {
     "inLibrary": "♥ In Library",
     "addToLibrary": "♡ Add to Library"
+  },
+  "comments": {
+    "title": "Comments",
+    "empty": "No comments yet. Be the first to comment.",
+    "placeholder": "Write a comment…",
+    "post": "Post",
+    "loadFailed": "Failed to load comments.",
+    "justNow": "Just now",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago"
   }
 }

@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Books\" />
+    <Folder Include="wwwroot\Avatars\" />
   </ItemGroup>
 
 </Project>

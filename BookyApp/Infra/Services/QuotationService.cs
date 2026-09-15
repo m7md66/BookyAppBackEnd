@@ -315,7 +315,8 @@ namespace Infra.Services
             {
                 var comments = _commentRepository
                     .GetMany(a => a.QuotationId == request.quotationId)
-                    .Select(a=>new GetCommentsResponse {Content=a.Content,User=new UserResponse {FirstName=a.user.FirstName,LastName=a.user.LastName,ImageUrl=a.user.ImageUrl,ImageExtention=a.user.ImageExtention} })
+                    .OrderByDescending(a => a.CreatedDate)
+                    .Select(a=>new GetCommentsResponse {Id=a.Id,Content=a.Content,CreatedDate=a.CreatedDate,User=new UserResponse {FirstName=a.user.FirstName,LastName=a.user.LastName,ImageUrl=a.user.ImageUrl,ImageExtention=a.user.ImageExtention} })
                     .ToList();
                 var commentPaged=comments.ToPagedResult(request.pagenation.pageNumber, request.pagenation.pageSize);
                 response.DataResult = commentPaged;

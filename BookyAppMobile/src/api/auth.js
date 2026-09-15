@@ -6,4 +6,5 @@ export const getMyProfile = () => client.get('/Account/Me');
 
 // Email verification (only exercised when the backend's Features:RequireEmailConfirmation is on).
 export const confirmEmail = (data) => client.post('/Account/ConfirmEmail', data); // { email, code }
-export const resendOtp = (data) => client.post('/Account/ResendOtp', data); // { email }
+export const resendOtp = (data) => client.post('/Account/ResendOtp', data);
+export const updateAvatar = (imageUrl) => client.put('/Account/UpdateAvatar', { imageUrl }); // { email }

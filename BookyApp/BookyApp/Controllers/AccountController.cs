@@ -93,6 +93,15 @@ namespace BookyApp.Controllers
             return Ok(response);
         }
 
+        [Authorize]
+        [HttpPut("UpdateAvatar")]
+        public async Task<IActionResult> UpdateAvatar(UpdateAvatarRequest request)
+        {
+            var response = await _accountService.UpdateAvatar(request);
+
+            return Ok(response);
+        }
+
     }
 
 

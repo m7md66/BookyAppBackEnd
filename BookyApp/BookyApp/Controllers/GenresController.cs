@@ -31,14 +31,14 @@ namespace BookyApp.Controllers
 
 
         [HttpPost("addInterest")]
-        public Task<ApiResponse<Genres>> addInterest(string name)
+        public Task<ApiResponse<InterestsResponse>> addInterest(string name)
         {
             return _userInterestsService.addInterest(name);
         }
 
 
         [HttpGet("GetUserInterests")]
-        public ApiResponse<Genres> GetUserInterests()
+        public ApiResponse<List<InterestsResponse>> GetUserInterests()
         {
             var userId = User.Claims.FirstOrDefault(a => a.Type.Contains("nameidentifier")).Value;
             return _userInterestsService.GetUserInterests(userId);

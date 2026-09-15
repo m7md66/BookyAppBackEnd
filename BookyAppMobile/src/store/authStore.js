@@ -113,4 +113,6 @@ export const useAuthStore = create((set, get) => ({
     const token = await AsyncStorage.getItem('token');
     if (token) set({ token });
   },
+
+  updateUser: (patch) => set((state) => ({ user: { ...state.user, ...patch } })),
 }));

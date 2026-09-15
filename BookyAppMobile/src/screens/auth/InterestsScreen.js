@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { getAllInterests, saveInterests } from '../../api/interests';
 import { useAuthStore } from '../../store/authStore';
@@ -38,23 +38,22 @@ export default function InterestsScreen() {
       <Text style={styles.title}>{t('interests.title')}</Text>
       <Text style={styles.subtitle}>{t('interests.subtitle')}</Text>
 
-      <FlatList
-        data={interests}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        renderItem={({ item }) => {
-          const isSelected = selected.includes(item.id);
-          return (
-            <TouchableOpacity
-              style={[styles.chip, isSelected && styles.chipSelected]}
-              onPress={() => toggle(item.id)}
-            >
-              <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>{item.name}</Text>
-            </TouchableOpacity>
-          );
-        }}
-        contentContainerStyle={styles.list}
-      />
+      <ScrollView contentContainerStyle={styles.list}>
+        <View style={styles.chipsWrap}>
+          {interests.map((item) => {
+            const isSelected = selected.includes(item.id);
+            return (
+              <TouchableOpacity
+                key={item.id}
+                style={[styles.chip, isSelected && styles.chipSelected]}
+                onPress={() => toggle(item.id)}
+              >
+                <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>{item.name}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </ScrollView>
 
       <TouchableOpacity
         style={[styles.button, !selected.length && styles.buttonDisabled]}
@@ -73,7 +72,8 @@ const styles = StyleSheet.create({
   title: { fontSize: 28, fontWeight: 'bold', color: colors.text, marginBottom: 4 },
   subtitle: { fontSize: 15, color: colors.textSecondary, marginBottom: 24 },
   list: { paddingBottom: 24 },
-  chip: { flex: 1, margin: 6, paddingVertical: 14, borderRadius: radius.md, borderWidth: 1.5, borderColor: colors.border, alignItems: 'center', backgroundColor: colors.card },
+  chipsWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
+  chip: { paddingHorizontal: 18, paddingVertical: 12, borderRadius: radius.md, borderWidth: 1.5, borderColor: colors.border, alignItems: 'center', backgroundColor: colors.card },
   chipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { color: colors.textTertiary, fontWeight: '500' },
   chipTextSelected: { color: colors.onPrimary },

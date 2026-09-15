@@ -9,6 +9,7 @@ import MyLibraryScreen from '../screens/main/MyLibraryScreen';
 import ProfileScreen from '../screens/main/ProfileScreen';
 import ReadBookScreen from '../screens/main/ReadBookScreen';
 import QuotationScreen from '../screens/main/QuotationScreen';
+import EditInterestsScreen from '../screens/main/EditInterestsScreen';
 import { colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -53,6 +54,7 @@ export default function MainNavigator() {
       <Stack.Screen name="Tabs" component={MainTabs} />
       <Stack.Screen name="ReadBook" component={ReadBookScreen} />
       <Stack.Screen name="Quotation" component={QuotationScreen} />
+      <Stack.Screen name="EditInterests" component={EditInterestsScreen} />
     </Stack.Navigator>
   );
 }

@@ -17,5 +17,6 @@ namespace Application.Contracts.Services
         Task<BaseResponse> ResendOtp(ResendOtpRequest request);
         Task<ApplicationUser> GetUserByEmail(string email);
         Task<UserResponse> GetMyProfile();
+        Task<UserResponse> UpdateAvatar(UpdateAvatarRequest request);
     }
 }

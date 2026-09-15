@@ -14,5 +14,6 @@ namespace Application.DTOs.BookDto
         public string? URL { get; set; }
         public string? ContentFileUrl { get; set; }
         public string? CoverImageUrl { get; set; }
+        public List<Guid> GenreIds { get; set; } = new List<Guid>();
     }
 }

@@ -11,9 +11,9 @@ namespace Application.Contracts.Services
 {
     public interface IUserInterestsService
     {
-        Task<ApiResponse<Genres>> addInterest(string name);
+        Task<ApiResponse<InterestsResponse>> addInterest(string name);
         Task<ApiResponse<List<InterestsResponse>>> GetAllInterests();
-        ApiResponse<Genres> GetUserInterests(string UserId);
+        ApiResponse<List<InterestsResponse>> GetUserInterests(string UserId);
         Task<ApiResponse<bool>> MakeInterest(Guid GenreId);
         Task<ApiResponse<bool>> MakeInterests(List<Guid> userInterestsIds);
     }

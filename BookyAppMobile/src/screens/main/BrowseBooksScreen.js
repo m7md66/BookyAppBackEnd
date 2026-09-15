@@ -4,6 +4,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import * as DocumentPicker from 'expo-document-picker';
 import { getBrowseBooks, addBook, favorBook } from '../../api/books';
+import { getAllInterests } from '../../api/interests';
 import { uploadFile } from '../../api/files';
 import BookCard from '../../components/BookCard';
 import { colors, radius } from '../../theme';
@@ -103,10 +104,21 @@ function AddBookModal({ visible, onClose, onAdded }) {
   const [auther, setAuther] = useState('');
   const [description, setDescription] = useState('');
   const [bookFile, setBookFile] = useState(null);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenreIds, setSelectedGenreIds] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
-  const reset = () => { setTitle(''); setAuther(''); setDescription(''); setBookFile(null); setError(null); };
+  useEffect(() => {
+    if (!visible) return;
+    getAllInterests().then((res) => setGenres(res.data.data ?? []));
+  }, [visible]);
+
+  const toggleGenre = (id) => {
+    setSelectedGenreIds((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
+  };
+
+  const reset = () => { setTitle(''); setAuther(''); setDescription(''); setBookFile(null); setSelectedGenreIds([]); setError(null); };
 
   const handlePickFile = async () => {
     const result = await DocumentPicker.getDocumentAsync({ type: 'application/pdf', copyToCacheDirectory: true });
@@ -132,6 +144,7 @@ function AddBookModal({ visible, onClose, onAdded }) {
         Description: description.trim(),
         ContentFileUrl: contentFileUrl,
         CoverImageUrl: coverImageUrl,
+        GenreIds: selectedGenreIds,
       });
       if (res.data?.status === false) {
         setError(res.data.errors?.[0] ?? t('browse.addFailed'));
@@ -155,6 +168,25 @@ function AddBookModal({ visible, onClose, onAdded }) {
           <TextInput style={styles.input} placeholder={t('browse.titleField')} placeholderTextColor={colors.textSecondary} value={title} onChangeText={setTitle} />
           <TextInput style={styles.input} placeholder={t('browse.authorField')} placeholderTextColor={colors.textSecondary} value={auther} onChangeText={setAuther} />
           <TextInput style={[styles.input, styles.multiline]} placeholder={t('browse.descriptionField')} placeholderTextColor={colors.textSecondary} value={description} onChangeText={setDescription} multiline />
+          {genres.length > 0 && (
+            <>
+              <Text style={styles.genresLabel}>{t('browse.genresLabel')}</Text>
+              <View style={styles.genresRow}>
+                {genres.map((genre) => {
+                  const isSelected = selectedGenreIds.includes(genre.id);
+                  return (
+                    <TouchableOpacity
+                      key={genre.id}
+                      style={[styles.genreChip, isSelected && styles.genreChipSelected]}
+                      onPress={() => toggleGenre(genre.id)}
+                    >
+                      <Text style={[styles.genreChipText, isSelected && styles.genreChipTextSelected]}>{genre.name}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </>
+          )}
           <TouchableOpacity style={styles.filePickerButton} onPress={handlePickFile}>
             <Text style={styles.filePickerText}>{bookFile ? bookFile.name : t('browse.chooseFile')}</Text>
           </TouchableOpacity>
@@ -183,6 +215,12 @@ const styles = StyleSheet.create({
   modalTitle: { fontSize: 20, fontWeight: 'bold', color: colors.text, marginBottom: 16 },
   input: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, fontSize: 15, marginBottom: 14, color: colors.text, backgroundColor: colors.card },
   multiline: { height: 90, textAlignVertical: 'top' },
+  genresLabel: { fontSize: 13, fontWeight: '600', color: colors.textSecondary, marginBottom: 8 },
+  genresRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 14 },
+  genreChip: { paddingVertical: 8, paddingHorizontal: 14, borderRadius: radius.sm, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.background },
+  genreChipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
+  genreChipText: { color: colors.textSecondary, fontWeight: '500', fontSize: 13 },
+  genreChipTextSelected: { color: colors.onPrimary },
   filePickerButton: { borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, padding: 14, marginBottom: 14, borderStyle: 'dashed' },
   filePickerText: { fontSize: 14, color: colors.primary, textAlign: 'center' },
   submitButton: { backgroundColor: colors.primary, borderRadius: radius.md, padding: 16, alignItems: 'center', marginBottom: 12 },
